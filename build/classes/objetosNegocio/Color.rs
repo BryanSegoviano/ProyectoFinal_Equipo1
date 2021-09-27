@@ -1,0 +1,1 @@
+objetosNegocio.Color
