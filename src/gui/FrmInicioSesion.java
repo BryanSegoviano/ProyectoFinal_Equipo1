@@ -47,17 +47,19 @@ public class FrmInicioSesion extends javax.swing.JFrame {
         btnIniciarSesion1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabelUsuario1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Inicio de sesión");
+        setTitle("Timbiriche inicio sesión");
         setBackground(new java.awt.Color(255, 255, 255));
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(132, 174, 220));
 
         jLabelUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabelUsuario.setText("Usuario: ");
 
+        jLabelContrasenia.setBackground(new java.awt.Color(255, 255, 255));
         jLabelContrasenia.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabelContrasenia.setText("Contraseña: ");
 
@@ -65,9 +67,9 @@ public class FrmInicioSesion extends javax.swing.JFrame {
 
         jPasswordField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        btnIniciarSesion.setBackground(new java.awt.Color(51, 102, 255));
+        btnIniciarSesion.setBackground(new java.awt.Color(153, 0, 153));
         btnIniciarSesion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnIniciarSesion.setForeground(new java.awt.Color(0, 51, 255));
+        btnIniciarSesion.setForeground(new java.awt.Color(153, 0, 153));
         btnIniciarSesion.setText("Iniciar sesión");
         btnIniciarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -78,7 +80,6 @@ public class FrmInicioSesion extends javax.swing.JFrame {
 
         btnIniciarSesion1.setBackground(new java.awt.Color(0, 0, 0));
         btnIniciarSesion1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnIniciarSesion1.setForeground(new java.awt.Color(0, 0, 0));
         btnIniciarSesion1.setText("Crear cuenta");
         btnIniciarSesion1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnIniciarSesion1.addActionListener(new java.awt.event.ActionListener() {
@@ -90,6 +91,9 @@ public class FrmInicioSesion extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuarioAvatar.png"))); // NOI18N
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/candadoAvatar.png"))); // NOI18N
+
+        jLabelUsuario1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabelUsuario1.setText("¿Aún no tienes cuenta?");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -112,10 +116,13 @@ public class FrmInicioSesion extends javax.swing.JFrame {
                             .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(51, 51, 51))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btnIniciarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnIniciarSesion1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(156, 156, 156))))
+                        .addComponent(btnIniciarSesion)
+                        .addGap(159, 159, 159))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnIniciarSesion1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelUsuario1))
+                        .addGap(158, 158, 158))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,11 +142,13 @@ public class FrmInicioSesion extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(35, 35, 35)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(29, 29, 29)
+                .addGap(36, 36, 36)
                 .addComponent(btnIniciarSesion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addComponent(jLabelUsuario1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnIniciarSesion1)
-                .addGap(34, 34, 34))
+                .addGap(30, 30, 30))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -208,6 +217,7 @@ public class FrmInicioSesion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelContrasenia;
     private javax.swing.JLabel jLabelUsuario;
+    private javax.swing.JLabel jLabelUsuario1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField;
     private javax.swing.JTextField jTextUsuario;

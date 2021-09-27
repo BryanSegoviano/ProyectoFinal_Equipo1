@@ -9,8 +9,6 @@ package gui;
  */
 public class DlgPanelJuego extends javax.swing.JDialog {
 
-    DlgSalaDeEspera dlgSalaEspera;
-
     /**
      * Creates new form FrmPanelJuego
      *
@@ -21,8 +19,6 @@ public class DlgPanelJuego extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(parent);
-
-        dlgSalaEspera = new DlgSalaDeEspera(parent, modal);
 
     }
 
@@ -45,18 +41,17 @@ public class DlgPanelJuego extends javax.swing.JDialog {
         setTitle("Menú principal");
         setResizable(false);
 
-        jPanelFondo.setBackground(new java.awt.Color(255, 0, 0));
+        jPanelFondo.setBackground(new java.awt.Color(153, 0, 153));
         jPanelFondo.setForeground(new java.awt.Color(255, 0, 0));
 
         jLabelUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabelUsuario.setForeground(new java.awt.Color(255, 255, 255));
         jLabelUsuario.setText("Usuario: ");
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(132, 174, 220));
 
         btnCrearPartida.setBackground(new java.awt.Color(0, 0, 0));
         btnCrearPartida.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnCrearPartida.setForeground(new java.awt.Color(0, 0, 0));
         btnCrearPartida.setText("Crear partida");
         btnCrearPartida.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCrearPartida.addActionListener(new java.awt.event.ActionListener() {
@@ -67,7 +62,6 @@ public class DlgPanelJuego extends javax.swing.JDialog {
 
         btnUnirsePartida.setBackground(new java.awt.Color(0, 0, 0));
         btnUnirsePartida.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnUnirsePartida.setForeground(new java.awt.Color(0, 0, 0));
         btnUnirsePartida.setText("Unirse a partida");
         btnUnirsePartida.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnUnirsePartida.addActionListener(new java.awt.event.ActionListener() {
@@ -78,7 +72,6 @@ public class DlgPanelJuego extends javax.swing.JDialog {
 
         btnSalir.setBackground(new java.awt.Color(0, 0, 0));
         btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnSalir.setForeground(new java.awt.Color(0, 0, 0));
         btnSalir.setText("Salir");
         btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -122,7 +115,7 @@ public class DlgPanelJuego extends javax.swing.JDialog {
             .addGroup(jPanelFondoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelUsuario)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanelFondoLayout.setVerticalGroup(
@@ -154,6 +147,10 @@ public class DlgPanelJuego extends javax.swing.JDialog {
 
     private void btnCrearPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearPartidaActionPerformed
         this.dispose();
+        DlgSalaDeEspera dlgSalaEspera;
+        dlgSalaEspera = new DlgSalaDeEspera(null, true);
+        
+
         dlgSalaEspera.show();
     }//GEN-LAST:event_btnCrearPartidaActionPerformed
 

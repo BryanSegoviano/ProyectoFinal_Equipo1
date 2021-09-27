@@ -1,1 +1,0 @@
-objetosNegocio.Cuadro
