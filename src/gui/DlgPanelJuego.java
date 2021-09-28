@@ -147,11 +147,10 @@ public class DlgPanelJuego extends javax.swing.JDialog {
 
     private void btnCrearPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearPartidaActionPerformed
         this.dispose();
-        DlgSalaDeEspera dlgSalaEspera;
-        dlgSalaEspera = new DlgSalaDeEspera(null, true);
-        
+        DlgPrePartida dlgPrePartida;
+        dlgPrePartida = new DlgPrePartida(null, true);
 
-        dlgSalaEspera.show();
+        dlgPrePartida.show();
     }//GEN-LAST:event_btnCrearPartidaActionPerformed
 
     private void btnUnirsePartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUnirsePartidaActionPerformed
