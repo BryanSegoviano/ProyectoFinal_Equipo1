@@ -7,9 +7,10 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.geom.Ellipse2D;
+import java.awt.geom.Line2D;
 
 public class DibujadoTablero extends Canvas {
-
+    
     @Override
     public void paint(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
@@ -33,11 +34,11 @@ public class DibujadoTablero extends Canvas {
             }
             y = 0;
             
-            x+= 20;
+            x += 20;
         }
         this.dibujaCuadrado(x, y, 50, 50, 41, g2d);
     }
-
+    
     public void dibujaCuadrado(int x, int y, int ancho, int alto, int cuantos, Graphics2D g) {
         Rectangle rect = new Rectangle();
         for (int i = 0; i < cuantos; i++) {
@@ -46,7 +47,7 @@ public class DibujadoTablero extends Canvas {
             x += ancho;
         }
     }
-
+    
     public void dibujarCirculo(int x, int y, Graphics2D g) {
         g.setStroke(new BasicStroke(1));
         g.setColor(Color.BLACK);
@@ -55,10 +56,13 @@ public class DibujadoTablero extends Canvas {
         g.draw(elipse);
     }
     
-    public void dibujarLinea(int x, int y, Graphics2D g){
-        g.setColor(Color.BLACK);
-        g.drawLine(x, x, y, y);
-        
-    }
+    public void dibujarLinea(int x, int y, Graphics2D g, Color color) {
+        g.setStroke(new BasicStroke(3));
+        g.setColor(color);
+        g.drawLine(x, y, x + 20, y);
+//        Line2D linea1 = new Line2D.Double(x, y, x + 20, y);//función para dibujar la línea
+//        g.draw(linea1);  //la función draw() permite dibujar cualquier elemento creado
 
+    }
+    
 }

@@ -50,8 +50,8 @@ public class FrmPanelJuego extends javax.swing.JFrame {
         );
 
         jLabelNombreUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabelNombreUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelNombreUsuario.setText("Nombre");
+        jLabelNombreUsuario.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelNombreUsuario.setText("Usuario");
 
         javax.swing.GroupLayout jPanelFondoUsuarioLayout = new javax.swing.GroupLayout(jPanelFondoUsuario);
         jPanelFondoUsuario.setLayout(jPanelFondoUsuarioLayout);
@@ -61,9 +61,10 @@ public class FrmPanelJuego extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addGroup(jPanelFondoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabelBienvenido)
-                    .addGroup(jPanelFondoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelFondoUsuarioLayout.createSequentialGroup()
                         .addComponent(jLabelNombreUsuario)
-                        .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(8, 8, 8)))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         jPanelFondoUsuarioLayout.setVerticalGroup(
@@ -71,9 +72,9 @@ public class FrmPanelJuego extends javax.swing.JFrame {
             .addGroup(jPanelFondoUsuarioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelBienvenido)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelNombreUsuario)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(77, 77, 77))
         );
@@ -131,7 +132,7 @@ public class FrmPanelJuego extends javax.swing.JFrame {
             .addGroup(jPanelFondoBotonesLayout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addComponent(btnCrearPartida)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(btnUnirsePartida)
                 .addGap(35, 35, 35)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)

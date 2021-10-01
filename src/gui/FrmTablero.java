@@ -2,20 +2,23 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import util.DibujadoTablero;
 
 public class FrmTablero extends javax.swing.JFrame {
 
-    private DibujadoTablero dibujar;
+    public static DibujadoTablero dibujar;
 
     public FrmTablero() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.dibujar = new DibujadoTablero();
 //      Establecer el bound hace que no sirva el evento mouseclicked   
-//        dibujar.setBounds(5, 5, 690, 650);
+        dibujar.setBounds(5, 5, 690, 650);
+        this.dibujar.addMouseListener(eventos);
         this.panelTablero.add(dibujar);
-//        this.dibujarTablero();
+        this.dibujarTablero();
     }
 
     /**
@@ -64,7 +67,7 @@ public class FrmTablero extends javax.swing.JFrame {
 
         panelJugadores.setBackground(new java.awt.Color(255, 255, 255));
 
-        panelJ1.setBackground(new java.awt.Color(248, 248, 248));
+        panelJ1.setBackground(java.awt.Color.yellow);
         panelJ1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         avatarJ1.setBackground(new java.awt.Color(255, 255, 255));
@@ -154,7 +157,7 @@ public class FrmTablero extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        panelJ2.setBackground(new java.awt.Color(248, 248, 248));
+        panelJ2.setBackground(java.awt.Color.white);
         panelJ2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         avatarJ2.setBackground(new java.awt.Color(255, 255, 255));
@@ -244,7 +247,7 @@ public class FrmTablero extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        panelJ3.setBackground(new java.awt.Color(248, 248, 248));
+        panelJ3.setBackground(java.awt.Color.white);
         panelJ3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         avatarJ3.setBackground(new java.awt.Color(255, 255, 255));
@@ -334,7 +337,7 @@ public class FrmTablero extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelJ4.setBackground(new java.awt.Color(248, 248, 248));
+        panelJ4.setBackground(java.awt.Color.white);
         panelJ4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         avatarJ4.setBackground(new java.awt.Color(255, 255, 255));
@@ -469,21 +472,22 @@ public class FrmTablero extends javax.swing.JFrame {
         );
         panelTableroLayout.setVerticalGroup(
             panelTableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 673, Short.MAX_VALUE)
+            .addGap(0, 660, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout panelFondoLayout = new javax.swing.GroupLayout(panelFondo);
         panelFondo.setLayout(panelFondoLayout);
         panelFondoLayout.setHorizontalGroup(
             panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelFondoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelJugadores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoLayout.createSequentialGroup()
+                .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelFondoLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(panelTablero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(91, 91, 91)))
+                        .addGap(91, 91, 91))
+                    .addGroup(panelFondoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(panelJugadores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panelFondoLayout.setVerticalGroup(
@@ -492,8 +496,8 @@ public class FrmTablero extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(panelJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelTablero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18))
+                .addComponent(panelTablero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         jMenuAbandonar.setText("Abandonar partida");
@@ -558,8 +562,8 @@ public class FrmTablero extends javax.swing.JFrame {
     private void coordenadasClick(java.awt.event.MouseEvent evt) {
         System.out.println(evt.getX());
         System.out.println(evt.getY());
-        this.dibujar.dibujarCirculo(evt.getX(), evt.getY(), (Graphics2D) this.panelTablero.getGraphics());
-        
+        this.dibujar.dibujarLinea(coordenadaX, coordenadaY, (Graphics2D) dibujar.getGraphics(), color);
+
     }
 
     private void cambiarColor(String jugador) {
@@ -615,4 +619,73 @@ public class FrmTablero extends javax.swing.JFrame {
     private javax.swing.JLabel puntosJ3;
     private javax.swing.JLabel puntosJ4;
     // End of variables declaration//GEN-END:variables
+
+    int coordenadaX, coordenadaY;
+    Color color;
+    MouseListener eventos = new MouseListener() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            coordenadaX = e.getX();
+            coordenadaY = e.getY();
+            System.out.println(panelJ1.getBackground());
+            System.out.println(Color.YELLOW);
+
+            if (panelJ1.getBackground().equals(Color.YELLOW)) {
+                panelJ1.setBackground(Color.WHITE);
+                panelJ2.setBackground(Color.YELLOW);
+                color = colorJugador1.getBackground();
+                coordenadasClick(e);
+
+                return;
+            }
+            if (panelJ2.getBackground() == Color.YELLOW) {
+                panelJ2.setBackground(Color.WHITE);
+                panelJ3.setBackground(Color.YELLOW);
+                color = colorJugador2.getBackground();
+
+                coordenadasClick(e);
+
+                return;
+            }
+            if (panelJ3.getBackground() == Color.YELLOW) {
+                panelJ3.setBackground(Color.WHITE);
+                panelJ4.setBackground(Color.YELLOW);
+                color = colorJugador3.getBackground();
+
+                coordenadasClick(e);
+
+                return;
+            }
+            if (panelJ4.getBackground() == Color.YELLOW) {
+                panelJ4.setBackground(Color.WHITE);
+                panelJ1.setBackground(Color.YELLOW);
+                color = colorJugador4.getBackground();
+
+                coordenadasClick(e);
+
+                return;
+            }
+
+//            colorJugador1.getBackground();
+//            panelJ1.setBackground(Color.YELLOW);
+        }
+
+        @Override
+
+        public void mousePressed(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+        }
+
+    };
 }
