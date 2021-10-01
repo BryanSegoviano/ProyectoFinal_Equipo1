@@ -13,10 +13,8 @@ public class DibujadoTablero extends Canvas {
     @Override
     public void paint(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-
         g2d.setColor(Color.GRAY);
         g2d.setStroke(new BasicStroke(2));
-
         //Datos de los cuadrados
         int y = 0;
 //        for (int i = 0; i < 40; i++) {
@@ -30,16 +28,17 @@ public class DibujadoTablero extends Canvas {
         for (int i = 0; i < 41; i++) {
             for (int j = 0; j < 41; j++) {
                 this.dibujarCirculo(x, y, g2d);
+                
                 y += 16;
             }
             y = 0;
             
             x+= 20;
         }
-
+        this.dibujaCuadrado(x, y, 50, 50, 41, g2d);
     }
 
-    private void dibujaCuadrado(int x, int y, int ancho, int alto, int cuantos, Graphics2D g) {
+    public void dibujaCuadrado(int x, int y, int ancho, int alto, int cuantos, Graphics2D g) {
         Rectangle rect = new Rectangle();
         for (int i = 0; i < cuantos; i++) {
             rect.setBounds(x, y, ancho, alto);
@@ -48,12 +47,18 @@ public class DibujadoTablero extends Canvas {
         }
     }
 
-    private void dibujarCirculo(int x, int y, Graphics2D g) {
+    public void dibujarCirculo(int x, int y, Graphics2D g) {
         g.setStroke(new BasicStroke(1));
         g.setColor(Color.BLACK);
         Ellipse2D.Double elipse = new Ellipse2D.Double(x, y, 5, 5);
         g.fill(elipse);
         g.draw(elipse);
+    }
+    
+    public void dibujarLinea(int x, int y, Graphics2D g){
+        g.setColor(Color.BLACK);
+        g.drawLine(x, x, y, y);
+        
     }
 
 }

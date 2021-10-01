@@ -1,32 +1,22 @@
-/**
- * Paquete gui
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package gui;
 
 /**
  *
- * @author Carlos Valenzuela
+ * @author Bryan
  */
-public class DlgPartida extends javax.swing.JDialog {
-
-    DlgPanelJuego dlgPanelJuego;
-    DlgColores dlgColores;
-    DlgTablero dlgTablero;
+public class FrmPartida extends javax.swing.JFrame {
 
     /**
-     * Creates new form FrmPanelJuego
-     *
-     * @param parent
-     * @param modal
+     * Creates new form FrmPartida
      */
-    public DlgPartida(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public FrmPartida() {
         initComponents();
-        setLocationRelativeTo(parent);
-
-        dlgPanelJuego = new DlgPanelJuego(parent, modal);
-        dlgColores = new DlgColores(parent, modal);
-        DlgTablero dlgTablero = new DlgTablero(parent, modal);
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -41,7 +31,7 @@ public class DlgPartida extends javax.swing.JDialog {
         jPanelFondo = new javax.swing.JPanel();
         btnSolicitarInicio = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        barraSeparar = new javax.swing.JPanel();
         jLabelJugador = new javax.swing.JLabel();
         jTextJugador1 = new javax.swing.JTextField();
         jLabelJugador1 = new javax.swing.JLabel();
@@ -51,7 +41,8 @@ public class DlgPartida extends javax.swing.JDialog {
         jLabelJugador3 = new javax.swing.JLabel();
         jTextJugador4 = new javax.swing.JTextField();
 
-        setTitle("Creación de partida");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Partida");
 
         jPanelFondo.setBackground(new java.awt.Color(132, 174, 220));
         jPanelFondo.setForeground(new java.awt.Color(255, 0, 0));
@@ -77,49 +68,53 @@ public class DlgPartida extends javax.swing.JDialog {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        barraSeparar.setBackground(new java.awt.Color(0, 0, 0));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout barraSepararLayout = new javax.swing.GroupLayout(barraSeparar);
+        barraSeparar.setLayout(barraSepararLayout);
+        barraSepararLayout.setHorizontalGroup(
+            barraSepararLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 24, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        barraSepararLayout.setVerticalGroup(
+            barraSepararLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jLabelJugador.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabelJugador.setText("Jugador 1:");
+        jLabelJugador.setText("Jugador 1");
 
         jTextJugador1.setEditable(false);
         jTextJugador1.setBackground(new java.awt.Color(255, 255, 255));
         jTextJugador1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextJugador1.setText("Skinpy");
         jTextJugador1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabelJugador1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabelJugador1.setText("Jugador 2:");
+        jLabelJugador1.setText("Jugador 2");
 
         jTextJugador2.setEditable(false);
         jTextJugador2.setBackground(new java.awt.Color(255, 255, 255));
         jTextJugador2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextJugador2.setText("Slizzir");
         jTextJugador2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabelJugador2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabelJugador2.setText("Jugador 3:");
+        jLabelJugador2.setText("Jugador 3");
 
         jTextJugador3.setEditable(false);
         jTextJugador3.setBackground(new java.awt.Color(255, 255, 255));
         jTextJugador3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextJugador3.setText("Rictal");
         jTextJugador3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabelJugador3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabelJugador3.setText("Jugador 4:");
+        jLabelJugador3.setText("Jugador 4");
 
         jTextJugador4.setEditable(false);
         jTextJugador4.setBackground(new java.awt.Color(255, 255, 255));
         jTextJugador4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextJugador4.setText("Juan");
         jTextJugador4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         javax.swing.GroupLayout jPanelFondoLayout = new javax.swing.GroupLayout(jPanelFondo);
@@ -127,7 +122,7 @@ public class DlgPartida extends javax.swing.JDialog {
         jPanelFondoLayout.setHorizontalGroup(
             jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelFondoLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(31, 31, 31)
                 .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelJugador)
                     .addComponent(jTextJugador1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -137,8 +132,8 @@ public class DlgPartida extends javax.swing.JDialog {
                     .addComponent(jLabelJugador3)
                     .addComponent(jTextJugador4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextJugador2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                .addComponent(barraSeparar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
                 .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFondoLayout.createSequentialGroup()
@@ -151,13 +146,14 @@ public class DlgPartida extends javax.swing.JDialog {
         jPanelFondoLayout.setVerticalGroup(
             jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelFondoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(140, Short.MAX_VALUE)
                 .addComponent(btnSolicitarInicio)
                 .addGap(112, 112, 112)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addComponent(barraSeparar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanelFondoLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addContainerGap()
                 .addComponent(jLabelJugador)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextJugador1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -174,7 +170,6 @@ public class DlgPartida extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextJugador4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -191,29 +186,38 @@ public class DlgPartida extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        this.dispose();
-        dlgPanelJuego.show();
-    }//GEN-LAST:event_btnSalirActionPerformed
-
     private void btnSolicitarInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitarInicioActionPerformed
-        this.dlgTablero.show();
+        this.solicitarInicio();
     }//GEN-LAST:event_btnSolicitarInicioActionPerformed
 
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        this.salir();
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void solicitarInicio() {
+        this.dispose();
+        FrmTablero frmTablero = new FrmTablero();
+        frmTablero.setVisible(true);
+    }
+
+    private void salir() {
+        this.dispose();
+        FrmPanelJuego frmPanelJuego = new FrmPanelJuego();
+        frmPanelJuego.setVisible(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel barraSeparar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnSolicitarInicio;
     private javax.swing.JLabel jLabelJugador;
     private javax.swing.JLabel jLabelJugador1;
     private javax.swing.JLabel jLabelJugador2;
     private javax.swing.JLabel jLabelJugador3;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelFondo;
     private javax.swing.JTextField jTextJugador1;
     private javax.swing.JTextField jTextJugador2;
     private javax.swing.JTextField jTextJugador3;
     private javax.swing.JTextField jTextJugador4;
     // End of variables declaration//GEN-END:variables
-
 }

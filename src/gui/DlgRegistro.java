@@ -16,17 +16,18 @@ import util.TextPrompt;
  */
 public class DlgRegistro extends javax.swing.JDialog {
 
-    TextPrompt texto;
+    private TextPrompt texto;
 
     /**
      * Creates new form DlgRegistro
+     * @param parent
+     * @param modal
      */
     public DlgRegistro(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         texto = new TextPrompt(" Ingrese usuario ", jTextUsuario);
         texto = new TextPrompt(" Ingrese contraseña ", jTextContrasenia);
-
         setLocationRelativeTo(parent);
     }
 
@@ -47,14 +48,14 @@ public class DlgRegistro extends javax.swing.JDialog {
         jLabelUsuario = new javax.swing.JLabel();
         jLabelContrasenia = new javax.swing.JLabel();
         jTextContrasenia = new javax.swing.JTextField();
-        jLabelUsuario1 = new javax.swing.JLabel();
-        btnCancelar1 = new javax.swing.JButton();
+        jLabelAvatar = new javax.swing.JLabel();
+        btnCancelar = new javax.swing.JButton();
         panelImagen = new javax.swing.JPanel();
 
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Registro de Cuenta");
+        setTitle("Registro de cuenta");
         setResizable(false);
 
         jPanelRegistro.setBackground(new java.awt.Color(132, 174, 220));
@@ -65,7 +66,7 @@ public class DlgRegistro extends javax.swing.JDialog {
         btnRegistrar.setForeground(new java.awt.Color(153, 0, 153));
         btnRegistrar.setText("Registrarse");
         btnRegistrar.setToolTipText("");
-        btnRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarActionPerformed(evt);
@@ -76,7 +77,7 @@ public class DlgRegistro extends javax.swing.JDialog {
         btnElegirAvatar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnElegirAvatar.setText("Elegir");
         btnElegirAvatar.setToolTipText("");
-        btnElegirAvatar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnElegirAvatar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnElegirAvatar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnElegirAvatarActionPerformed(evt);
@@ -93,17 +94,17 @@ public class DlgRegistro extends javax.swing.JDialog {
 
         jTextContrasenia.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        jLabelUsuario1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabelUsuario1.setText("Avatar:  ");
+        jLabelAvatar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabelAvatar.setText("Avatar:  ");
 
-        btnCancelar1.setBackground(new java.awt.Color(255, 255, 255));
-        btnCancelar1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnCancelar1.setText("Cancelar");
-        btnCancelar1.setToolTipText("");
-        btnCancelar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnCancelar1.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelar.setBackground(new java.awt.Color(255, 255, 255));
+        btnCancelar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setToolTipText("");
+        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelar1ActionPerformed(evt);
+                btnCancelarActionPerformed(evt);
             }
         });
 
@@ -136,7 +137,7 @@ public class DlgRegistro extends javax.swing.JDialog {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRegistroLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelUsuario1)
+                            .addComponent(jLabelAvatar)
                             .addComponent(btnElegirAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(25, 25, 25)))
                 .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,7 +149,7 @@ public class DlgRegistro extends javax.swing.JDialog {
                                 .addComponent(jTextUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRegistroLayout.createSequentialGroup()
                             .addGap(102, 102, 102)
-                            .addComponent(btnCancelar1)))
+                            .addComponent(btnCancelar)))
                     .addGroup(jPanelRegistroLayout.createSequentialGroup()
                         .addGap(50, 50, 50)
                         .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -168,13 +169,13 @@ public class DlgRegistro extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelRegistroLayout.createSequentialGroup()
-                        .addComponent(jLabelUsuario1)
+                        .addComponent(jLabelAvatar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnElegirAvatar))
                     .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar1)
+                    .addComponent(btnCancelar)
                     .addComponent(btnRegistrar))
                 .addGap(31, 31, 31))
         );
@@ -213,22 +214,21 @@ public class DlgRegistro extends javax.swing.JDialog {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         compruebaInformacion();
-
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
-    private void btnCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar1ActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.dispose();
-    }//GEN-LAST:event_btnCancelar1ActionPerformed
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancelar1;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnElegirAvatar;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabelAvatar;
     private javax.swing.JLabel jLabelContrasenia;
     private javax.swing.JLabel jLabelUsuario;
-    private javax.swing.JLabel jLabelUsuario1;
     private javax.swing.JPanel jPanelRegistro;
     private javax.swing.JTextField jTextContrasenia;
     private javax.swing.JTextField jTextUsuario;
