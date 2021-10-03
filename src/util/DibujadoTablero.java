@@ -56,13 +56,12 @@ public class DibujadoTablero extends Canvas {
         g.draw(elipse);
     }
     
-    public void dibujarLinea(int x, int y, Graphics2D g, Color color) {
+   public void dibujarLinea(int x, int y, int x2, int y2 ,Graphics2D g, Color color) {
         g.setStroke(new BasicStroke(3));
         g.setColor(color);
-        g.drawLine(x, y, x + 20, y);
+        g.drawLine(x, y, x2, y2);
 //        Line2D linea1 = new Line2D.Double(x, y, x + 20, y);//función para dibujar la línea
-//        g.draw(linea1);  //la función draw() permite dibujar cualquier elemento creado
-
+//        g.draw(linea1);  //la función draw() permite dibujar cualquier elemento creado 
     }
     
 }
