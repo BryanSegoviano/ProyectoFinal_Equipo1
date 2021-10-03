@@ -4,18 +4,24 @@ import java.awt.Image;
 import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import server.HiloCrearPartida;
+import server.HiloUnirsePartida;
 
 public class FrmPanelJuego extends javax.swing.JFrame {
+
+    Thread hilo;
 
     public FrmPanelJuego() {
         initComponents();
         setLocationRelativeTo(null);
     }
- public void SetImage(String Ruta) {
-       Image mImagen = new ImageIcon(Ruta).getImage();
-       ImageIcon mIcono = new ImageIcon(mImagen.getScaledInstance(jPanelImagen.getWidth(), jPanelImagen.getHeight(), Image.SCALE_SMOOTH));
+
+    public void SetImage(String Ruta) {
+        Image mImagen = new ImageIcon(Ruta).getImage();
+        ImageIcon mIcono = new ImageIcon(mImagen.getScaledInstance(jPanelImagen.getWidth(), jPanelImagen.getHeight(), Image.SCALE_SMOOTH));
         jPanelImagen.setIcon(mIcono);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,6 +36,7 @@ public class FrmPanelJuego extends javax.swing.JFrame {
         panelImagen = new javax.swing.JPanel();
         jPanelImagen = new javax.swing.JLabel();
         jLabelNombreUsuario = new javax.swing.JLabel();
+        btnCreaAvatar = new javax.swing.JButton();
         jPanelFondoBotones = new javax.swing.JPanel();
         btnCrearPartida = new javax.swing.JButton();
         btnUnirsePartida = new javax.swing.JButton();
@@ -37,6 +44,7 @@ public class FrmPanelJuego extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menú principal");
+        setResizable(false);
 
         jPanelFondoUsuario.setBackground(new java.awt.Color(153, 0, 153));
         jPanelFondoUsuario.setForeground(new java.awt.Color(255, 0, 0));
@@ -64,19 +72,30 @@ public class FrmPanelJuego extends javax.swing.JFrame {
         jLabelNombreUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabelNombreUsuario.setText("Usuario");
 
+        btnCreaAvatar.setBackground(new java.awt.Color(153, 0, 153));
+        btnCreaAvatar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnCreaAvatar.setText("Crea tu avatar");
+        btnCreaAvatar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreaAvatarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelFondoUsuarioLayout = new javax.swing.GroupLayout(jPanelFondoUsuario);
         jPanelFondoUsuario.setLayout(jPanelFondoUsuarioLayout);
         jPanelFondoUsuarioLayout.setHorizontalGroup(
             jPanelFondoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelFondoUsuarioLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(jPanelFondoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanelFondoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabelBienvenido)
-                        .addGroup(jPanelFondoUsuarioLayout.createSequentialGroup()
-                            .addComponent(jLabelNombreUsuario)
-                            .addGap(8, 8, 8))))
+                .addGap(29, 29, 29)
+                .addGroup(jPanelFondoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnCreaAvatar)
+                    .addGroup(jPanelFondoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanelFondoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelBienvenido)
+                            .addGroup(jPanelFondoUsuarioLayout.createSequentialGroup()
+                                .addComponent(jLabelNombreUsuario)
+                                .addGap(8, 8, 8)))))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanelFondoUsuarioLayout.setVerticalGroup(
@@ -88,7 +107,9 @@ public class FrmPanelJuego extends javax.swing.JFrame {
                 .addComponent(jLabelNombreUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77))
+                .addGap(18, 18, 18)
+                .addComponent(btnCreaAvatar)
+                .addGap(27, 27, 27))
         );
 
         jPanelFondoBotones.setBackground(new java.awt.Color(132, 174, 220));
@@ -142,7 +163,7 @@ public class FrmPanelJuego extends javax.swing.JFrame {
         jPanelFondoBotonesLayout.setVerticalGroup(
             jPanelFondoBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelFondoBotonesLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(42, Short.MAX_VALUE)
                 .addComponent(btnCrearPartida)
                 .addGap(34, 34, 34)
                 .addComponent(btnUnirsePartida)
@@ -181,26 +202,70 @@ public class FrmPanelJuego extends javax.swing.JFrame {
         this.salir();
     }//GEN-LAST:event_btnSalirActionPerformed
 
+    private void btnCreaAvatarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreaAvatarActionPerformed
+        this.creaAvatar();
+    }//GEN-LAST:event_btnCreaAvatarActionPerformed
+
+    private void creaAvatar() {
+
+        FrmRegistro frmRegistro = new FrmRegistro(this, true);
+        frmRegistro.setVisible(true);
+    }
+
     private void crearPartida() {
         this.dispose();
-        FrmPartida frmPartida = new FrmPartida();
-        frmPartida.setVisible(true);
+        hilo = new HiloCrearPartida();
+        hilo.start();
     }
 
     private void unirsePartida() {
         this.dispose();
-        FrmPartida frmPartida = new FrmPartida();
-        frmPartida.setVisible(true);
+        hilo = new HiloUnirsePartida();
+        hilo.start();
     }
 
     private void salir() {
         this.dispose();
-        FrmInicioSesion frmInicioSesion = new FrmInicioSesion();
-        frmInicioSesion.setVisible(true);
+//        FrmInicioSesion frmInicioSesion = new FrmInicioSesion();
+//        frmInicioSesion.setVisible(true);
     }
-   
+
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Windows".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(FrmPanelJuego.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(FrmPanelJuego.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(FrmPanelJuego.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(FrmPanelJuego.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new FrmPanelJuego().setVisible(true);
+            }
+        });
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCreaAvatar;
     private javax.swing.JButton btnCrearPartida;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnUnirsePartida;
@@ -212,5 +277,4 @@ public class FrmPanelJuego extends javax.swing.JFrame {
     private javax.swing.JPanel panelImagen;
     // End of variables declaration//GEN-END:variables
 
-   
 }

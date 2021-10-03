@@ -18,20 +18,26 @@ import util.TextPrompt;
  *
  * @author Carlos Valenzuela
  */
-public class FrmRegistro extends javax.swing.JDialog {
+public class FrmRegistro extends javax.swing.JFrame {
 
     private TextPrompt texto;
     private String Archivo;
+
     /**
      * Creates new form DlgRegistro
+     *
      * @param parent
      * @param modal
      */
+//    public FrmRegistro(){
+//        initComponents();
+//        setLocationRelativeTo(null);
+//    }
     public FrmRegistro(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+//        super(parent, modal);
         initComponents();
         texto = new TextPrompt(" Ingrese usuario ", jTextUsuario);
-        texto = new TextPrompt(" Ingrese contraseña ", jTextContrasenia);
+
         setLocationRelativeTo(parent);
     }
 
@@ -50,12 +56,11 @@ public class FrmRegistro extends javax.swing.JDialog {
         btnElegirAvatar = new javax.swing.JButton();
         jTextUsuario = new javax.swing.JTextField();
         jLabelUsuario = new javax.swing.JLabel();
-        jLabelContrasenia = new javax.swing.JLabel();
-        jTextContrasenia = new javax.swing.JTextField();
         jLabelAvatar = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JButton();
         panelImagen = new javax.swing.JPanel();
         jPanelImagen = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -91,12 +96,7 @@ public class FrmRegistro extends javax.swing.JDialog {
         jTextUsuario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jLabelUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabelUsuario.setText("Usuario: ");
-
-        jLabelContrasenia.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabelContrasenia.setText("Contraseña: ");
-
-        jTextContrasenia.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabelUsuario.setText("Nickname");
 
         jLabelAvatar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabelAvatar.setText("Avatar:  ");
@@ -126,67 +126,55 @@ public class FrmRegistro extends javax.swing.JDialog {
         );
         panelImagenLayout.setVerticalGroup(
             panelImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+            .addComponent(jPanelImagen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
         );
+
+        jLabel1.setText("Establecer nombre de jugador");
 
         javax.swing.GroupLayout jPanelRegistroLayout = new javax.swing.GroupLayout(jPanelRegistro);
         jPanelRegistro.setLayout(jPanelRegistroLayout);
         jPanelRegistroLayout.setHorizontalGroup(
             jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelRegistroLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnRegistrar)
+                    .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel1)
+                        .addComponent(jLabelUsuario)
+                        .addComponent(jLabelAvatar)
+                        .addComponent(btnElegirAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelRegistroLayout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelUsuario)
-                            .addComponent(jLabelContrasenia)
-                            .addComponent(btnRegistrar)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRegistroLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRegistroLayout.createSequentialGroup()
-                                .addComponent(jLabelAvatar)
-                                .addGap(25, 25, 25))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRegistroLayout.createSequentialGroup()
-                                .addComponent(btnElegirAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)))))
-                .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelRegistroLayout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(btnCancelar)
-                        .addGap(0, 16, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRegistroLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                        .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextContrasenia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap())))
+                    .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(panelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextUsuario))
+                    .addComponent(btnCancelar))
+                .addGap(25, 25, 25))
         );
         jPanelRegistroLayout.setVerticalGroup(
             jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRegistroLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addGap(30, 30, 30)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelUsuario))
                 .addGap(18, 18, 18)
-                .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelContrasenia)
-                    .addComponent(jTextContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
                 .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelRegistroLayout.createSequentialGroup()
                         .addComponent(jLabelAvatar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnElegirAvatar))
-                    .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar)
-                    .addComponent(btnRegistrar))
-                .addGap(31, 31, 31))
+                        .addGap(26, 26, 26)
+                        .addComponent(btnElegirAvatar)
+                        .addGap(18, 87, Short.MAX_VALUE)
+                        .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnCancelar)
+                            .addComponent(btnRegistrar))
+                        .addGap(19, 19, 19))
+                    .addGroup(jPanelRegistroLayout.createSequentialGroup()
+                        .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -205,9 +193,9 @@ public class FrmRegistro extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void establecerImagen(){
+    public void establecerImagen() {
     }
-    
+
     public void elegirImagen() {
         JFileChooser abrirArchivo = new JFileChooser();
         FileNameExtensionFilter filtroPng = new FileNameExtensionFilter("Archivo (.png)", ".png", "png", "png");
@@ -217,32 +205,32 @@ public class FrmRegistro extends javax.swing.JDialog {
         abrirArchivo.showOpenDialog(this);
         establecerImagen();
     }
-    
+
     private void btnElegirAvatarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElegirAvatarActionPerformed
 
-String Ruta ="";
-// Se crea una instancia hacia los demas Frames
-FrmPanelJuego Frame2 = new FrmPanelJuego();
-FrmPartida Frame3 = new FrmPartida();
-FrmTablero Frame4 = new FrmTablero();
+        String Ruta = "";
+        // Se crea una instancia hacia los demas Frames
+        FrmPanelJuego Frame2 = new FrmPanelJuego();
+        FrmPartida Frame3 = new FrmPartida(".");
+        FrmTablero Frame4 = new FrmTablero();
 
-JFileChooser jFileChooser = new JFileChooser();
-FileNameExtensionFilter filtrado = new FileNameExtensionFilter("JGP,PNG & GIF" , "jpg", "png", "gif");
-jFileChooser.setFileFilter(filtrado);
+        JFileChooser jFileChooser = new JFileChooser();
+        FileNameExtensionFilter filtrado = new FileNameExtensionFilter("JGP,PNG & GIF", "jpg", "png", "gif");
+        jFileChooser.setFileFilter(filtrado);
 
-int respuesta = jFileChooser.showOpenDialog(this);
+        int respuesta = jFileChooser.showOpenDialog(this);
 
-if(respuesta == JFileChooser.APPROVE_OPTION){
-    Ruta = jFileChooser.getSelectedFile().getPath();
-    
-    Image mImagen = new ImageIcon(Ruta).getImage();
-    ImageIcon mIcono = new ImageIcon(mImagen.getScaledInstance(jPanelImagen.getWidth(), jPanelImagen.getHeight(), Image.SCALE_SMOOTH));
-    jPanelImagen.setIcon(mIcono);
-//Se pasa la ruta a los demas Frames    
-    Frame2.SetImage(Ruta);
-    Frame3.SetImage(Ruta);
-    Frame4.SetImage(Ruta);
-}
+        if (respuesta == JFileChooser.APPROVE_OPTION) {
+            Ruta = jFileChooser.getSelectedFile().getPath();
+
+            Image mImagen = new ImageIcon(Ruta).getImage();
+            ImageIcon mIcono = new ImageIcon(mImagen.getScaledInstance(jPanelImagen.getWidth(), jPanelImagen.getHeight(), Image.SCALE_SMOOTH));
+            jPanelImagen.setIcon(mIcono);
+            //Se pasa la ruta a los demas Frames    
+            Frame2.SetImage(Ruta);
+            Frame3.SetImage(Ruta);
+            Frame4.SetImage(Ruta);
+        }
     }//GEN-LAST:event_btnElegirAvatarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
@@ -259,21 +247,19 @@ if(respuesta == JFileChooser.APPROVE_OPTION){
     private javax.swing.JButton btnElegirAvatar;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelAvatar;
-    private javax.swing.JLabel jLabelContrasenia;
     private javax.swing.JLabel jLabelUsuario;
     public javax.swing.JLabel jPanelImagen;
     private javax.swing.JPanel jPanelRegistro;
-    private javax.swing.JTextField jTextContrasenia;
     private javax.swing.JTextField jTextUsuario;
     private javax.swing.JPanel panelImagen;
     // End of variables declaration//GEN-END:variables
 
     public void compruebaInformacion() {
         String usuario = jTextUsuario.getText();
-        String contrasenia = jTextContrasenia.getText();
 
-        if (usuario.isEmpty() || contrasenia.isEmpty()) {
+        if (usuario.isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "Debes ingresar información a los campos de texto.", "Error", 2);
 
         } else {
@@ -285,8 +271,7 @@ if(respuesta == JFileChooser.APPROVE_OPTION){
 
     public void limpiarEspacios() {
         jTextUsuario.setText(null);
-        jTextContrasenia.setText(null);
+
     }
 
-    
 }
