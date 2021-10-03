@@ -7,10 +7,12 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import util.DibujadoTablero;
+import util.Validaciones;
 
 public class FrmTablero extends javax.swing.JFrame {
 
     public static DibujadoTablero dibujar;
+    public Validaciones valida = new Validaciones();
     public int clicks = 1;
     public int X1, Y1, X2, Y2;
 
@@ -581,90 +583,61 @@ public class FrmTablero extends javax.swing.JFrame {
         dlgColores.setVisible(true);
     }
 
-    private void validaCoordenadas1(int x, int y) {
-//        System.out.println("entra");
-        int aux;
-        //Coordenadas bien aplastadas
-        if ((x % 20) - 2 == 0 && (y % 16) - 2 == 0) {
-            System.out.println(" ok");
-        } else {
-            //Error en coordenada x
-            if ((x % 20) - 2 != 0) {
-                //Cerca de un punto a la derecha
-                if (x % 20 > 10) {
-                    aux = 20 - (X1 % 20);
-                    X1 = X1 + aux + 2;
-                } else {
-                    aux = (x % 20) - 2;
-                    X1 = X1 - aux;
-                }
-            }
-            //Error en coordenada y
-            if ((y % 16) - 2 != 0) {
-                if (y % 16 > 8) {
-                    aux = 16 - (Y1 % 16);
-                    Y1 = Y1 + aux + 2;
-                    System.out.println(aux);
-                } else {
-                    aux = (y % 16) - 2;
-                    Y1 = Y1 - aux;
-                    System.out.println(aux);
-                }
-            }
-        }
-
-    }
-
-    private void validaCoordenadas2(int x, int y) {
-//        System.out.println("entra");
-        int aux;
-        //Coordenadas bien aplastadas
-        if ((x % 20) - 2 == 0 && (y % 16) - 2 == 0) {
-            System.out.println(" ok");
-        } else {
-            //Error en coordenada x
-            if ((x % 20) - 2 != 0) {
-                //Cerca de un punto a la derecha
-                if (x % 20 > 10) {
-                    aux = 20 - (X2 % 20);
-                    X2 = X2 + aux + 2;
-                } else {
-                    aux = (x % 20) - 2;
-                    X2 = X2 - aux;
-                }
-            }
-            //Error en coordenada y
-            if ((y % 16) - 2 != 0) {
-                if (y % 16 > 8) {
-                    aux = 16 - (Y2 % 16);
-                    Y2 = Y2 + aux + 2;
-                    System.out.println(aux);
-                } else {
-                    aux = (y % 16) - 2;
-                    Y2 = Y2 - aux;
-                    System.out.println(aux);
-                }
-            }
-        }
-
-    }
-
+    /**
+     * private void validaCoordenadas1(int x, int y) { //
+     * System.out.println("entra"); int aux; //Coordenadas bien aplastadas if
+     * ((x % 20) - 2 == 0 && (y % 16) - 2 == 0) { System.out.println(" ok"); }
+     * else { //Error en coordenada x if ((x % 20) - 2 != 0) { //Cerca de un
+     * punto a la derecha if (x % 20 > 10) { aux = 20 - (X1 % 20); X1 = X1 + aux
+     * + 2; } else { aux = (x % 20) - 2; X1 = X1 - aux; } } //Error en
+     * coordenada y if ((y % 16) - 2 != 0) { if (y % 16 > 8) { aux = 16 - (Y1 %
+     * 16); Y1 = Y1 + aux + 2; System.out.println(aux); } else { aux = (y % 16)
+     * - 2; Y1 = Y1 - aux; System.out.println(aux); } } }
+     *
+     * }
+     *
+     * private void validaCoordenadas2(int x, int y) { //
+     * System.out.println("entra"); int aux; //Coordenadas bien aplastadas if
+     * ((x % 20) - 2 == 0 && (y % 16) - 2 == 0) { System.out.println(" ok"); }
+     * else { //Error en coordenada x if ((x % 20) - 2 != 0) { //Cerca de un
+     * punto a la derecha if (x % 20 > 10) { aux = 20 - (X2 % 20); X2 = X2 + aux
+     * + 2; } else { aux = (x % 20) - 2; X2 = X2 - aux; } } //Error en
+     * coordenada y if ((y % 16) - 2 != 0) { if (y % 16 > 8) { aux = 16 - (Y2 %
+     * 16); Y2 = Y2 + aux + 2; System.out.println(aux); } else { aux = (y % 16)
+     * - 2; Y2 = Y2 - aux; System.out.println(aux); } } }
+     *
+     * }
+     *
+     */
     private void coordenadaClick1(java.awt.event.MouseEvent evt) {
+        int arreglo[];
         this.X1 = evt.getX();
         this.Y1 = evt.getY();
-        System.out.print("\n\nx1:" + evt.getX());
-        System.out.print(", y1:" + evt.getY());
-        validaCoordenadas1(X1, Y1);
+        arreglo = valida.validaCoordenadas(X1, Y1);
+        X1 = arreglo[0];
+        Y1 = arreglo[1];
+        System.out.println("\n" + X1 + "," + Y1);
     }
 
     private void coordenadasClick2(java.awt.event.MouseEvent evt) {
-        System.out.print("\nx2:" + evt.getX());
-        System.out.print(", y2:" + evt.getY());
+        int arreglo[];
         X2 = evt.getX();
         Y2 = evt.getY();
-        validaCoordenadas2(X2, Y2);
-        this.dibujar.dibujarLinea(X2, Y2, X1, Y1, (Graphics2D) dibujar.getGraphics(), color);
-        clicks = 1;
+        arreglo = valida.validaCoordenadas(X2, Y2);
+        X2 = arreglo[0];
+        Y2 = arreglo[1];
+        System.out.println(X2 + "," + Y2);
+        int diferenciaX = Math.abs(X1 - X2);
+        int diferenciaY = Math.abs(Y1 - Y2);
+        System.out.println(diferenciaX);
+        System.out.println(diferenciaY);
+        if (diferenciaX > 20 || diferenciaY > 16 || (diferenciaX == 20 && diferenciaY == 16) || (diferenciaX == 0 && diferenciaY == 0)) {
+            clicks = 1;
+        } else {
+            this.dibujar.dibujarLinea(X2, Y2, X1, Y1, (Graphics2D) dibujar.getGraphics(), color);
+            clicks++;
+        }
+
     }
 
     private void cambiarColor(String jugador) {
@@ -737,31 +710,44 @@ public class FrmTablero extends javax.swing.JFrame {
                 clicks++;
             } else {
                 if (panelJ1.getBackground().equals(Color.YELLOW)) {
-                    panelJ1.setBackground(Color.WHITE);
-                    panelJ2.setBackground(Color.YELLOW);
                     color = colorJugador1.getBackground();
                     coordenadasClick2(e);
+                    if (clicks != 1) {
+                        panelJ1.setBackground(Color.WHITE);
+                        panelJ2.setBackground(Color.YELLOW);
+                        clicks = 1;
+                    }
                     return;
                 }
                 if (panelJ2.getBackground().equals(Color.YELLOW)) {
-                    panelJ2.setBackground(Color.WHITE);
-                    panelJ3.setBackground(Color.YELLOW);
                     color = colorJugador2.getBackground();
                     coordenadasClick2(e);
+                    if (clicks != 1) {
+                        panelJ2.setBackground(Color.WHITE);
+                        panelJ3.setBackground(Color.YELLOW);
+                        clicks = 1;
+                    }
                     return;
                 }
                 if (panelJ3.getBackground().equals(Color.YELLOW)) {
-                    panelJ3.setBackground(Color.WHITE);
-                    panelJ4.setBackground(Color.YELLOW);
                     color = colorJugador3.getBackground();
                     coordenadasClick2(e);
+                    if (clicks != 1) {
+                        panelJ3.setBackground(Color.WHITE);
+                        panelJ4.setBackground(Color.YELLOW);
+                        clicks = 1;
+                    }
                     return;
+
                 }
                 if (panelJ4.getBackground().equals(Color.YELLOW)) {
-                    panelJ4.setBackground(Color.WHITE);
-                    panelJ1.setBackground(Color.YELLOW);
                     color = colorJugador4.getBackground();
                     coordenadasClick2(e);
+                    if (clicks != 1) {
+                        panelJ4.setBackground(Color.WHITE);
+                        panelJ1.setBackground(Color.YELLOW);
+                        clicks = 1;
+                    }
                     return;
                 }
             }
