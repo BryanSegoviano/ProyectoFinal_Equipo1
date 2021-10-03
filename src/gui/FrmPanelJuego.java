@@ -1,12 +1,21 @@
 package gui;
 
+import java.awt.Image;
+import java.io.File;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+
 public class FrmPanelJuego extends javax.swing.JFrame {
 
     public FrmPanelJuego() {
         initComponents();
         setLocationRelativeTo(null);
     }
-
+ public void SetImage(String Ruta) {
+       Image mImagen = new ImageIcon(Ruta).getImage();
+       ImageIcon mIcono = new ImageIcon(mImagen.getScaledInstance(jPanelImagen.getWidth(), jPanelImagen.getHeight(), Image.SCALE_SMOOTH));
+        jPanelImagen.setIcon(mIcono);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -19,6 +28,7 @@ public class FrmPanelJuego extends javax.swing.JFrame {
         jPanelFondoUsuario = new javax.swing.JPanel();
         jLabelBienvenido = new javax.swing.JLabel();
         panelImagen = new javax.swing.JPanel();
+        jPanelImagen = new javax.swing.JLabel();
         jLabelNombreUsuario = new javax.swing.JLabel();
         jPanelFondoBotones = new javax.swing.JPanel();
         btnCrearPartida = new javax.swing.JButton();
@@ -42,15 +52,16 @@ public class FrmPanelJuego extends javax.swing.JFrame {
         panelImagen.setLayout(panelImagenLayout);
         panelImagenLayout.setHorizontalGroup(
             panelImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 77, Short.MAX_VALUE)
+            .addComponent(jPanelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
         );
         panelImagenLayout.setVerticalGroup(
             panelImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 73, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImagenLayout.createSequentialGroup()
+                .addComponent(jPanelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jLabelNombreUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabelNombreUsuario.setForeground(new java.awt.Color(0, 0, 0));
         jLabelNombreUsuario.setText("Usuario");
 
         javax.swing.GroupLayout jPanelFondoUsuarioLayout = new javax.swing.GroupLayout(jPanelFondoUsuario);
@@ -58,21 +69,22 @@ public class FrmPanelJuego extends javax.swing.JFrame {
         jPanelFondoUsuarioLayout.setHorizontalGroup(
             jPanelFondoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelFondoUsuarioLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(jPanelFondoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabelBienvenido)
+                .addGap(31, 31, 31)
+                .addGroup(jPanelFondoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanelFondoUsuarioLayout.createSequentialGroup()
-                        .addComponent(jLabelNombreUsuario)
-                        .addGap(8, 8, 8)))
-                .addContainerGap(35, Short.MAX_VALUE))
+                    .addGroup(jPanelFondoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabelBienvenido)
+                        .addGroup(jPanelFondoUsuarioLayout.createSequentialGroup()
+                            .addComponent(jLabelNombreUsuario)
+                            .addGap(8, 8, 8))))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanelFondoUsuarioLayout.setVerticalGroup(
             jPanelFondoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelFondoUsuarioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelBienvenido)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addComponent(jLabelNombreUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -81,7 +93,7 @@ public class FrmPanelJuego extends javax.swing.JFrame {
 
         jPanelFondoBotones.setBackground(new java.awt.Color(132, 174, 220));
 
-        btnCrearPartida.setBackground(new java.awt.Color(0, 0, 0));
+        btnCrearPartida.setBackground(new java.awt.Color(153, 0, 153));
         btnCrearPartida.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnCrearPartida.setText("Crear partida");
         btnCrearPartida.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -91,7 +103,7 @@ public class FrmPanelJuego extends javax.swing.JFrame {
             }
         });
 
-        btnUnirsePartida.setBackground(new java.awt.Color(0, 0, 0));
+        btnUnirsePartida.setBackground(new java.awt.Color(153, 0, 153));
         btnUnirsePartida.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnUnirsePartida.setText("Unirse a partida");
         btnUnirsePartida.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -101,7 +113,7 @@ public class FrmPanelJuego extends javax.swing.JFrame {
             }
         });
 
-        btnSalir.setBackground(new java.awt.Color(0, 0, 0));
+        btnSalir.setBackground(new java.awt.Color(153, 0, 153));
         btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnSalir.setText("Salir");
         btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -116,25 +128,25 @@ public class FrmPanelJuego extends javax.swing.JFrame {
         jPanelFondoBotonesLayout.setHorizontalGroup(
             jPanelFondoBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelFondoBotonesLayout.createSequentialGroup()
-                .addGroup(jPanelFondoBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnCrearPartida, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanelFondoBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanelFondoBotonesLayout.createSequentialGroup()
-                            .addGap(36, 36, 36)
-                            .addComponent(btnUnirsePartida))
-                        .addGroup(jPanelFondoBotonesLayout.createSequentialGroup()
-                            .addGap(79, 79, 79)
-                            .addComponent(btnSalir))))
+                .addGroup(jPanelFondoBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelFondoBotonesLayout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanelFondoBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnCrearPartida, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnUnirsePartida)))
+                    .addGroup(jPanelFondoBotonesLayout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addComponent(btnSalir)))
                 .addContainerGap(43, Short.MAX_VALUE))
         );
         jPanelFondoBotonesLayout.setVerticalGroup(
             jPanelFondoBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelFondoBotonesLayout.createSequentialGroup()
-                .addGap(59, 59, 59)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCrearPartida)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
                 .addComponent(btnUnirsePartida)
-                .addGap(35, 35, 35)
+                .addGap(33, 33, 33)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -186,6 +198,7 @@ public class FrmPanelJuego extends javax.swing.JFrame {
         FrmInicioSesion frmInicioSesion = new FrmInicioSesion();
         frmInicioSesion.setVisible(true);
     }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCrearPartida;
@@ -195,6 +208,9 @@ public class FrmPanelJuego extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelNombreUsuario;
     private javax.swing.JPanel jPanelFondoBotones;
     private javax.swing.JPanel jPanelFondoUsuario;
+    public javax.swing.JLabel jPanelImagen;
     private javax.swing.JPanel panelImagen;
     // End of variables declaration//GEN-END:variables
+
+   
 }

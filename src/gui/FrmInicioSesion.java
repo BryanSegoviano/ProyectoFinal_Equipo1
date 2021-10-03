@@ -54,7 +54,6 @@ public class FrmInicioSesion extends javax.swing.JFrame {
 
         btnIniciarSesion.setBackground(new java.awt.Color(153, 0, 153));
         btnIniciarSesion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnIniciarSesion.setForeground(new java.awt.Color(153, 0, 153));
         btnIniciarSesion.setText("Iniciar sesión");
         btnIniciarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -65,6 +64,7 @@ public class FrmInicioSesion extends javax.swing.JFrame {
 
         btnCrearCuenta.setBackground(new java.awt.Color(0, 0, 0));
         btnCrearCuenta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnCrearCuenta.setForeground(new java.awt.Color(153, 0, 153));
         btnCrearCuenta.setText("Crear cuenta");
         btnCrearCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnCrearCuenta.addActionListener(new java.awt.event.ActionListener() {
@@ -110,11 +110,14 @@ public class FrmInicioSesion extends javax.swing.JFrame {
                 .addContainerGap(24, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnIniciarSesion)
-                    .addComponent(btnCrearCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelUsuario1))
-                .addGap(158, 158, 158))
+                .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnIniciarSesion)
+                        .addComponent(jLabelUsuario1))
+                    .addGroup(panelFondoLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(btnCrearCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(157, 157, 157))
         );
         panelFondoLayout.setVerticalGroup(
             panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,13 +142,13 @@ public class FrmInicioSesion extends javax.swing.JFrame {
                     .addGroup(panelFondoLayout.createSequentialGroup()
                         .addGap(65, 65, 65)
                         .addComponent(imgUsuario)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addComponent(btnIniciarSesion)
-                .addGap(47, 47, 47)
+                .addGap(41, 41, 41)
                 .addComponent(jLabelUsuario1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCrearCuenta)
-                .addGap(30, 30, 30))
+                .addGap(25, 25, 25))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -176,8 +179,8 @@ public class FrmInicioSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_iconoMostrarContraseniaMouseClicked
 
     private void mostrarRegistro() {
-        DlgRegistro dlgRegistro = new DlgRegistro(this, true);
-        dlgRegistro.setVisible(true);
+        FrmRegistro frmRegistro = new FrmRegistro(this, true);
+        frmRegistro.setVisible(true);
     }
 
     private void compruebaInformacion() {
@@ -217,6 +220,7 @@ public class FrmInicioSesion extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FrmInicioSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

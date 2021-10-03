@@ -2,8 +2,10 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.ImageIcon;
 import util.DibujadoTablero;
 
 public class FrmTablero extends javax.swing.JFrame {
@@ -20,7 +22,11 @@ public class FrmTablero extends javax.swing.JFrame {
         this.panelTablero.add(dibujar);
         this.dibujarTablero();
     }
-
+    public void SetImage(String Ruta) {
+        Image mImagen = new ImageIcon(Ruta).getImage();
+        ImageIcon mIcono = new ImageIcon(mImagen.getScaledInstance(jPanelImagen.getWidth(), jPanelImagen.getHeight(), Image.SCALE_SMOOTH));
+        jPanelImagen.setIcon(mIcono);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,24 +40,28 @@ public class FrmTablero extends javax.swing.JFrame {
         panelJugadores = new javax.swing.JPanel();
         panelJ1 = new javax.swing.JPanel();
         avatarJ1 = new javax.swing.JPanel();
+        jPanelImagen2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         colorJugador1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         puntosJ1 = new javax.swing.JLabel();
         panelJ2 = new javax.swing.JPanel();
         avatarJ2 = new javax.swing.JPanel();
+        jPanelImagen1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         colorJugador2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         puntosJ2 = new javax.swing.JLabel();
         panelJ3 = new javax.swing.JPanel();
         avatarJ3 = new javax.swing.JPanel();
+        jPanelImagen3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         colorJugador3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         puntosJ3 = new javax.swing.JLabel();
         panelJ4 = new javax.swing.JPanel();
         avatarJ4 = new javax.swing.JPanel();
+        jPanelImagen = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         colorJugador4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -78,11 +88,13 @@ public class FrmTablero extends javax.swing.JFrame {
         avatarJ1.setLayout(avatarJ1Layout);
         avatarJ1Layout.setHorizontalGroup(
             avatarJ1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 80, Short.MAX_VALUE)
+            .addComponent(jPanelImagen2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
         );
         avatarJ1Layout.setVerticalGroup(
             avatarJ1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 77, Short.MAX_VALUE)
+            .addGroup(avatarJ1Layout.createSequentialGroup()
+                .addComponent(jPanelImagen2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -154,7 +166,7 @@ public class FrmTablero extends javax.swing.JFrame {
                         .addComponent(puntosJ1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(colorJugador1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         panelJ2.setBackground(java.awt.Color.white);
@@ -168,11 +180,13 @@ public class FrmTablero extends javax.swing.JFrame {
         avatarJ2.setLayout(avatarJ2Layout);
         avatarJ2Layout.setHorizontalGroup(
             avatarJ2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 80, Short.MAX_VALUE)
+            .addComponent(jPanelImagen1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
         );
         avatarJ2Layout.setVerticalGroup(
             avatarJ2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 77, Short.MAX_VALUE)
+            .addGroup(avatarJ2Layout.createSequentialGroup()
+                .addComponent(jPanelImagen1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -244,7 +258,7 @@ public class FrmTablero extends javax.swing.JFrame {
                         .addComponent(puntosJ2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(colorJugador2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         panelJ3.setBackground(java.awt.Color.white);
@@ -258,11 +272,13 @@ public class FrmTablero extends javax.swing.JFrame {
         avatarJ3.setLayout(avatarJ3Layout);
         avatarJ3Layout.setHorizontalGroup(
             avatarJ3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 80, Short.MAX_VALUE)
+            .addComponent(jPanelImagen3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
         );
         avatarJ3Layout.setVerticalGroup(
             avatarJ3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 77, Short.MAX_VALUE)
+            .addGroup(avatarJ3Layout.createSequentialGroup()
+                .addComponent(jPanelImagen3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -348,11 +364,13 @@ public class FrmTablero extends javax.swing.JFrame {
         avatarJ4.setLayout(avatarJ4Layout);
         avatarJ4Layout.setHorizontalGroup(
             avatarJ4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 80, Short.MAX_VALUE)
+            .addComponent(jPanelImagen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
         );
         avatarJ4Layout.setVerticalGroup(
             avatarJ4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 77, Short.MAX_VALUE)
+            .addGroup(avatarJ4Layout.createSequentialGroup()
+                .addComponent(jPanelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jLabel8.setBackground(new java.awt.Color(0, 0, 0));
@@ -497,7 +515,7 @@ public class FrmTablero extends javax.swing.JFrame {
                 .addComponent(panelJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelTablero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jMenuAbandonar.setText("Abandonar partida");
@@ -607,6 +625,10 @@ public class FrmTablero extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenuAbandonar;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JLabel jPanelImagen;
+    private javax.swing.JLabel jPanelImagen1;
+    private javax.swing.JLabel jPanelImagen2;
+    private javax.swing.JLabel jPanelImagen3;
     private javax.swing.JPanel panelFondo;
     private javax.swing.JPanel panelJ1;
     private javax.swing.JPanel panelJ2;
@@ -688,4 +710,6 @@ public class FrmTablero extends javax.swing.JFrame {
         }
 
     };
+
+   
 }

@@ -5,8 +5,12 @@
  */
 package gui;
 
+import java.awt.Image;
+import java.io.File;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import util.TextPrompt;
 
@@ -14,16 +18,16 @@ import util.TextPrompt;
  *
  * @author Carlos Valenzuela
  */
-public class DlgRegistro extends javax.swing.JDialog {
+public class FrmRegistro extends javax.swing.JDialog {
 
     private TextPrompt texto;
-
+    private String Archivo;
     /**
      * Creates new form DlgRegistro
      * @param parent
      * @param modal
      */
-    public DlgRegistro(java.awt.Frame parent, boolean modal) {
+    public FrmRegistro(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         texto = new TextPrompt(" Ingrese usuario ", jTextUsuario);
@@ -51,6 +55,7 @@ public class DlgRegistro extends javax.swing.JDialog {
         jLabelAvatar = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JButton();
         panelImagen = new javax.swing.JPanel();
+        jPanelImagen = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -63,7 +68,6 @@ public class DlgRegistro extends javax.swing.JDialog {
 
         btnRegistrar.setBackground(new java.awt.Color(153, 0, 153));
         btnRegistrar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnRegistrar.setForeground(new java.awt.Color(153, 0, 153));
         btnRegistrar.setText("Registrarse");
         btnRegistrar.setToolTipText("");
         btnRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -110,16 +114,19 @@ public class DlgRegistro extends javax.swing.JDialog {
 
         panelImagen.setBackground(new java.awt.Color(255, 255, 255));
         panelImagen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        panelImagen.setMaximumSize(new java.awt.Dimension(118, 127));
 
         javax.swing.GroupLayout panelImagenLayout = new javax.swing.GroupLayout(panelImagen);
         panelImagen.setLayout(panelImagenLayout);
         panelImagenLayout.setHorizontalGroup(
             panelImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImagenLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panelImagenLayout.setVerticalGroup(
             panelImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addComponent(jPanelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanelRegistroLayout = new javax.swing.GroupLayout(jPanelRegistro);
@@ -129,7 +136,7 @@ public class DlgRegistro extends javax.swing.JDialog {
             .addGroup(jPanelRegistroLayout.createSequentialGroup()
                 .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelRegistroLayout.createSequentialGroup()
-                        .addGap(51, 51, 51)
+                        .addGap(25, 25, 25)
                         .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabelUsuario)
                             .addComponent(jLabelContrasenia)
@@ -137,23 +144,25 @@ public class DlgRegistro extends javax.swing.JDialog {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRegistroLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelAvatar)
-                            .addComponent(btnElegirAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(25, 25, 25)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRegistroLayout.createSequentialGroup()
+                                .addComponent(jLabelAvatar)
+                                .addGap(25, 25, 25))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRegistroLayout.createSequentialGroup()
+                                .addComponent(btnElegirAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)))))
                 .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanelRegistroLayout.createSequentialGroup()
-                            .addGap(23, 23, 23)
-                            .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRegistroLayout.createSequentialGroup()
-                            .addGap(102, 102, 102)
-                            .addComponent(btnCancelar)))
                     .addGroup(jPanelRegistroLayout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                        .addGap(84, 84, 84)
+                        .addComponent(btnCancelar)
+                        .addGap(0, 16, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRegistroLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                        .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextContrasenia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())))
         );
         jPanelRegistroLayout.setVerticalGroup(
             jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,17 +172,17 @@ public class DlgRegistro extends javax.swing.JDialog {
                     .addComponent(jTextUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelUsuario))
                 .addGap(18, 18, 18)
-                .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelContrasenia)
                     .addComponent(jTextContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(17, 17, 17)
                 .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelRegistroLayout.createSequentialGroup()
                         .addComponent(jLabelAvatar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnElegirAvatar))
                     .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnRegistrar))
@@ -184,7 +193,9 @@ public class DlgRegistro extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanelRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,7 +206,6 @@ public class DlgRegistro extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     public void establecerImagen(){
-        
     }
     
     public void elegirImagen() {
@@ -209,7 +219,30 @@ public class DlgRegistro extends javax.swing.JDialog {
     }
     
     private void btnElegirAvatarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElegirAvatarActionPerformed
-        elegirImagen();
+
+String Ruta ="";
+// Se crea una instancia hacia los demas Frames
+FrmPanelJuego Frame2 = new FrmPanelJuego();
+FrmPartida Frame3 = new FrmPartida();
+FrmTablero Frame4 = new FrmTablero();
+
+JFileChooser jFileChooser = new JFileChooser();
+FileNameExtensionFilter filtrado = new FileNameExtensionFilter("JGP,PNG & GIF" , "jpg", "png", "gif");
+jFileChooser.setFileFilter(filtrado);
+
+int respuesta = jFileChooser.showOpenDialog(this);
+
+if(respuesta == JFileChooser.APPROVE_OPTION){
+    Ruta = jFileChooser.getSelectedFile().getPath();
+    
+    Image mImagen = new ImageIcon(Ruta).getImage();
+    ImageIcon mIcono = new ImageIcon(mImagen.getScaledInstance(jPanelImagen.getWidth(), jPanelImagen.getHeight(), Image.SCALE_SMOOTH));
+    jPanelImagen.setIcon(mIcono);
+//Se pasa la ruta a los demas Frames    
+    Frame2.SetImage(Ruta);
+    Frame3.SetImage(Ruta);
+    Frame4.SetImage(Ruta);
+}
     }//GEN-LAST:event_btnElegirAvatarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
@@ -229,6 +262,7 @@ public class DlgRegistro extends javax.swing.JDialog {
     private javax.swing.JLabel jLabelAvatar;
     private javax.swing.JLabel jLabelContrasenia;
     private javax.swing.JLabel jLabelUsuario;
+    public javax.swing.JLabel jPanelImagen;
     private javax.swing.JPanel jPanelRegistro;
     private javax.swing.JTextField jTextContrasenia;
     private javax.swing.JTextField jTextUsuario;
@@ -253,4 +287,6 @@ public class DlgRegistro extends javax.swing.JDialog {
         jTextUsuario.setText(null);
         jTextContrasenia.setText(null);
     }
+
+    
 }
