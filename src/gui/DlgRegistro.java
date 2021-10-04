@@ -1,10 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui;
 
+import control.JugadoresDAO;
+import dominio.Jugador;
 import java.awt.Image;
 import java.io.File;
 import javax.swing.ImageIcon;
@@ -14,30 +11,23 @@ import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import util.TextPrompt;
 
-/**
- *
- * @author Carlos Valenzuela
- */
-public class FrmRegistro extends javax.swing.JFrame {
+public class DlgRegistro extends javax.swing.JDialog {
 
     private TextPrompt texto;
     private String Archivo;
+    private JugadoresDAO jugadoresDAO;
 
     /**
-     * Creates new form DlgRegistro
+     * Creates new form FrmRegistroo
      *
      * @param parent
      * @param modal
      */
-//    public FrmRegistro(){
-//        initComponents();
-//        setLocationRelativeTo(null);
-//    }
-    public FrmRegistro(java.awt.Frame parent, boolean modal) {
-//        super(parent, modal);
+    public DlgRegistro(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
-        texto = new TextPrompt(" Ingrese usuario ", jTextUsuario);
-
+        this.texto = new TextPrompt(" Ingrese usuario ", jTextUsuario);
+        this.jugadoresDAO = new JugadoresDAO();
         setLocationRelativeTo(parent);
     }
 
@@ -50,7 +40,6 @@ public class FrmRegistro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
         jPanelRegistro = new javax.swing.JPanel();
         btnRegistrar = new javax.swing.JButton();
         btnElegirAvatar = new javax.swing.JButton();
@@ -62,11 +51,8 @@ public class FrmRegistro extends javax.swing.JFrame {
         jPanelImagen = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
-        jButton1.setText("jButton1");
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Registro de cuenta");
-        setResizable(false);
+        setTitle("Crear avatar");
 
         jPanelRegistro.setBackground(new java.awt.Color(132, 174, 220));
         jPanelRegistro.setForeground(new java.awt.Color(255, 255, 255));
@@ -167,7 +153,7 @@ public class FrmRegistro extends javax.swing.JFrame {
                         .addComponent(jLabelAvatar)
                         .addGap(26, 26, 26)
                         .addComponent(btnElegirAvatar)
-                        .addGap(18, 87, Short.MAX_VALUE)
+                        .addGap(18, 73, Short.MAX_VALUE)
                         .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnCancelar)
                             .addComponent(btnRegistrar))
@@ -181,9 +167,7 @@ public class FrmRegistro extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanelRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanelRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,27 +177,20 @@ public class FrmRegistro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void establecerImagen() {
-    }
-
-    public void elegirImagen() {
-        JFileChooser abrirArchivo = new JFileChooser();
-        FileNameExtensionFilter filtroPng = new FileNameExtensionFilter("Archivo (.png)", ".png", "png", "png");
-        FileNameExtensionFilter filtroJpg = new FileNameExtensionFilter("Archivo (.jpg)", ".jpg", "jpg", "jpg");
-        abrirArchivo.setFileFilter(filtroPng);
-        abrirArchivo.setFileFilter(filtroJpg);
-        abrirArchivo.showOpenDialog(this);
-        establecerImagen();
-    }
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        compruebaInformacion();
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnElegirAvatarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElegirAvatarActionPerformed
+        this.establecerAvatar();
+    }//GEN-LAST:event_btnElegirAvatarActionPerformed
 
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void establecerAvatar() {
         String Ruta = "";
-        // Se crea una instancia hacia los demas Frames
-        FrmPanelJuego Frame2 = new FrmPanelJuego();
-        FrmPartida Frame3 = new FrmPartida(".");
-        FrmTablero Frame4 = new FrmTablero();
-
         JFileChooser jFileChooser = new JFileChooser();
         FileNameExtensionFilter filtrado = new FileNameExtensionFilter("JGP,PNG & GIF", "jpg", "png", "gif");
         jFileChooser.setFileFilter(filtrado);
@@ -222,31 +199,39 @@ public class FrmRegistro extends javax.swing.JFrame {
 
         if (respuesta == JFileChooser.APPROVE_OPTION) {
             Ruta = jFileChooser.getSelectedFile().getPath();
-
             Image mImagen = new ImageIcon(Ruta).getImage();
             ImageIcon mIcono = new ImageIcon(mImagen.getScaledInstance(jPanelImagen.getWidth(), jPanelImagen.getHeight(), Image.SCALE_SMOOTH));
+            JugadoresDAO.jugadores[0].setAvatar(mIcono);
+            JugadoresDAO.jugadores[1].setAvatar(mIcono);
+            JugadoresDAO.jugadores[2].setAvatar(mIcono);
+            JugadoresDAO.jugadores[3].setAvatar(mIcono);
             jPanelImagen.setIcon(mIcono);
-            //Se pasa la ruta a los demas Frames    
-            Frame2.SetImage(Ruta);
-            Frame3.SetImage(Ruta);
-            Frame4.SetImage(Ruta);
         }
-    }//GEN-LAST:event_btnElegirAvatarActionPerformed
+    }
 
-    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        compruebaInformacion();
-    }//GEN-LAST:event_btnRegistrarActionPerformed
+    private void compruebaInformacion() {
+        String usuario = jTextUsuario.getText();
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_btnCancelarActionPerformed
+        if (usuario.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Debes ingresar información a los campos de texto.", "Error", 2);
 
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Se ha creado el avatar.", "Avatar creado", 1);
+            JugadoresDAO.jugadores[0].setUsuario(usuario);
+            limpiarEspacios();
+            this.dispose();
+        }
+    }
+
+    private void limpiarEspacios() {
+        jTextUsuario.setText(null);
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnElegirAvatar;
     private javax.swing.JButton btnRegistrar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelAvatar;
     private javax.swing.JLabel jLabelUsuario;
@@ -255,23 +240,4 @@ public class FrmRegistro extends javax.swing.JFrame {
     private javax.swing.JTextField jTextUsuario;
     private javax.swing.JPanel panelImagen;
     // End of variables declaration//GEN-END:variables
-
-    public void compruebaInformacion() {
-        String usuario = jTextUsuario.getText();
-
-        if (usuario.isEmpty()) {
-            JOptionPane.showMessageDialog(rootPane, "Debes ingresar información a los campos de texto.", "Error", 2);
-
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Se ha registrado la cuenta.", "Cunta creada", 1);
-            limpiarEspacios();
-            this.dispose();
-        }
-    }
-
-    public void limpiarEspacios() {
-        jTextUsuario.setText(null);
-
-    }
-
 }

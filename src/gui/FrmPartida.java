@@ -5,6 +5,7 @@
  */
 package gui;
 
+import control.JugadoresDAO;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
@@ -20,6 +21,10 @@ public class FrmPartida extends javax.swing.JFrame {
     public FrmPartida(String msj) {
         initComponents();
         setLocationRelativeTo(null);
+        this.nombreJ1.setText(JugadoresDAO.jugadores[0].getUsuario());
+        this.nombreJ2.setText(JugadoresDAO.jugadores[1].getUsuario());
+        this.nombreJ3.setText(JugadoresDAO.jugadores[2].getUsuario());
+        this.nombreJ4.setText(JugadoresDAO.jugadores[3].getUsuario());
         if (msj.equals("")) {
             ocultarPaneles();
 
@@ -49,16 +54,16 @@ public class FrmPartida extends javax.swing.JFrame {
         barraSeparar = new javax.swing.JPanel();
         jPanelJugador1 = new javax.swing.JPanel();
         jLabelJugador4 = new javax.swing.JLabel();
-        jTextJugador5 = new javax.swing.JTextField();
+        nombreJ1 = new javax.swing.JTextField();
         jPanelJugador2 = new javax.swing.JPanel();
         jLabelJugador = new javax.swing.JLabel();
-        jTextJugador2 = new javax.swing.JTextField();
+        nombreJ2 = new javax.swing.JTextField();
         jPanelJugador3 = new javax.swing.JPanel();
         jLabelJugador11 = new javax.swing.JLabel();
-        jTextJugador3 = new javax.swing.JTextField();
+        nombreJ3 = new javax.swing.JTextField();
         jPanelJugador4 = new javax.swing.JPanel();
         jLabelJugador10 = new javax.swing.JLabel();
-        jTextJugador4 = new javax.swing.JTextField();
+        nombreJ4 = new javax.swing.JTextField();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -130,11 +135,11 @@ public class FrmPartida extends javax.swing.JFrame {
         jLabelJugador4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabelJugador4.setText("Jugador 1");
 
-        jTextJugador5.setEditable(false);
-        jTextJugador5.setBackground(new java.awt.Color(255, 255, 255));
-        jTextJugador5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextJugador5.setText("Skinpy");
-        jTextJugador5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        nombreJ1.setEditable(false);
+        nombreJ1.setBackground(new java.awt.Color(255, 255, 255));
+        nombreJ1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        nombreJ1.setText("Skinpy");
+        nombreJ1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         javax.swing.GroupLayout jPanelJugador1Layout = new javax.swing.GroupLayout(jPanelJugador1);
         jPanelJugador1.setLayout(jPanelJugador1Layout);
@@ -144,7 +149,7 @@ public class FrmPartida extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelJugador1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelJugador4)
-                    .addComponent(jTextJugador5, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nombreJ1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelJugador1Layout.setVerticalGroup(
@@ -153,7 +158,7 @@ public class FrmPartida extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabelJugador4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextJugador5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nombreJ1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -162,11 +167,11 @@ public class FrmPartida extends javax.swing.JFrame {
         jLabelJugador.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabelJugador.setText("Jugador 2");
 
-        jTextJugador2.setEditable(false);
-        jTextJugador2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextJugador2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextJugador2.setText("Slizzir");
-        jTextJugador2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        nombreJ2.setEditable(false);
+        nombreJ2.setBackground(new java.awt.Color(255, 255, 255));
+        nombreJ2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        nombreJ2.setText("Slizzir");
+        nombreJ2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         javax.swing.GroupLayout jPanelJugador2Layout = new javax.swing.GroupLayout(jPanelJugador2);
         jPanelJugador2.setLayout(jPanelJugador2Layout);
@@ -176,7 +181,7 @@ public class FrmPartida extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelJugador2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelJugador)
-                    .addComponent(jTextJugador2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nombreJ2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelJugador2Layout.setVerticalGroup(
@@ -185,7 +190,7 @@ public class FrmPartida extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabelJugador)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextJugador2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nombreJ2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -194,11 +199,11 @@ public class FrmPartida extends javax.swing.JFrame {
         jLabelJugador11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabelJugador11.setText("Jugador 3");
 
-        jTextJugador3.setEditable(false);
-        jTextJugador3.setBackground(new java.awt.Color(255, 255, 255));
-        jTextJugador3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextJugador3.setText("Rictal");
-        jTextJugador3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        nombreJ3.setEditable(false);
+        nombreJ3.setBackground(new java.awt.Color(255, 255, 255));
+        nombreJ3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        nombreJ3.setText("Rictal");
+        nombreJ3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         javax.swing.GroupLayout jPanelJugador3Layout = new javax.swing.GroupLayout(jPanelJugador3);
         jPanelJugador3.setLayout(jPanelJugador3Layout);
@@ -208,7 +213,7 @@ public class FrmPartida extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelJugador3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelJugador11)
-                    .addComponent(jTextJugador3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nombreJ3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelJugador3Layout.setVerticalGroup(
@@ -217,7 +222,7 @@ public class FrmPartida extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabelJugador11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextJugador3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nombreJ3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -226,11 +231,11 @@ public class FrmPartida extends javax.swing.JFrame {
         jLabelJugador10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabelJugador10.setText("Jugador 4");
 
-        jTextJugador4.setEditable(false);
-        jTextJugador4.setBackground(new java.awt.Color(255, 255, 255));
-        jTextJugador4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextJugador4.setText("JuanGod");
-        jTextJugador4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        nombreJ4.setEditable(false);
+        nombreJ4.setBackground(new java.awt.Color(255, 255, 255));
+        nombreJ4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        nombreJ4.setText("JuanGod");
+        nombreJ4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         javax.swing.GroupLayout jPanelJugador4Layout = new javax.swing.GroupLayout(jPanelJugador4);
         jPanelJugador4.setLayout(jPanelJugador4Layout);
@@ -240,7 +245,7 @@ public class FrmPartida extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelJugador4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelJugador10)
-                    .addComponent(jTextJugador4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nombreJ4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelJugador4Layout.setVerticalGroup(
@@ -249,7 +254,7 @@ public class FrmPartida extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabelJugador10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextJugador4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nombreJ4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -345,10 +350,10 @@ public class FrmPartida extends javax.swing.JFrame {
     public static javax.swing.JPanel jPanelJugador2;
     public static javax.swing.JPanel jPanelJugador3;
     public static javax.swing.JPanel jPanelJugador4;
-    private javax.swing.JTextField jTextJugador2;
-    private javax.swing.JTextField jTextJugador3;
-    private javax.swing.JTextField jTextJugador4;
-    private javax.swing.JTextField jTextJugador5;
+    private javax.swing.JTextField nombreJ1;
+    private javax.swing.JTextField nombreJ2;
+    private javax.swing.JTextField nombreJ3;
+    private javax.swing.JTextField nombreJ4;
     // End of variables declaration//GEN-END:variables
 
     void ocultarPaneles() {

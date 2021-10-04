@@ -1,36 +1,62 @@
 package gui;
 
+import control.JugadoresDAO;
+import dominio.ColorJ;
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import javax.swing.ImageIcon;
+import util.ConversionColores;
 import util.DibujadoTablero;
 import util.Validaciones;
 
 public class FrmTablero extends javax.swing.JFrame {
 
     public static DibujadoTablero dibujar;
-    public Validaciones valida = new Validaciones();
-    public int clicks = 1;
-    public int X1, Y1, X2, Y2;
+    private Validaciones valida = new Validaciones();
+    private int clicks = 1;
+    private int X1, Y1, X2, Y2;
 
     public FrmTablero() {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.dibujar = new DibujadoTablero();
-//      Establecer el bound hace que no sirva el evento mouseclicked   
+        dibujar = new DibujadoTablero();
         dibujar.setBounds(5, 5, 690, 650);
-        this.dibujar.addMouseListener(eventos);
+        dibujar.addMouseListener(eventos);
         this.panelTablero.add(dibujar);
         this.dibujarTablero();
+        this.establecerInfoJugadores();
     }
 
-    public void SetImage(String Ruta) {
-        Image mImagen = new ImageIcon(Ruta).getImage();
-        ImageIcon mIcono = new ImageIcon(mImagen.getScaledInstance(jPanelImagen.getWidth(), jPanelImagen.getHeight(), Image.SCALE_SMOOTH));
-        jPanelImagen.setIcon(mIcono);
+    private void establecerInfoJugadores() {
+
+        this.panelAvatarJ1.setIcon(JugadoresDAO.jugadores[0].getAvatar());
+        this.nombreJ1.setText(JugadoresDAO.jugadores[0].getUsuario());
+        this.puntosJ1.setText(JugadoresDAO.jugadores[0].getPuntuacion() + "");
+        ColorJ colorJ1 = JugadoresDAO.jugadores[0].getColor();
+        String hex1 = ConversionColores.conversionColorHex(colorJ1);
+        this.colorJugador1.setBackground(Color.decode(hex1));
+
+        this.panelAvatarJ2.setIcon(JugadoresDAO.jugadores[1].getAvatar());
+        this.nombreJ2.setText(JugadoresDAO.jugadores[1].getUsuario());
+        this.puntosJ2.setText(JugadoresDAO.jugadores[1].getPuntuacion() + "");
+        ColorJ colorJ2 = JugadoresDAO.jugadores[1].getColor();
+        String hex2 = ConversionColores.conversionColorHex(colorJ2);
+        this.colorJugador2.setBackground(Color.decode(hex2));
+
+        this.panelAvatarJ3.setIcon(JugadoresDAO.jugadores[2].getAvatar());
+        this.nombreJ3.setText(JugadoresDAO.jugadores[2].getUsuario());
+        this.puntosJ3.setText(JugadoresDAO.jugadores[2].getPuntuacion() + "");
+        ColorJ colorJ3 = JugadoresDAO.jugadores[2].getColor();
+        String hex3 = ConversionColores.conversionColorHex(colorJ3);
+        this.colorJugador3.setBackground(Color.decode(hex3));
+
+        this.panelAvatarJ4.setIcon(JugadoresDAO.jugadores[3].getAvatar());
+        this.nombreJ4.setText(JugadoresDAO.jugadores[3].getUsuario());
+        this.puntosJ4.setText(JugadoresDAO.jugadores[3].getPuntuacion() + "");
+        ColorJ colorJ4 = JugadoresDAO.jugadores[3].getColor();
+        String hex4 = ConversionColores.conversionColorHex(colorJ4);
+        this.colorJugador4.setBackground(Color.decode(hex4));
     }
 
     /**
@@ -46,31 +72,31 @@ public class FrmTablero extends javax.swing.JFrame {
         panelJugadores = new javax.swing.JPanel();
         panelJ1 = new javax.swing.JPanel();
         avatarJ1 = new javax.swing.JPanel();
-        jPanelImagen2 = new javax.swing.JLabel();
+        panelAvatarJ1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         colorJugador1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        nombreJ1 = new javax.swing.JLabel();
         puntosJ1 = new javax.swing.JLabel();
         panelJ2 = new javax.swing.JPanel();
         avatarJ2 = new javax.swing.JPanel();
-        jPanelImagen1 = new javax.swing.JLabel();
+        panelAvatarJ2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         colorJugador2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        nombreJ2 = new javax.swing.JLabel();
         puntosJ2 = new javax.swing.JLabel();
         panelJ3 = new javax.swing.JPanel();
         avatarJ3 = new javax.swing.JPanel();
-        jPanelImagen3 = new javax.swing.JLabel();
+        panelAvatarJ3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         colorJugador3 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        nombreJ3 = new javax.swing.JLabel();
         puntosJ3 = new javax.swing.JLabel();
         panelJ4 = new javax.swing.JPanel();
         avatarJ4 = new javax.swing.JPanel();
-        jPanelImagen = new javax.swing.JLabel();
+        panelAvatarJ4 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         colorJugador4 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        nombreJ4 = new javax.swing.JLabel();
         puntosJ4 = new javax.swing.JLabel();
         panelTablero = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -95,12 +121,12 @@ public class FrmTablero extends javax.swing.JFrame {
         avatarJ1.setLayout(avatarJ1Layout);
         avatarJ1Layout.setHorizontalGroup(
             avatarJ1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelImagen2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+            .addComponent(panelAvatarJ1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         avatarJ1Layout.setVerticalGroup(
             avatarJ1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(avatarJ1Layout.createSequentialGroup()
-                .addComponent(jPanelImagen2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelAvatarJ1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -108,7 +134,7 @@ public class FrmTablero extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setText("Puntuación: ");
 
-        colorJugador1.setBackground(new java.awt.Color(245, 18, 9));
+        colorJugador1.setBackground(new java.awt.Color(204, 204, 204));
         colorJugador1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         colorJugador1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -127,13 +153,13 @@ public class FrmTablero extends javax.swing.JFrame {
             .addGap(0, 31, Short.MAX_VALUE)
         );
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel1.setText("Skinpy");
+        nombreJ1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        nombreJ1.setForeground(new java.awt.Color(51, 51, 51));
+        nombreJ1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nombreJ1.setText("Skinpy");
 
         puntosJ1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         puntosJ1.setForeground(new java.awt.Color(51, 51, 51));
-        puntosJ1.setText("5");
 
         javax.swing.GroupLayout panelJ1Layout = new javax.swing.GroupLayout(panelJ1);
         panelJ1.setLayout(panelJ1Layout);
@@ -141,11 +167,9 @@ public class FrmTablero extends javax.swing.JFrame {
             panelJ1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelJ1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelJ1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelJ1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(avatarJ1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelJ1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jLabel1)))
+                    .addComponent(nombreJ1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(panelJ1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelJ1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -166,7 +190,7 @@ public class FrmTablero extends javax.swing.JFrame {
                     .addGroup(panelJ1Layout.createSequentialGroup()
                         .addComponent(avatarJ1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1))
+                        .addComponent(nombreJ1))
                     .addGroup(panelJ1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -187,12 +211,12 @@ public class FrmTablero extends javax.swing.JFrame {
         avatarJ2.setLayout(avatarJ2Layout);
         avatarJ2Layout.setHorizontalGroup(
             avatarJ2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelImagen1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+            .addComponent(panelAvatarJ2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         avatarJ2Layout.setVerticalGroup(
             avatarJ2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(avatarJ2Layout.createSequentialGroup()
-                .addComponent(jPanelImagen1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelAvatarJ2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -200,7 +224,7 @@ public class FrmTablero extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setText("Puntuación: ");
 
-        colorJugador2.setBackground(new java.awt.Color(244, 244, 0));
+        colorJugador2.setBackground(new java.awt.Color(204, 204, 204));
         colorJugador2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         colorJugador2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -219,13 +243,14 @@ public class FrmTablero extends javax.swing.JFrame {
             .addGap(0, 31, Short.MAX_VALUE)
         );
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setText("Slizzir");
+        nombreJ2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        nombreJ2.setForeground(new java.awt.Color(51, 51, 51));
+        nombreJ2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nombreJ2.setText("Slizzir");
 
         puntosJ2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         puntosJ2.setForeground(new java.awt.Color(51, 51, 51));
-        puntosJ2.setText("5");
+        puntosJ2.setText("0");
 
         javax.swing.GroupLayout panelJ2Layout = new javax.swing.GroupLayout(panelJ2);
         panelJ2.setLayout(panelJ2Layout);
@@ -233,11 +258,9 @@ public class FrmTablero extends javax.swing.JFrame {
             panelJ2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelJ2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelJ2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(avatarJ2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelJ2Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jLabel2)))
+                .addGroup(panelJ2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(avatarJ2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nombreJ2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(panelJ2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelJ2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -258,7 +281,7 @@ public class FrmTablero extends javax.swing.JFrame {
                     .addGroup(panelJ2Layout.createSequentialGroup()
                         .addComponent(avatarJ2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2))
+                        .addComponent(nombreJ2))
                     .addGroup(panelJ2Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -279,12 +302,12 @@ public class FrmTablero extends javax.swing.JFrame {
         avatarJ3.setLayout(avatarJ3Layout);
         avatarJ3Layout.setHorizontalGroup(
             avatarJ3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelImagen3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+            .addComponent(panelAvatarJ3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         avatarJ3Layout.setVerticalGroup(
             avatarJ3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(avatarJ3Layout.createSequentialGroup()
-                .addComponent(jPanelImagen3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelAvatarJ3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -292,7 +315,7 @@ public class FrmTablero extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
         jLabel7.setText("Puntuación: ");
 
-        colorJugador3.setBackground(new java.awt.Color(24, 210, 233));
+        colorJugador3.setBackground(new java.awt.Color(204, 204, 204));
         colorJugador3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         colorJugador3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -311,13 +334,14 @@ public class FrmTablero extends javax.swing.JFrame {
             .addGap(0, 31, Short.MAX_VALUE)
         );
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel3.setText("Rictal");
+        nombreJ3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        nombreJ3.setForeground(new java.awt.Color(51, 51, 51));
+        nombreJ3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nombreJ3.setText("Rictal");
 
         puntosJ3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         puntosJ3.setForeground(new java.awt.Color(51, 51, 51));
-        puntosJ3.setText("5");
+        puntosJ3.setText("0");
 
         javax.swing.GroupLayout panelJ3Layout = new javax.swing.GroupLayout(panelJ3);
         panelJ3.setLayout(panelJ3Layout);
@@ -325,11 +349,9 @@ public class FrmTablero extends javax.swing.JFrame {
             panelJ3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelJ3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelJ3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(avatarJ3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelJ3Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jLabel3)))
+                .addGroup(panelJ3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(avatarJ3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nombreJ3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(panelJ3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelJ3Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -350,7 +372,7 @@ public class FrmTablero extends javax.swing.JFrame {
                     .addGroup(panelJ3Layout.createSequentialGroup()
                         .addComponent(avatarJ3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3))
+                        .addComponent(nombreJ3))
                     .addGroup(panelJ3Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -371,12 +393,12 @@ public class FrmTablero extends javax.swing.JFrame {
         avatarJ4.setLayout(avatarJ4Layout);
         avatarJ4Layout.setHorizontalGroup(
             avatarJ4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelImagen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+            .addComponent(panelAvatarJ4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         avatarJ4Layout.setVerticalGroup(
             avatarJ4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(avatarJ4Layout.createSequentialGroup()
-                .addComponent(jPanelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelAvatarJ4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -385,7 +407,7 @@ public class FrmTablero extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
         jLabel8.setText("Puntuación: ");
 
-        colorJugador4.setBackground(new java.awt.Color(104, 203, 60));
+        colorJugador4.setBackground(new java.awt.Color(204, 204, 204));
         colorJugador4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         colorJugador4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -404,13 +426,14 @@ public class FrmTablero extends javax.swing.JFrame {
             .addGap(0, 31, Short.MAX_VALUE)
         );
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel4.setText("Juan");
+        nombreJ4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        nombreJ4.setForeground(new java.awt.Color(51, 51, 51));
+        nombreJ4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nombreJ4.setText("Juan");
 
         puntosJ4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         puntosJ4.setForeground(new java.awt.Color(51, 51, 51));
-        puntosJ4.setText("5");
+        puntosJ4.setText("0");
 
         javax.swing.GroupLayout panelJ4Layout = new javax.swing.GroupLayout(panelJ4);
         panelJ4.setLayout(panelJ4Layout);
@@ -418,11 +441,9 @@ public class FrmTablero extends javax.swing.JFrame {
             panelJ4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelJ4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelJ4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(avatarJ4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelJ4Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jLabel4)))
+                .addGroup(panelJ4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(avatarJ4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nombreJ4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(panelJ4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelJ4Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -443,7 +464,7 @@ public class FrmTablero extends javax.swing.JFrame {
                     .addGroup(panelJ4Layout.createSequentialGroup()
                         .addComponent(avatarJ4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4))
+                        .addComponent(nombreJ4))
                     .addGroup(panelJ4Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -556,22 +577,22 @@ public class FrmTablero extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuAbandonarMouseClicked
 
     private void colorJugador1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_colorJugador1MouseClicked
-        this.pantallaColores("Jugador1");
+        this.pantallaColores(JugadoresDAO.jugadores[0].getUsuario());
         this.cambiarColor("Jugador1");
     }//GEN-LAST:event_colorJugador1MouseClicked
 
     private void colorJugador2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_colorJugador2MouseClicked
-        this.pantallaColores("Jugador2");
+        this.pantallaColores(JugadoresDAO.jugadores[1].getUsuario());
         this.cambiarColor("Jugador2");
     }//GEN-LAST:event_colorJugador2MouseClicked
 
     private void colorJugador3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_colorJugador3MouseClicked
-        this.pantallaColores("Jugador3");
+        this.pantallaColores(JugadoresDAO.jugadores[2].getUsuario());
         this.cambiarColor("Jugador3");
     }//GEN-LAST:event_colorJugador3MouseClicked
 
     private void colorJugador4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_colorJugador4MouseClicked
-        this.pantallaColores("Jugador4");
+        this.pantallaColores(JugadoresDAO.jugadores[3].getUsuario());
         this.cambiarColor("Jugador4");
     }//GEN-LAST:event_colorJugador4MouseClicked
 
@@ -642,20 +663,24 @@ public class FrmTablero extends javax.swing.JFrame {
     }
 
     private void cambiarColor(String jugador) {
-        if (!(DlgColores.color.isEmpty())) {
-            if (jugador.equals("Jugador1")) {
-                this.colorJugador1.setBackground(Color.decode(DlgColores.color));
-            }
-            if (jugador.equals("Jugador2")) {
-                this.colorJugador2.setBackground(Color.decode(DlgColores.color));
-            }
-            if (jugador.equals("Jugador3")) {
-                this.colorJugador3.setBackground(Color.decode(DlgColores.color));
-            }
-            if (jugador.equals("Jugador4")) {
-                this.colorJugador4.setBackground(Color.decode(DlgColores.color));
-            }
+
+        if (jugador.equals("Jugador1")) {
+            String colorHex = ConversionColores.conversionColorHex(JugadoresDAO.jugadores[0].getColor());
+            this.colorJugador1.setBackground(Color.decode(colorHex));
         }
+        if (jugador.equals("Jugador2")) {
+            String colorHex = ConversionColores.conversionColorHex(JugadoresDAO.jugadores[1].getColor());
+            this.colorJugador2.setBackground(Color.decode(colorHex));
+        }
+        if (jugador.equals("Jugador3")) {
+            String colorHex = ConversionColores.conversionColorHex(JugadoresDAO.jugadores[2].getColor());
+            this.colorJugador3.setBackground(Color.decode(colorHex));
+        }
+        if (jugador.equals("Jugador4")) {
+            String colorHex = ConversionColores.conversionColorHex(JugadoresDAO.jugadores[3].getColor());
+            this.colorJugador4.setBackground(Color.decode(colorHex));
+        }
+
     }
 
     private void dibujarTablero() {
@@ -672,20 +697,20 @@ public class FrmTablero extends javax.swing.JFrame {
     private javax.swing.JPanel colorJugador2;
     private javax.swing.JPanel colorJugador3;
     private javax.swing.JPanel colorJugador4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenuAbandonar;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JLabel jPanelImagen;
-    private javax.swing.JLabel jPanelImagen1;
-    private javax.swing.JLabel jPanelImagen2;
-    private javax.swing.JLabel jPanelImagen3;
+    private javax.swing.JLabel nombreJ1;
+    private javax.swing.JLabel nombreJ2;
+    private javax.swing.JLabel nombreJ3;
+    private javax.swing.JLabel nombreJ4;
+    private javax.swing.JLabel panelAvatarJ1;
+    private javax.swing.JLabel panelAvatarJ2;
+    private javax.swing.JLabel panelAvatarJ3;
+    private javax.swing.JLabel panelAvatarJ4;
     private javax.swing.JPanel panelFondo;
     private javax.swing.JPanel panelJ1;
     private javax.swing.JPanel panelJ2;

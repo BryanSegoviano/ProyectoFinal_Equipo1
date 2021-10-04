@@ -1,20 +1,23 @@
 package gui;
 
+import control.JugadoresDAO;
+import dominio.ColorJ;
 import java.awt.Color;
 import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 
 public class DlgColores extends javax.swing.JDialog {
 
     /**
      * Faltaria la relacion con el enumerador y asignarlo a un jugador, para
-     * luego sacar ese color establecido del jugador en FrmTablero y asignarlo
-     * a su respectivo color del tablero mediante las clases control, 
-     * solo es para efectos practicos de la simulacion este atributo estatico.
+     * luego sacar ese color establecido del jugador en FrmTablero y asignarlo a
+     * su respectivo color del tablero mediante las clases control, solo es para
+     * efectos practicos de la simulacion este atributo estatico.
      */
-    public static String color;
+    private ColorJ color;
     //Forma para saber a que jugador corresponde el color a cambiar
-    private String jugador;
+    private String nombreUsuario;
 
     /**
      * Creates new form DlgColores
@@ -27,7 +30,7 @@ public class DlgColores extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(parent);
-        this.jugador = jugador;
+        this.nombreUsuario = jugador;
     }
 
     /**
@@ -199,12 +202,12 @@ public class DlgColores extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        this.color = "";
+    
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnElegirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElegirActionPerformed
-        this.establecerColorJugador();
+        this.verificarColorRepetido();
         this.dispose();
     }//GEN-LAST:event_btnElegirActionPerformed
 
@@ -212,7 +215,7 @@ public class DlgColores extends javax.swing.JDialog {
         //HEX: #f51209
         //RGB: rgba(245,18,9,255)
         this.limpiarBordes();
-        this.color = "#f51209";
+        this.color = ColorJ.ROJO;
         this.btnRojo.setBorder(this.establecerBordeElegido());
     }//GEN-LAST:event_btnRojoMouseClicked
 
@@ -220,7 +223,7 @@ public class DlgColores extends javax.swing.JDialog {
         //HEX: #973598
         //RGB: rgba(151,53,152,255)
         this.limpiarBordes();
-        this.color = "#973598";
+        this.color = ColorJ.VIOLETA;
         this.btnVioleta.setBorder(this.establecerBordeElegido());
     }//GEN-LAST:event_btnVioletaMouseClicked
 
@@ -228,7 +231,7 @@ public class DlgColores extends javax.swing.JDialog {
         //HEX: #f38e34
         //RGB: rgba(243,142,52,255)
         this.limpiarBordes();
-        this.color = "#f38e34";
+        this.color = ColorJ.NARANJA;
         this.btnNaranja.setBorder(this.establecerBordeElegido());
     }//GEN-LAST:event_btnNaranjaMouseClicked
 
@@ -236,7 +239,7 @@ public class DlgColores extends javax.swing.JDialog {
         //HEX: #f4f400
         //RGB: rgba(244,244,0,255)
         this.limpiarBordes();
-        this.color = "#f4f400";
+        this.color = ColorJ.AMARILLO;
         this.btnAmarillo.setBorder(this.establecerBordeElegido());
     }//GEN-LAST:event_btnAmarilloMouseClicked
 
@@ -244,7 +247,7 @@ public class DlgColores extends javax.swing.JDialog {
         //HEX: #68cb3c
         //RGB: rgba(104,203,60,255)
         this.limpiarBordes();
-        this.color = "#68cb3c";
+        this.color = ColorJ.VERDE;
         this.btnVerde.setBorder(this.establecerBordeElegido());
     }//GEN-LAST:event_btnVerdeMouseClicked
 
@@ -252,7 +255,7 @@ public class DlgColores extends javax.swing.JDialog {
         //HEX: #18d2e9
         //RGB: rgba(24,210,233,255)
         this.limpiarBordes();
-        this.color = "#18d2e9";
+        this.color = ColorJ.AZUL;
         this.btnAzul.setBorder(this.establecerBordeElegido());
     }//GEN-LAST:event_btnAzulMouseClicked
 
@@ -260,12 +263,17 @@ public class DlgColores extends javax.swing.JDialog {
         //HEX: #0066cb
         //RGB: rgba(0,102,203,255)
         this.limpiarBordes();
-        this.color = "#0066cb";
+        this.color = ColorJ.INDIGO;
         this.btnIndigo.setBorder(this.establecerBordeElegido());
     }//GEN-LAST:event_btnIndigoMouseClicked
 
-    //Aqui se conectaria con el control para establecerlo al jugador
     private void establecerColorJugador() {
+        for (int i = 0; i < JugadoresDAO.jugadores.length; i++) {
+            if (JugadoresDAO.jugadores[i].getUsuario().equals(this.nombreUsuario)) {
+                JugadoresDAO.jugadores[i].setColor(color);
+                return;
+            }
+        }
 //        System.out.println(this.jugador + " - " + this.color);
     }
 
@@ -284,19 +292,21 @@ public class DlgColores extends javax.swing.JDialog {
         this.btnAzul.setBorder(border);
         this.btnIndigo.setBorder(border);
     }
-    
+
     //Metodo que se encargara de validar que no se repitan los colores,
     //esto se hara con la clase control solicitando los jugadores y de estos
     //sus colores, validando que no se repita con el que se haya seleccionado
     //al presionar elegir
-    private void verificarColorRepetido(String color){
-    /**
-     * if(jugador1.getColor.equals(color){
-     *      JOptionPane.showMessageDialog(rootPane, "No se pueden repetir los colores!", "Error", 2);
-     * }.....
-     */
+    private void verificarColorRepetido() {
+        for (int i = 0; i < JugadoresDAO.jugadores.length; i++) {
+            if (JugadoresDAO.jugadores[i].getColor().equals(this.color)) {
+                JOptionPane.showMessageDialog(rootPane, "No se pueden repetir los colores!", "Error", 2);
+                return;
+            }
+
+        }
+        establecerColorJugador();
     }
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnAmarillo;

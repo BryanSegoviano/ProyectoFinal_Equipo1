@@ -1,25 +1,18 @@
 package gui;
 
-import java.awt.Image;
-import java.io.File;
-import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
+import control.JugadoresDAO;
+import dominio.Jugador;
 import server.HiloCrearPartida;
 import server.HiloUnirsePartida;
 
 public class FrmPanelJuego extends javax.swing.JFrame {
 
-    Thread hilo;
+    private Thread hilo;
+    private JugadoresDAO jugadoresDAO;
 
     public FrmPanelJuego() {
         initComponents();
         setLocationRelativeTo(null);
-    }
-
-    public void SetImage(String Ruta) {
-        Image mImagen = new ImageIcon(Ruta).getImage();
-        ImageIcon mIcono = new ImageIcon(mImagen.getScaledInstance(jPanelImagen.getWidth(), jPanelImagen.getHeight(), Image.SCALE_SMOOTH));
-        jPanelImagen.setIcon(mIcono);
     }
 
     /**
@@ -60,7 +53,7 @@ public class FrmPanelJuego extends javax.swing.JFrame {
         panelImagen.setLayout(panelImagenLayout);
         panelImagenLayout.setHorizontalGroup(
             panelImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+            .addComponent(jPanelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         panelImagenLayout.setVerticalGroup(
             panelImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -70,6 +63,8 @@ public class FrmPanelJuego extends javax.swing.JFrame {
         );
 
         jLabelNombreUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabelNombreUsuario.setForeground(new java.awt.Color(255, 255, 153));
+        jLabelNombreUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelNombreUsuario.setText("Usuario");
 
         btnCreaAvatar.setBackground(new java.awt.Color(153, 0, 153));
@@ -91,19 +86,19 @@ public class FrmPanelJuego extends javax.swing.JFrame {
                     .addComponent(btnCreaAvatar)
                     .addGroup(jPanelFondoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanelFondoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelBienvenido)
-                            .addGroup(jPanelFondoUsuarioLayout.createSequentialGroup()
-                                .addComponent(jLabelNombreUsuario)
-                                .addGap(8, 8, 8)))))
+                        .addComponent(jLabelBienvenido)))
                 .addContainerGap(18, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFondoUsuarioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelNombreUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanelFondoUsuarioLayout.setVerticalGroup(
             jPanelFondoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelFondoUsuarioLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelBienvenido)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelNombreUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -163,7 +158,7 @@ public class FrmPanelJuego extends javax.swing.JFrame {
         jPanelFondoBotonesLayout.setVerticalGroup(
             jPanelFondoBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelFondoBotonesLayout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
+                .addContainerGap(51, Short.MAX_VALUE)
                 .addComponent(btnCrearPartida)
                 .addGap(34, 34, 34)
                 .addComponent(btnUnirsePartida)
@@ -207,9 +202,13 @@ public class FrmPanelJuego extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCreaAvatarActionPerformed
 
     private void creaAvatar() {
-
-        FrmRegistro frmRegistro = new FrmRegistro(this, true);
+        DlgRegistro frmRegistro = new DlgRegistro(this, true);
         frmRegistro.setVisible(true);
+        if (JugadoresDAO.jugadores[0] != null) {
+            this.jPanelImagen.setIcon(JugadoresDAO.jugadores[0].getAvatar());
+            this.jLabelNombreUsuario.setText(JugadoresDAO.jugadores[0].getUsuario());
+        }
+
     }
 
     private void crearPartida() {

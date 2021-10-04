@@ -139,7 +139,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Solicitar inicio de juego"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor Por defecto"/>
+              <Color id="Default Cursor"/>
             </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
@@ -160,7 +160,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Salir"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor Por defecto"/>
+              <Color id="Default Cursor"/>
             </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
@@ -202,7 +202,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabelJugador4" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextJugador5" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
+                          <Component id="nombreJ1" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -214,7 +214,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabelJugador4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jTextJugador5" min="-2" max="-2" attributes="0"/>
+                      <Component id="nombreJ1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -229,7 +229,7 @@
                 <Property name="text" type="java.lang.String" value="Jugador 1"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextJugador5">
+            <Component class="javax.swing.JTextField" name="nombreJ1">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -265,7 +265,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabelJugador" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextJugador2" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
+                          <Component id="nombreJ2" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -277,7 +277,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabelJugador" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jTextJugador2" min="-2" max="-2" attributes="0"/>
+                      <Component id="nombreJ2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -292,7 +292,7 @@
                 <Property name="text" type="java.lang.String" value="Jugador 2"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextJugador2">
+            <Component class="javax.swing.JTextField" name="nombreJ2">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -328,7 +328,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabelJugador11" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextJugador3" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
+                          <Component id="nombreJ3" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -340,7 +340,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabelJugador11" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jTextJugador3" min="-2" max="-2" attributes="0"/>
+                      <Component id="nombreJ3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -355,7 +355,7 @@
                 <Property name="text" type="java.lang.String" value="Jugador 3"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextJugador3">
+            <Component class="javax.swing.JTextField" name="nombreJ3">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -391,7 +391,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabelJugador10" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextJugador4" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
+                          <Component id="nombreJ4" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -403,7 +403,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabelJugador10" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jTextJugador4" min="-2" max="-2" attributes="0"/>
+                      <Component id="nombreJ4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -418,7 +418,7 @@
                 <Property name="text" type="java.lang.String" value="Jugador 4"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextJugador4">
+            <Component class="javax.swing.JTextField" name="nombreJ4">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
