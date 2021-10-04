@@ -138,7 +138,6 @@ public class FrmPartida extends javax.swing.JFrame {
         nombreJ1.setEditable(false);
         nombreJ1.setBackground(new java.awt.Color(255, 255, 255));
         nombreJ1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        nombreJ1.setText("Skinpy");
         nombreJ1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         javax.swing.GroupLayout jPanelJugador1Layout = new javax.swing.GroupLayout(jPanelJugador1);
@@ -170,7 +169,6 @@ public class FrmPartida extends javax.swing.JFrame {
         nombreJ2.setEditable(false);
         nombreJ2.setBackground(new java.awt.Color(255, 255, 255));
         nombreJ2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        nombreJ2.setText("Slizzir");
         nombreJ2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         javax.swing.GroupLayout jPanelJugador2Layout = new javax.swing.GroupLayout(jPanelJugador2);
@@ -202,7 +200,6 @@ public class FrmPartida extends javax.swing.JFrame {
         nombreJ3.setEditable(false);
         nombreJ3.setBackground(new java.awt.Color(255, 255, 255));
         nombreJ3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        nombreJ3.setText("Rictal");
         nombreJ3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         javax.swing.GroupLayout jPanelJugador3Layout = new javax.swing.GroupLayout(jPanelJugador3);
@@ -234,7 +231,6 @@ public class FrmPartida extends javax.swing.JFrame {
         nombreJ4.setEditable(false);
         nombreJ4.setBackground(new java.awt.Color(255, 255, 255));
         nombreJ4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        nombreJ4.setText("JuanGod");
         nombreJ4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         javax.swing.GroupLayout jPanelJugador4Layout = new javax.swing.GroupLayout(jPanelJugador4);
@@ -273,11 +269,11 @@ public class FrmPartida extends javax.swing.JFrame {
                 .addComponent(barraSeparar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelFondoLayout.createSequentialGroup()
-                        .addGap(157, 157, 157)
-                        .addComponent(btnSalir))
-                    .addGroup(jPanelFondoLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(btnSolicitarInicio)))
+                        .addComponent(btnSolicitarInicio))
+                    .addGroup(jPanelFondoLayout.createSequentialGroup()
+                        .addGap(99, 99, 99)
+                        .addComponent(btnSalir)))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanelFondoLayout.setVerticalGroup(

@@ -101,6 +101,7 @@ public class FrmTablero extends javax.swing.JFrame {
         panelTablero = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuAbandonar = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tablero");
@@ -156,10 +157,11 @@ public class FrmTablero extends javax.swing.JFrame {
         nombreJ1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         nombreJ1.setForeground(new java.awt.Color(51, 51, 51));
         nombreJ1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nombreJ1.setText("Skinpy");
+        nombreJ1.setText(".");
 
         puntosJ1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         puntosJ1.setForeground(new java.awt.Color(51, 51, 51));
+        puntosJ1.setText("0");
 
         javax.swing.GroupLayout panelJ1Layout = new javax.swing.GroupLayout(panelJ1);
         panelJ1.setLayout(panelJ1Layout);
@@ -246,7 +248,7 @@ public class FrmTablero extends javax.swing.JFrame {
         nombreJ2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         nombreJ2.setForeground(new java.awt.Color(51, 51, 51));
         nombreJ2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nombreJ2.setText("Slizzir");
+        nombreJ2.setText(".");
 
         puntosJ2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         puntosJ2.setForeground(new java.awt.Color(51, 51, 51));
@@ -337,7 +339,7 @@ public class FrmTablero extends javax.swing.JFrame {
         nombreJ3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         nombreJ3.setForeground(new java.awt.Color(51, 51, 51));
         nombreJ3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nombreJ3.setText("Rictal");
+        nombreJ3.setText(".");
 
         puntosJ3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         puntosJ3.setForeground(new java.awt.Color(51, 51, 51));
@@ -429,7 +431,8 @@ public class FrmTablero extends javax.swing.JFrame {
         nombreJ4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         nombreJ4.setForeground(new java.awt.Color(51, 51, 51));
         nombreJ4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nombreJ4.setText("Juan");
+        nombreJ4.setText(".");
+        nombreJ4.setToolTipText("");
 
         puntosJ4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         puntosJ4.setForeground(new java.awt.Color(51, 51, 51));
@@ -546,12 +549,16 @@ public class FrmTablero extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jMenuAbandonar.setText("Abandonar partida");
-        jMenuAbandonar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuAbandonarMouseClicked(evt);
+        jMenuAbandonar.setText("Opciones");
+
+        jMenuItem1.setText("Abandonar partida");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
             }
         });
+        jMenuAbandonar.add(jMenuItem1);
+
         jMenuBar1.add(jMenuAbandonar);
 
         setJMenuBar(jMenuBar1);
@@ -569,17 +576,6 @@ public class FrmTablero extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenuAbandonarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuAbandonarMouseClicked
-        this.dispose();
-        FrmPanelJuego menu = new FrmPanelJuego();
-        menu.setVisible(true);
-    }//GEN-LAST:event_jMenuAbandonarMouseClicked
-
-    private void colorJugador1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_colorJugador1MouseClicked
-        this.pantallaColores(JugadoresDAO.jugadores[0].getUsuario());
-        this.cambiarColor("Jugador1");
-    }//GEN-LAST:event_colorJugador1MouseClicked
 
     private void colorJugador2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_colorJugador2MouseClicked
         this.pantallaColores(JugadoresDAO.jugadores[1].getUsuario());
@@ -599,6 +595,17 @@ public class FrmTablero extends javax.swing.JFrame {
     private void panelTableroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTableroMouseClicked
         this.coordenadasClick2(evt);
     }//GEN-LAST:event_panelTableroMouseClicked
+
+    private void colorJugador1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_colorJugador1MouseClicked
+        this.pantallaColores(JugadoresDAO.jugadores[0].getUsuario());
+        this.cambiarColor("Jugador1");
+    }//GEN-LAST:event_colorJugador1MouseClicked
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        this.dispose();
+        FrmPanelJuego menu = new FrmPanelJuego();
+        menu.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void pantallaColores(String jugador) {
         DlgColores dlgColores = new DlgColores(this, true, jugador);
@@ -703,6 +710,7 @@ public class FrmTablero extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenuAbandonar;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JLabel nombreJ1;
     private javax.swing.JLabel nombreJ2;
     private javax.swing.JLabel nombreJ3;

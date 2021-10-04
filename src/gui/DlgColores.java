@@ -141,8 +141,8 @@ public class DlgColores extends javax.swing.JDialog {
         panelFondo.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 216, -1, -1));
 
         lblInstrucciones.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblInstrucciones.setText("Da clic en el color y luego elegir.");
-        panelFondo.add(lblInstrucciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, -1, -1));
+        lblInstrucciones.setText("Selecciona el color y luego presiona elegir.");
+        panelFondo.add(lblInstrucciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Índigo");
@@ -202,7 +202,7 @@ public class DlgColores extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-    
+
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
@@ -274,7 +274,6 @@ public class DlgColores extends javax.swing.JDialog {
                 return;
             }
         }
-//        System.out.println(this.jugador + " - " + this.color);
     }
 
     private Border establecerBordeElegido() {

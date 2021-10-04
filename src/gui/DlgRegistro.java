@@ -123,13 +123,14 @@ public class DlgRegistro extends javax.swing.JDialog {
             jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelRegistroLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnRegistrar)
-                    .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel1)
-                        .addComponent(jLabelUsuario)
-                        .addComponent(jLabelAvatar)
-                        .addComponent(btnElegirAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabelUsuario)
+                    .addComponent(jLabelAvatar)
+                    .addComponent(btnElegirAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelRegistroLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(btnRegistrar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -235,7 +236,7 @@ public class DlgRegistro extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelAvatar;
     private javax.swing.JLabel jLabelUsuario;
-    public javax.swing.JLabel jPanelImagen;
+    private javax.swing.JLabel jPanelImagen;
     private javax.swing.JPanel jPanelRegistro;
     private javax.swing.JTextField jTextUsuario;
     private javax.swing.JPanel panelImagen;

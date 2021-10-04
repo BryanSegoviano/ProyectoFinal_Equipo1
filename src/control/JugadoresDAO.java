@@ -5,9 +5,10 @@ import dominio.Jugador;
 
 public class JugadoresDAO {
 
-    public static Jugador[] jugadores = new Jugador[4];
+    public static Jugador[] jugadores;
 
     public JugadoresDAO() {
+        jugadores = new Jugador[4];
         Jugador jugador1 = new Jugador();
         jugador1.setColor(ColorJ.VERDE);
         jugador1.setContrasenia("555");
@@ -17,12 +18,12 @@ public class JugadoresDAO {
                 null,
                 ColorJ.ROJO,
                 0);
-        Jugador jugador3 = new Jugador("god buny",
+        Jugador jugador3 = new Jugador("God Bunny",
                 "4321",
                 null,
                 ColorJ.INDIGO,
                 0);
-        Jugador jugador4 = new Jugador("yoda",
+        Jugador jugador4 = new Jugador("Yoda",
                 "yoda",
                 null,
                 ColorJ.AZUL,
@@ -56,5 +57,4 @@ public class JugadoresDAO {
 //    public boolean eliminarJugador() {
 //
 //    }
-
 }
