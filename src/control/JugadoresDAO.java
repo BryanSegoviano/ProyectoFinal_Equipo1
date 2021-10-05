@@ -2,9 +2,13 @@ package control;
 
 import dominio.ColorJ;
 import dominio.Jugador;
-
+/**
+ * Clase dao que establece el arreglo de jugadores 
+ * 
+ * @author Administrador
+ */
 public class JugadoresDAO {
-
+    //Se crean objetos estaticos de jugadores.
     public static Jugador[] jugadores;
 
     public JugadoresDAO() {
@@ -33,23 +37,27 @@ public class JugadoresDAO {
         jugadores[2] = jugador3;
         jugadores[3] = jugador4;
     }
-
+    //Se agrega el jugador numero 1
     public void agregarJugador1(Jugador jugador) {
         this.jugadores[0] = jugador;
     }
-
+    //Se agrega el jugador numero 2
     public void agregarJugador2(Jugador jugador) {
         this.jugadores[1] = jugador;
     }
-
+    //Se agrega el jugador numero 3
     public void agregarJugador3(Jugador jugador) {
         this.jugadores[2] = jugador;
     }
-
+    //Se agrega el jugador numero 4
     public void agregarJugador4(Jugador jugador) {
         this.jugadores[3] = jugador;
     }
-
+    /**
+     * Se obtienen los datos de los jugadores.
+     * 
+     * @return jugadores.
+     */
     public Jugador[] obtenerJugadores() {
         return this.jugadores;
     }

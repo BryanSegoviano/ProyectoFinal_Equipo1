@@ -8,9 +8,17 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
-
+/**
+ * Clase encargada de los metodos de dibujado en tablero con uso de java2d.
+ * 
+ * @author Administrador
+ */
 public class DibujadoTablero extends Canvas {
-    
+    /**
+     * Metodo que se encarga de hacer el dibujado de cuadrado.
+     * 
+     * @param g 
+     */
     @Override
     public void paint(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
@@ -38,7 +46,16 @@ public class DibujadoTablero extends Canvas {
         }
         this.dibujaCuadrado(x, y, 50, 50, 41, g2d);
     }
-    
+    /**
+     * Metodo que define los atributos del cuadrado.
+     * 
+     * @param x
+     * @param y
+     * @param ancho
+     * @param alto
+     * @param cuantos
+     * @param g 
+     */
     public void dibujaCuadrado(int x, int y, int ancho, int alto, int cuantos, Graphics2D g) {
         Rectangle rect = new Rectangle();
         for (int i = 0; i < cuantos; i++) {
@@ -47,7 +64,13 @@ public class DibujadoTablero extends Canvas {
             x += ancho;
         }
     }
-    
+    /**
+     * Se define el color del circulo. 
+     * 
+     * @param x
+     * @param y
+     * @param g 
+     */
     public void dibujarCirculo(int x, int y, Graphics2D g) {
         g.setStroke(new BasicStroke(1));
         g.setColor(Color.BLACK);
@@ -55,7 +78,16 @@ public class DibujadoTablero extends Canvas {
         g.fill(elipse);
         g.draw(elipse);
     }
-    
+    /**
+     * Se define el color de las lineas. 
+     * 
+     * @param x
+     * @param y
+     * @param x2
+     * @param y2
+     * @param g
+     * @param color 
+     */
    public void dibujarLinea(int x, int y, int x2, int y2 ,Graphics2D g, Color color) {
         g.setStroke(new BasicStroke(3));
         g.setColor(color);

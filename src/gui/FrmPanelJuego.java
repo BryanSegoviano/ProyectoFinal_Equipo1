@@ -4,12 +4,18 @@ import control.JugadoresDAO;
 import javax.swing.JOptionPane;
 import server.HiloCrearPartida;
 import server.HiloUnirsePartida;
-
+/**
+ * 
+ * @author Administrador
+ */
 public class FrmPanelJuego extends javax.swing.JFrame {
 
     private Thread hilo;
     private JugadoresDAO jugadoresDAO;
-
+    /**
+     * Este metodo inicializa el panelJuego.
+     * 
+     */
     public FrmPanelJuego() {
         initComponents();
         setLocationRelativeTo(null);
@@ -219,7 +225,10 @@ public class FrmPanelJuego extends javax.swing.JFrame {
     private void btnCreaAvatarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreaAvatarActionPerformed
         this.creaAvatar();
     }//GEN-LAST:event_btnCreaAvatarActionPerformed
-
+     /**
+     * Este metodo se encarga de crear el avatar.
+     * 
+     */
     private void creaAvatar() {
         DlgRegistro frmRegistro = new DlgRegistro(this, true);
         frmRegistro.setVisible(true);
@@ -229,7 +238,7 @@ public class FrmPanelJuego extends javax.swing.JFrame {
         }
 
     }
-
+    //Se establece crear partida mediante el uso de un hilo.
     private void crearPartida() {
         if (jLabelNombreUsuario.getText().equals("Usuario") || jPanelImagen.getIcon() == null) {
             JOptionPane.showOptionDialog(null, "No ha creado un avatar", "Error", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{}, null);
@@ -240,7 +249,7 @@ public class FrmPanelJuego extends javax.swing.JFrame {
         }
 
     }
-
+     //Se establece unirse a partida mediante el uso de un hilo.
     private void unirsePartida() {
         if (jLabelNombreUsuario.getText().equals("Usuario") || jPanelImagen.getIcon() == null) {
             JOptionPane.showOptionDialog(null, "No ha creado un avatar", "Error", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{}, null);
@@ -250,11 +259,15 @@ public class FrmPanelJuego extends javax.swing.JFrame {
             hilo.start();
         }
     }
-
+    //Salir de partida. 
     private void salir() {
         this.dispose();
     }
-
+    /**
+    * Metodo Principal.
+    * 
+    * @param args 
+    */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

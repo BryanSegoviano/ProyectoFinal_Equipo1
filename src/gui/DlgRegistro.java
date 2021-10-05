@@ -10,7 +10,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import util.TextPrompt;
-
+/**
+ * Cuadro de dialogo que registra la informacion de un jugador.
+ * 
+ * @author Administrador
+ */
 public class DlgRegistro extends javax.swing.JDialog {
 
     private TextPrompt texto;
@@ -18,8 +22,8 @@ public class DlgRegistro extends javax.swing.JDialog {
     private JugadoresDAO jugadoresDAO;
 
     /**
-     * Creates new form FrmRegistroo
-     *
+     * Se crea DlgRegistro.
+     * 
      * @param parent
      * @param modal
      */
@@ -177,19 +181,35 @@ public class DlgRegistro extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+     /**
+     * ActionEvent de JButton para comprobar la informacion en el registro.
+     * 
+     * @param evt 
+     */
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         compruebaInformacion();
     }//GEN-LAST:event_btnRegistrarActionPerformed
-
+    /**
+     * ActionEvent de JButton para establecer el avatar de jugadores.
+     * 
+     * @param evt 
+     */
     private void btnElegirAvatarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElegirAvatarActionPerformed
         this.establecerAvatar();
     }//GEN-LAST:event_btnElegirAvatarActionPerformed
-
+    /**
+     * ActionEvent de JButton para cancelar registro.
+     * 
+     * @param evt 
+     */
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
-
+    /**
+     * Este metodo se encarga de establecer el avatar del jugador,
+     * mediante el uso de JFileChooser
+     * 
+     */
     private void establecerAvatar() {
         String Ruta = "";
         JFileChooser jFileChooser = new JFileChooser();
@@ -209,7 +229,10 @@ public class DlgRegistro extends javax.swing.JDialog {
             jPanelImagen.setIcon(mIcono);
         }
     }
-
+    /**
+     * Este metodo se encarga de comprobar la informacion del jugador.
+     * 
+     */
     private void compruebaInformacion() {
         String usuario = jTextUsuario.getText();
 
@@ -223,7 +246,9 @@ public class DlgRegistro extends javax.swing.JDialog {
             this.dispose();
         }
     }
-
+    /**
+     * Se limpian los espacios.
+     */
     private void limpiarEspacios() {
         jTextUsuario.setText(null);
 

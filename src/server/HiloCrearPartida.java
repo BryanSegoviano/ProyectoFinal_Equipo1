@@ -6,7 +6,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Clase que implementa un hilo en crear partida. 
+ * 
  * @author Carlos Antonio Valenzuela Valdez
  */
 public class HiloCrearPartida extends Thread {

@@ -2,8 +2,19 @@ package util;
 
 import dominio.ColorJ;
 
+/**
+ * Clase que establece la convercion de los colores.
+ * 
+ * @author Administrador
+ */
 public class ConversionColores {
-
+    
+    /**
+     * Metodo estatico que establece la conversion de colores. 
+     * 
+     * @param colorTexto 
+     * @return null.
+     */
     public static String conversionColorHex(ColorJ colorTexto) {
         if (colorTexto.equals(ColorJ.ROJO)) {
             return "#f51209";

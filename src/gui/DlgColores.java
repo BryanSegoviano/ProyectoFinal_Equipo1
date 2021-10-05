@@ -6,7 +6,11 @@ import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
-
+/**
+ * Cuadro de dialogo que registra el color del jugador
+ * 
+ * @author Administrador
+ */
 public class DlgColores extends javax.swing.JDialog {
 
     /**
@@ -19,10 +23,10 @@ public class DlgColores extends javax.swing.JDialog {
     //Forma para saber a que jugador corresponde el color a cambiar
     private String nombreUsuario;
 
-    /**
-     * Creates new form DlgColores
+   /**
+     * Se crea DlgColores
      *
-     * @param parent
+     * @param parent 
      * @param modal
      * @param jugador
      */
@@ -200,12 +204,20 @@ public class DlgColores extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * ActionEvent de JButton para cancelar el registro.
+     * 
+     * @param evt 
+     */
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
 
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
-
+    /**
+     * ActionEvent de JButton para registrar color seleccionado.
+     * 
+     * @param evt 
+     */
     private void btnElegirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElegirActionPerformed
         this.verificarColorRepetido();
         this.dispose();
@@ -266,7 +278,7 @@ public class DlgColores extends javax.swing.JDialog {
         this.color = ColorJ.INDIGO;
         this.btnIndigo.setBorder(this.establecerBordeElegido());
     }//GEN-LAST:event_btnIndigoMouseClicked
-
+     //Este metodo se encarga de establecer el color de cada jugador. 
     private void establecerColorJugador() {
         for (int i = 0; i < JugadoresDAO.jugadores.length; i++) {
             if (JugadoresDAO.jugadores[i].getUsuario().equals(this.nombreUsuario)) {
@@ -275,12 +287,16 @@ public class DlgColores extends javax.swing.JDialog {
             }
         }
     }
-
+    /**
+     * Se establece el borde elegido. 
+     * 
+     * @return border
+     */
     private Border establecerBordeElegido() {
         Border border = BorderFactory.createLineBorder(Color.YELLOW, 3);
         return border;
     }
-
+     //Se limpian los bordes. 
     private void limpiarBordes() {
         Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
         this.btnRojo.setBorder(border);

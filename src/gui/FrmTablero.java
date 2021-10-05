@@ -9,14 +9,21 @@ import java.awt.event.MouseListener;
 import util.ConversionColores;
 import util.DibujadoTablero;
 import util.Validaciones;
-
+/**
+ * 
+ * @author Administrador
+ */
 public class FrmTablero extends javax.swing.JFrame {
-
+    
+    //Se crea variable estatica para dibujar en tablero. 
     public static DibujadoTablero dibujar;
     private Validaciones valida = new Validaciones();
     private int clicks = 1;
     private int X1, Y1, X2, Y2;
-
+    /**
+     * Metodo que inicializa el dibujado de tablero.
+     *
+     */
     public FrmTablero() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -27,7 +34,11 @@ public class FrmTablero extends javax.swing.JFrame {
         this.dibujarTablero();
         this.establecerInfoJugadores();
     }
-
+    /**
+     * Este metodo se encarga de establecer la informacion de cada jugador 
+     * (avatar,nombre,puntos y color) luego muestra los datos en el panel 
+     * de los jugadores.
+     */ 
     private void establecerInfoJugadores() {
 
         this.panelAvatarJ1.setIcon(JugadoresDAO.jugadores[0].getAvatar());
@@ -606,7 +617,11 @@ public class FrmTablero extends javax.swing.JFrame {
         FrmPanelJuego menu = new FrmPanelJuego();
         menu.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-
+    /**
+     * Pantalla que muestra el color de cada jugador.
+     * 
+     * @param jugador 
+     */
     private void pantallaColores(String jugador) {
         DlgColores dlgColores = new DlgColores(this, true, jugador);
         dlgColores.setVisible(true);
@@ -647,7 +662,11 @@ public class FrmTablero extends javax.swing.JFrame {
         Y1 = arreglo[1];
         System.out.println("\n" + X1 + "," + Y1);
     }
-
+    /**
+     * MouseEvent para validar las cordenadas en tablero.
+     * 
+     * @param evt 
+     */
     private void coordenadasClick2(java.awt.event.MouseEvent evt) {
         int arreglo[];
         X2 = evt.getX();
@@ -668,7 +687,11 @@ public class FrmTablero extends javax.swing.JFrame {
         }
 
     }
-
+    /**
+     * Este metodo se encarga de cabiar el color de los jugadores. 
+     * 
+     * @param jugador 
+     */
     private void cambiarColor(String jugador) {
 
         if (jugador.equals("Jugador1")) {
@@ -689,7 +712,7 @@ public class FrmTablero extends javax.swing.JFrame {
         }
 
     }
-
+    //Se dibuja el tablero.
     private void dibujarTablero() {
         this.dibujar.paint((Graphics2D) this.panelTablero.getGraphics());
     }
