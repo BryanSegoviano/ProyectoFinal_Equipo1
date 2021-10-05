@@ -15,12 +15,10 @@ import javax.swing.ImageIcon;
  */
 public class FrmPartida extends javax.swing.JFrame {
 
-    Thread hilo;
-    public static FrmPartida framePartida;
-     /**
-     * Carga jugadores de la partida. 
-     * 
-     * @param msj 
+    /**
+     * Carga jugadores de la partida.
+     *
+     * @param msj
      */
     public FrmPartida(String msj) {
         initComponents();
@@ -315,32 +313,41 @@ public class FrmPartida extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     /**
-     * ActionEvent de JButton para soliccitar inicio de juego.
-     * 
-     * @param evt 
+     * ActionEvent de JButton para solicitar inicio de juego.
+     *
+     * @param evt
      */
     private void btnSolicitarInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitarInicioActionPerformed
         this.solicitarInicio();
     }//GEN-LAST:event_btnSolicitarInicioActionPerformed
     /**
-     * ActionEvent de JButton para salir de Frmpartida. 
-     * 
-     * @param evt 
+     * ActionEvent de JButton para salir de Frmpartida.
+     *
+     * @param evt
      */
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         this.salir();
     }//GEN-LAST:event_btnSalirActionPerformed
-     //Solicita inicio de juego en el tablero. 
+    //Solicita inicio de juego en el tablero. 
+
     private void solicitarInicio() {
         this.dispose();
         FrmTablero frmTablero = new FrmTablero();
         frmTablero.setVisible(true);
     }
+
     // Solicita salir del panel de juego. 
     private void salir() {
         this.dispose();
         FrmPanelJuego frmPanelJuego = new FrmPanelJuego();
         frmPanelJuego.setVisible(true);
+    }
+
+    //Oculta los paneles de los jugadores. 
+    private void ocultarPaneles() {
+        jPanelJugador2.setVisible(false);
+        jPanelJugador3.setVisible(false);
+        jPanelJugador4.setVisible(false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -363,17 +370,5 @@ public class FrmPartida extends javax.swing.JFrame {
     private javax.swing.JTextField nombreJ3;
     private javax.swing.JTextField nombreJ4;
     // End of variables declaration//GEN-END:variables
-    //Oculta los paneles de los jugadores. 
-    void ocultarPaneles() {
-        jPanelJugador2.setVisible(false);
-        jPanelJugador3.setVisible(false);
-        jPanelJugador4.setVisible(false);
-    }
-    /**
-     * Instancia de la variable ruta, para establecer la imagen del avatar. 
-     * 
-     * @param Ruta establece avatar. 
-     */
-    void SetImage(String Ruta) {
-    }
+
 }

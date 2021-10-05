@@ -56,7 +56,7 @@ public class Validaciones {
      * @param y2 coordenada y2
      * @return arreglo.
      */
-    public int[] validaSeundoClick(int x1, int y1, int x2, int y2) {
+    public int[] validaSegundoClick(int x1, int y1, int x2, int y2) {
         int arreglo[];
         int arreglo2[];
         arreglo = validaCoordenadas(x1, y1);

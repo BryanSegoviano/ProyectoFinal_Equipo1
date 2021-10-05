@@ -57,6 +57,7 @@ public class DlgRegistro extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Crear avatar");
+        setResizable(false);
 
         jPanelRegistro.setBackground(new java.awt.Color(132, 174, 220));
         jPanelRegistro.setForeground(new java.awt.Color(255, 255, 255));
@@ -261,7 +262,7 @@ public class DlgRegistro extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelAvatar;
     private javax.swing.JLabel jLabelUsuario;
-    private javax.swing.JLabel jPanelImagen;
+    public javax.swing.JLabel jPanelImagen;
     private javax.swing.JPanel jPanelRegistro;
     private javax.swing.JTextField jTextUsuario;
     private javax.swing.JPanel panelImagen;

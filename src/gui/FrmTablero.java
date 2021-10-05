@@ -16,10 +16,11 @@ import util.Validaciones;
 public class FrmTablero extends javax.swing.JFrame {
     
     //Se crea variable estatica para dibujar en tablero. 
-    public static DibujadoTablero dibujar;
+    private DibujadoTablero dibujar;
     private Validaciones valida = new Validaciones();
     private int clicks = 1;
     private int X1, Y1, X2, Y2;
+    private Color color;
     /**
      * Metodo que inicializa el dibujado de tablero.
      *
@@ -604,7 +605,7 @@ public class FrmTablero extends javax.swing.JFrame {
     }//GEN-LAST:event_colorJugador4MouseClicked
 
     private void panelTableroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTableroMouseClicked
-        this.coordenadasClick2(evt);
+        this.coordenadaClick2(evt);
     }//GEN-LAST:event_panelTableroMouseClicked
 
     private void colorJugador1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_colorJugador1MouseClicked
@@ -667,7 +668,7 @@ public class FrmTablero extends javax.swing.JFrame {
      * 
      * @param evt 
      */
-    private void coordenadasClick2(java.awt.event.MouseEvent evt) {
+    private void coordenadaClick2(java.awt.event.MouseEvent evt) {
         int arreglo[];
         X2 = evt.getX();
         Y2 = evt.getY();
@@ -755,20 +756,17 @@ public class FrmTablero extends javax.swing.JFrame {
     private javax.swing.JLabel puntosJ4;
     // End of variables declaration//GEN-END:variables
 
-    int coordenadaX, coordenadaY;
-    Color color;
-    MouseListener eventos = new MouseListener() {
+    private MouseListener eventos = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
-            coordenadaX = e.getX();
-            coordenadaY = e.getY();
+           
             if (clicks == 1) {
                 coordenadaClick1(e);
                 clicks++;
             } else {
                 if (panelJ1.getBackground().equals(Color.YELLOW)) {
                     color = colorJugador1.getBackground();
-                    coordenadasClick2(e);
+                    coordenadaClick2(e);
                     if (clicks != 1) {
                         panelJ1.setBackground(Color.WHITE);
                         panelJ2.setBackground(Color.YELLOW);
@@ -778,7 +776,7 @@ public class FrmTablero extends javax.swing.JFrame {
                 }
                 if (panelJ2.getBackground().equals(Color.YELLOW)) {
                     color = colorJugador2.getBackground();
-                    coordenadasClick2(e);
+                    coordenadaClick2(e);
                     if (clicks != 1) {
                         panelJ2.setBackground(Color.WHITE);
                         panelJ3.setBackground(Color.YELLOW);
@@ -788,7 +786,7 @@ public class FrmTablero extends javax.swing.JFrame {
                 }
                 if (panelJ3.getBackground().equals(Color.YELLOW)) {
                     color = colorJugador3.getBackground();
-                    coordenadasClick2(e);
+                    coordenadaClick2(e);
                     if (clicks != 1) {
                         panelJ3.setBackground(Color.WHITE);
                         panelJ4.setBackground(Color.YELLOW);
@@ -799,7 +797,7 @@ public class FrmTablero extends javax.swing.JFrame {
                 }
                 if (panelJ4.getBackground().equals(Color.YELLOW)) {
                     color = colorJugador4.getBackground();
-                    coordenadasClick2(e);
+                    coordenadaClick2(e);
                     if (clicks != 1) {
                         panelJ4.setBackground(Color.WHITE);
                         panelJ1.setBackground(Color.YELLOW);
