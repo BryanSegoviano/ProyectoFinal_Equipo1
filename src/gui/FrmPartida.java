@@ -339,7 +339,7 @@ public class FrmPartida extends javax.swing.JFrame {
     // Solicita salir del panel de juego. 
     private void salir() {
         this.dispose();
-        FrmPanelJuego frmPanelJuego = new FrmPanelJuego();
+        FrmMenuPrincipal frmPanelJuego = new FrmMenuPrincipal();
         frmPanelJuego.setVisible(true);
     }
 

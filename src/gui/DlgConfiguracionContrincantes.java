@@ -11,7 +11,7 @@ import javax.swing.border.Border;
  * 
  * @author Administrador
  */
-public class DlgColores extends javax.swing.JDialog {
+public class DlgConfiguracionContrincantes extends javax.swing.JDialog {
 
     /**
      * Faltaria la relacion con el enumerador y asignarlo a un jugador, para
@@ -30,7 +30,7 @@ public class DlgColores extends javax.swing.JDialog {
      * @param modal
      * @param jugador
      */
-    public DlgColores(java.awt.Frame parent, boolean modal, String jugador) {
+    public DlgConfiguracionContrincantes(java.awt.Frame parent, boolean modal, String jugador) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(parent);

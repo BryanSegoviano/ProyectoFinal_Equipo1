@@ -1,22 +1,24 @@
 package gui;
 
 import control.JugadoresDAO;
+import fabrica.HilosFabrica;
+import fachada.IFachada;
 import javax.swing.JOptionPane;
-import server.HiloCrearPartida;
-import server.HiloUnirsePartida;
+
 /**
- * 
+ *
  * @author Administrador
  */
-public class FrmPanelJuego extends javax.swing.JFrame {
+public class FrmMenuPrincipal extends javax.swing.JFrame {
 
-    private Thread hilo;
-    private JugadoresDAO jugadoresDAO;
+    IFachada fachada;
+
     /**
      * Este metodo inicializa el panelJuego.
-     * 
+     *
      */
-    public FrmPanelJuego() {
+    public FrmMenuPrincipal() {
+        this.fachada = HilosFabrica.getInstance();
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -47,14 +49,15 @@ public class FrmPanelJuego extends javax.swing.JFrame {
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel1.setForeground(new java.awt.Color(0, 0, 0));
 
         jPanelFondoUsuario.setBackground(new java.awt.Color(153, 0, 153));
         jPanelFondoUsuario.setForeground(new java.awt.Color(255, 0, 0));
+        jPanelFondoUsuario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelBienvenido.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabelBienvenido.setForeground(new java.awt.Color(255, 255, 255));
         jLabelBienvenido.setText("Bienvenido");
+        jPanelFondoUsuario.add(jLabelBienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 11, -1, -1));
 
         panelImagen.setBackground(new java.awt.Color(255, 255, 255));
         panelImagen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -64,7 +67,7 @@ public class FrmPanelJuego extends javax.swing.JFrame {
         panelImagenLayout.setHorizontalGroup(
             panelImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelImagenLayout.createSequentialGroup()
-                .addComponent(jPanelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         panelImagenLayout.setVerticalGroup(
@@ -74,10 +77,13 @@ public class FrmPanelJuego extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        jPanelFondoUsuario.add(panelImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 111, 110, -1));
+
         jLabelNombreUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabelNombreUsuario.setForeground(new java.awt.Color(255, 255, 153));
         jLabelNombreUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelNombreUsuario.setText("Usuario");
+        jPanelFondoUsuario.add(jLabelNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 92, -1));
 
         btnCreaAvatar.setBackground(new java.awt.Color(153, 0, 153));
         btnCreaAvatar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -87,36 +93,7 @@ public class FrmPanelJuego extends javax.swing.JFrame {
                 btnCreaAvatarActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanelFondoUsuarioLayout = new javax.swing.GroupLayout(jPanelFondoUsuario);
-        jPanelFondoUsuario.setLayout(jPanelFondoUsuarioLayout);
-        jPanelFondoUsuarioLayout.setHorizontalGroup(
-            jPanelFondoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelFondoUsuarioLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(jPanelFondoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCreaAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanelFondoUsuarioLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanelFondoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelBienvenido)
-                            .addComponent(jLabelNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(40, Short.MAX_VALUE))
-        );
-        jPanelFondoUsuarioLayout.setVerticalGroup(
-            jPanelFondoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelFondoUsuarioLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelBienvenido)
-                .addGap(32, 32, 32)
-                .addComponent(jLabelNombreUsuario)
-                .addGap(18, 18, 18)
-                .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnCreaAvatar)
-                .addContainerGap(32, Short.MAX_VALUE))
-        );
+        jPanelFondoUsuario.add(btnCreaAvatar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 119, -1));
 
         jPanelFondoBotones.setBackground(new java.awt.Color(132, 174, 220));
 
@@ -155,7 +132,7 @@ public class FrmPanelJuego extends javax.swing.JFrame {
         jPanelFondoBotonesLayout.setHorizontalGroup(
             jPanelFondoBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFondoBotonesLayout.createSequentialGroup()
-                .addGap(0, 30, Short.MAX_VALUE)
+                .addGap(0, 28, Short.MAX_VALUE)
                 .addGroup(jPanelFondoBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCrearPartida, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelFondoBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,17 +160,14 @@ public class FrmPanelJuego extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanelFondoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanelFondoBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanelFondoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanelFondoBotones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanelFondoBotones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelFondoUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanelFondoUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+            .addComponent(jPanelFondoBotones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -225,40 +199,45 @@ public class FrmPanelJuego extends javax.swing.JFrame {
     private void btnCreaAvatarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreaAvatarActionPerformed
         this.creaAvatar();
     }//GEN-LAST:event_btnCreaAvatarActionPerformed
-     /**
+    /**
      * Este metodo se encarga de crear el avatar.
-     * 
+     *
      */
     private void creaAvatar() {
         DlgRegistro frmRegistro = new DlgRegistro(this, true);
         frmRegistro.setVisible(true);
         if (JugadoresDAO.jugadores[0] != null) {
             this.jPanelImagen.setIcon(JugadoresDAO.jugadores[0].getAvatar());
-            this.jLabelNombreUsuario.setText(JugadoresDAO.jugadores[0].getUsuario());
+            if (JugadoresDAO.jugadores[0].getUsuario() != null) {
+                this.jLabelNombreUsuario.setText(JugadoresDAO.jugadores[0].getUsuario());
+            }
         }
 
     }
+
     //Se establece crear partida mediante el uso de un hilo.
     private void crearPartida() {
         if (jLabelNombreUsuario.getText().equals("Usuario") || jPanelImagen.getIcon() == null) {
             JOptionPane.showOptionDialog(null, "No ha creado un avatar", "Error", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{}, null);
         } else {
             this.dispose();
-            hilo = new HiloCrearPartida();
-            hilo.start();
+            this.fachada.crearPartida();
         }
 
     }
-     //Se establece unirse a partida mediante el uso de un hilo.
+    //Se establece unirse a partida mediante el uso de un hilo.
+
     private void unirsePartida() {
         if (jLabelNombreUsuario.getText().equals("Usuario") || jPanelImagen.getIcon() == null) {
             JOptionPane.showOptionDialog(null, "No ha creado un avatar", "Error", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{}, null);
         } else {
-            this.dispose();
-            hilo = new HiloUnirsePartida();
-            hilo.start();
+            this.salir();
+            this.fachada.unirsePartida();
+            FrmPartida frmPartida = new FrmPartida(".");
+
         }
     }
+
     //Salir de partida. 
     private void salir() {
         this.dispose();

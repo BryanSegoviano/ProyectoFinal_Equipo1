@@ -615,7 +615,7 @@ public class FrmTablero extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         this.dispose();
-        FrmPanelJuego menu = new FrmPanelJuego();
+        FrmMenuPrincipal menu = new FrmMenuPrincipal();
         menu.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
     /**
@@ -624,7 +624,7 @@ public class FrmTablero extends javax.swing.JFrame {
      * @param jugador 
      */
     private void pantallaColores(String jugador) {
-        DlgColores dlgColores = new DlgColores(this, true, jugador);
+        DlgConfiguracionContrincantes dlgColores = new DlgConfiguracionContrincantes(this, true, jugador);
         dlgColores.setVisible(true);
     }
 
