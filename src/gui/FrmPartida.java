@@ -6,8 +6,13 @@
 package gui;
 
 import control.JugadoresDAO;
-import java.awt.Image;
-import javax.swing.ImageIcon;
+import dominio.Jugador;
+import dominio.Partida;
+import dominio.Tablero;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Random;
 
 /**
  *
@@ -15,21 +20,22 @@ import javax.swing.ImageIcon;
  */
 public class FrmPartida extends javax.swing.JFrame {
 
+    private Partida partida;
+
     /**
      * Carga jugadores de la partida.
      *
      * @param msj
+     * @param partida
      */
-    public FrmPartida(String msj) {
+    public FrmPartida(String msj, Partida partida) {
         initComponents();
         setLocationRelativeTo(null);
-        this.nombreJ1.setText(JugadoresDAO.jugadores[0].getUsuario());
-        this.nombreJ2.setText(JugadoresDAO.jugadores[1].getUsuario());
-        this.nombreJ3.setText(JugadoresDAO.jugadores[2].getUsuario());
-        this.nombreJ4.setText(JugadoresDAO.jugadores[3].getUsuario());
+        this.crearPartida(partida);
+        this.establecerTurnos();
+        this.cargarJugadores();
         if (msj.equals("")) {
             ocultarPaneles();
-
         }
 
     }
@@ -100,7 +106,6 @@ public class FrmPartida extends javax.swing.JFrame {
         btnSolicitarInicio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnSolicitarInicio.setText("Solicitar inicio de juego");
         btnSolicitarInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnSolicitarInicio.setEnabled(false);
         btnSolicitarInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSolicitarInicioActionPerformed(evt);
@@ -332,7 +337,8 @@ public class FrmPartida extends javax.swing.JFrame {
 
     private void solicitarInicio() {
         this.dispose();
-        FrmTablero frmTablero = new FrmTablero();
+        this.establecerTamañoTablero();
+        FrmTablero frmTablero = new FrmTablero(this.partida);
         frmTablero.setVisible(true);
     }
 
@@ -348,6 +354,53 @@ public class FrmPartida extends javax.swing.JFrame {
         jPanelJugador2.setVisible(false);
         jPanelJugador3.setVisible(false);
         jPanelJugador4.setVisible(false);
+    }
+
+    private void crearPartida(Partida partida) {
+        this.partida = partida;
+    }
+
+    private void cargarJugadores() {
+        this.nombreJ1.setText(JugadoresDAO.jugadores[0].getUsuario());
+        this.nombreJ2.setText(JugadoresDAO.jugadores[1].getUsuario());
+        this.nombreJ3.setText(JugadoresDAO.jugadores[2].getUsuario());
+        this.nombreJ4.setText(JugadoresDAO.jugadores[3].getUsuario());
+    }
+
+    private void establecerTamañoTablero() {
+        Tablero tablero = new Tablero();
+        if (JugadoresDAO.jugadores.length == 4) {
+            tablero.setDimension(40);
+        }
+        if (JugadoresDAO.jugadores.length == 3) {
+            tablero.setDimension(20);
+        }
+        if (JugadoresDAO.jugadores.length == 2) {
+            tablero.setDimension(10);
+        }
+        this.partida.setTablero(tablero);
+    }
+
+    private void establecerTurnos() {
+        Random generadorAzar = new Random();
+        LinkedList turnos = new LinkedList();
+        List numerosRepetidos = new ArrayList<Integer>();
+        Jugador[] listaJugadores = JugadoresDAO.jugadores;
+        int numeroAzar = 0;
+        boolean turnosListos = true;
+
+        while (turnosListos) {
+            numeroAzar = generadorAzar.nextInt(4);
+            if (!(numerosRepetidos.contains(numeroAzar))) {
+                turnos.offer(listaJugadores[numeroAzar]);
+                numerosRepetidos.add(numeroAzar);
+                System.out.println(numeroAzar);
+            }
+            if (turnos.size() == 4) {
+                turnosListos = false;
+            }
+        }
+        this.partida.setTurnos(turnos);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

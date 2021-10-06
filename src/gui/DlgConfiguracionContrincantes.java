@@ -2,13 +2,15 @@ package gui;
 
 import control.JugadoresDAO;
 import dominio.ColorJ;
+import dominio.ConfiguracionContrincantes;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
+
 /**
  * Cuadro de dialogo que registra el color del jugador
- * 
+ *
  * @author Administrador
  */
 public class DlgConfiguracionContrincantes extends javax.swing.JDialog {
@@ -22,11 +24,12 @@ public class DlgConfiguracionContrincantes extends javax.swing.JDialog {
     private ColorJ color;
     //Forma para saber a que jugador corresponde el color a cambiar
     private String nombreUsuario;
+    private ConfiguracionContrincantes configContrincantes;
 
-   /**
+    /**
      * Se crea DlgColores
      *
-     * @param parent 
+     * @param parent
      * @param modal
      * @param jugador
      */
@@ -35,6 +38,7 @@ public class DlgConfiguracionContrincantes extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(parent);
         this.nombreUsuario = jugador;
+        this.configContrincantes = new ConfiguracionContrincantes(JugadoresDAO.jugadores);
     }
 
     /**
@@ -207,8 +211,8 @@ public class DlgConfiguracionContrincantes extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
     /**
      * ActionEvent de JButton para cancelar el registro.
-     * 
-     * @param evt 
+     *
+     * @param evt
      */
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
 
@@ -216,8 +220,8 @@ public class DlgConfiguracionContrincantes extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelarActionPerformed
     /**
      * ActionEvent de JButton para registrar color seleccionado.
-     * 
-     * @param evt 
+     *
+     * @param evt
      */
     private void btnElegirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElegirActionPerformed
         this.verificarColorRepetido();
@@ -279,7 +283,8 @@ public class DlgConfiguracionContrincantes extends javax.swing.JDialog {
         this.color = ColorJ.INDIGO;
         this.btnIndigo.setBorder(this.establecerBordeElegido());
     }//GEN-LAST:event_btnIndigoMouseClicked
-     //Este metodo se encarga de establecer el color de cada jugador. 
+    //Este metodo se encarga de establecer el color de cada jugador. 
+
     private void establecerColorJugador() {
         for (int i = 0; i < JugadoresDAO.jugadores.length; i++) {
             if (JugadoresDAO.jugadores[i].getUsuario().equals(this.nombreUsuario)) {
@@ -288,16 +293,18 @@ public class DlgConfiguracionContrincantes extends javax.swing.JDialog {
             }
         }
     }
+
     /**
-     * Se establece el borde elegido. 
-     * 
+     * Se establece el borde elegido.
+     *
      * @return border
      */
     private Border establecerBordeElegido() {
         Border border = BorderFactory.createLineBorder(Color.YELLOW, 3);
         return border;
     }
-     //Se limpian los bordes. 
+    //Se limpian los bordes. 
+
     private void limpiarBordes() {
         Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
         this.btnRojo.setBorder(border);

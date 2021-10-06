@@ -2,13 +2,14 @@ package gui;
 
 import control.JugadoresDAO;
 import dominio.ColorJ;
+import dominio.Partida;
+import dominio.Tablero;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import util.ConversionColores;
 import util.DibujadoTablero;
-import util.Validaciones;
 /**
  * 
  * @author Administrador
@@ -16,16 +17,19 @@ import util.Validaciones;
 public class FrmTablero extends javax.swing.JFrame {
     
     //Se crea variable estatica para dibujar en tablero. 
-    private DibujadoTablero dibujar;
-    private Validaciones valida = new Validaciones();
+    private final DibujadoTablero dibujar;
+//    private Validaciones valida = new Validaciones();
     private int clicks = 1;
     private int X1, Y1, X2, Y2;
     private Color color;
+    private Partida partida;
     /**
      * Metodo que inicializa el dibujado de tablero.
      *
+     * @param partida
+     * @param tablero
      */
-    public FrmTablero() {
+    public FrmTablero(Partida partida) {
         initComponents();
         this.setLocationRelativeTo(null);
         dibujar = new DibujadoTablero();
@@ -34,6 +38,7 @@ public class FrmTablero extends javax.swing.JFrame {
         this.panelTablero.add(dibujar);
         this.dibujarTablero();
         this.establecerInfoJugadores();
+        this.partida = partida;
     }
     /**
      * Este metodo se encarga de establecer la informacion de cada jugador 
@@ -658,7 +663,7 @@ public class FrmTablero extends javax.swing.JFrame {
         int arreglo[];
         this.X1 = evt.getX();
         this.Y1 = evt.getY();
-        arreglo = valida.validaCoordenadas(X1, Y1);
+        arreglo = dibujar.validaCoordenadas(X1, Y1);
         X1 = arreglo[0];
         Y1 = arreglo[1];
         System.out.println("\n" + X1 + "," + Y1);
@@ -672,7 +677,7 @@ public class FrmTablero extends javax.swing.JFrame {
         int arreglo[];
         X2 = evt.getX();
         Y2 = evt.getY();
-        arreglo = valida.validaCoordenadas(X2, Y2);
+        arreglo = dibujar.validaCoordenadas(X2, Y2);
         X2 = arreglo[0];
         Y2 = arreglo[1];
         System.out.println(X2 + "," + Y2);

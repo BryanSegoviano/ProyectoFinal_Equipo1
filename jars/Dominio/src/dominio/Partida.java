@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class Partida {
     
-    private Jugador jugador;
+    private Jugador[] jugadoresPartida;
     private Tablero tablero;
     private List<Linea> historialCambios;
     private LinkedList<Jugador> turnos;
@@ -24,27 +24,27 @@ public class Partida {
      * @param historialCambios
      * @param turnos 
      */
-    public Partida(Jugador jugador, Tablero tablero, List<Linea> historialCambios, LinkedList<Jugador> turnos) {
-        this.jugador = jugador;
+    public Partida(Jugador[] jugador, Tablero tablero, List<Linea> historialCambios, LinkedList<Jugador> turnos) {
+        this.jugadoresPartida = jugador;
         this.tablero = tablero;
         this.historialCambios = historialCambios;
         this.turnos = turnos;
     }
     /**
-     * Se obtiene el jugador
+     * Se obtiene el jugadoresPartida
      * 
-     * @return jugador
+     * @return jugadoresPartida
      */
-    public Jugador getJugador() {
-        return jugador;
+    public Jugador[] getJugadoresPartida() {
+        return jugadoresPartida;
     }
     /**
-     * Se establece el jugador
+     * Se establece el jugadoresPartida
      * 
-     * @param jugador 
+     * @param jugadoresPartida 
      */
-    public void setJugador(Jugador jugador) {
-        this.jugador = jugador;
+    public void setJugadoresPartida(Jugador[] jugadoresPartida) {
+        this.jugadoresPartida = jugadoresPartida;
     }
     /**
      * Se obtiene el tablero
@@ -79,7 +79,7 @@ public class Partida {
         this.historialCambios = historialCambios;
     }
     /**
-     * Se obtien la lista jugador de turnos
+     * Se obtien la lista jugadoresPartida de turnos
      * 
      * @return turnos
      */
@@ -87,7 +87,7 @@ public class Partida {
         return turnos;
     }
     /**
-     * Se establece la lista jugador de turno
+     * Se establece la lista jugadoresPartida de turno
      * 
      * @param turnos 
      */
@@ -97,11 +97,11 @@ public class Partida {
     /**
      * Devuelve los atributos de la partida 
      * 
-     * @return jugador, tablero, historialCambios y turnos
+     * @return jugadoresPartida, tablero, historialCambios y turnos
      */
     @Override
     public String toString() {
-        return "Partida{" + "jugador=" + jugador + ", tablero=" + tablero + ", historialCambios=" + historialCambios + ", turnos=" + turnos + '}';
+        return "Partida{" + "jugador=" + jugadoresPartida + ", tablero=" + tablero + ", historialCambios=" + historialCambios + ", turnos=" + turnos + '}';
     }
         
 }

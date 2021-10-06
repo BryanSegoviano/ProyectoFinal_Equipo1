@@ -10,6 +10,10 @@ public class Tablero {
     
     private int dimension;
     private List<Cuadro> listaCuadros;
+
+    public Tablero() {
+        
+    }
     /**
      * Constructor que inicializa la dimencion y la lista de los cuadros.
      * 

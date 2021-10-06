@@ -1,6 +1,7 @@
 package gui;
 
 import control.JugadoresDAO;
+import dominio.Partida;
 import fabrica.HilosFabrica;
 import fachada.IFachada;
 import javax.swing.JOptionPane;
@@ -220,8 +221,12 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         if (jLabelNombreUsuario.getText().equals("Usuario") || jPanelImagen.getIcon() == null) {
             JOptionPane.showOptionDialog(null, "No ha creado un avatar", "Error", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{}, null);
         } else {
-            this.dispose();
-            this.fachada.crearPartida();
+            this.salir();
+//            this.fachada.crearPartida();
+            Partida partidaCreada = new Partida();
+            partidaCreada.setJugadoresPartida(JugadoresDAO.jugadores);
+            FrmPartida frmPartida = new FrmPartida(".", partidaCreada);
+            frmPartida.setVisible(true);
         }
 
     }
@@ -232,9 +237,12 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
             JOptionPane.showOptionDialog(null, "No ha creado un avatar", "Error", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{}, null);
         } else {
             this.salir();
-            this.fachada.unirsePartida();
-            FrmPartida frmPartida = new FrmPartida(".");
+//            this.fachada.unirsePartida();
 
+            Partida partidaCreada = new Partida();
+            partidaCreada.setJugadoresPartida(JugadoresDAO.jugadores);
+            FrmPartida frmPartida = new FrmPartida(".", partidaCreada);
+            frmPartida.setVisible(true);
         }
     }
 

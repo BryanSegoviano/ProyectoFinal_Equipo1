@@ -18,8 +18,6 @@ import util.TextPrompt;
 public class DlgRegistro extends javax.swing.JDialog {
 
     private TextPrompt texto;
-    private String Archivo;
-    private JugadoresDAO jugadoresDAO;
 
     /**
      * Se crea DlgRegistro.
@@ -31,7 +29,6 @@ public class DlgRegistro extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.texto = new TextPrompt(" Ingrese usuario ", jTextUsuario);
-        this.jugadoresDAO = new JugadoresDAO();
         setLocationRelativeTo(parent);
     }
 
@@ -188,7 +185,7 @@ public class DlgRegistro extends javax.swing.JDialog {
      * @param evt 
      */
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        compruebaInformacion();
+        establecerNombre();
     }//GEN-LAST:event_btnRegistrarActionPerformed
     /**
      * ActionEvent de JButton para establecer el avatar de jugadores.
@@ -234,7 +231,7 @@ public class DlgRegistro extends javax.swing.JDialog {
      * Este metodo se encarga de comprobar la informacion del jugador.
      * 
      */
-    private void compruebaInformacion() {
+    private void establecerNombre() {
         String usuario = jTextUsuario.getText();
 
         if (usuario.isEmpty()) {

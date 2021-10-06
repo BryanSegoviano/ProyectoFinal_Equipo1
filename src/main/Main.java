@@ -1,10 +1,13 @@
 package main;
 
+import control.JugadoresDAO;
 import gui.FrmMenuPrincipal;
 
 public class Main {
 
     public static void main(String[] args) {
+        
+        JugadoresDAO jugadoresDAO = new JugadoresDAO();
               /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
