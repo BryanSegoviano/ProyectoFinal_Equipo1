@@ -1,5 +1,11 @@
-package gui;
+/**
+ * Paquete presentacion
+ */
+package presentacion;
 
+/**
+ * Imports utilizados
+ */
 import control.JugadoresDAO;
 import dominio.Partida;
 import fabrica.HilosFabrica;
@@ -7,16 +13,19 @@ import fachada.IFachada;
 import javax.swing.JOptionPane;
 
 /**
+ * Clase FrmMenuPrincipal que extiende de Jframe, que ayudara para poder manejar
+ * los diferentes tipos de partida a la cual se desea ingresar
  *
- * @author Administrador
  */
 public class FrmMenuPrincipal extends javax.swing.JFrame {
 
+    /**
+     * Atributos de la clase
+     */
     IFachada fachada;
 
     /**
-     * Este metodo inicializa el panelJuego.
-     *
+     * Constructor que inicia y obtiene instancia de la clase IFachada
      */
     public FrmMenuPrincipal() {
         this.fachada = HilosFabrica.getInstance();
@@ -90,6 +99,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         btnCreaAvatar.setBackground(new java.awt.Color(153, 0, 153));
         btnCreaAvatar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnCreaAvatar.setText("Crea tu avatar");
+        btnCreaAvatar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnCreaAvatar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreaAvatarActionPerformed(evt);
@@ -175,14 +185,29 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Acción de boton para crear partidas
+     *
+     * @param evt Tipo de eventos
+     */
     private void btnCrearPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearPartidaActionPerformed
         this.crearPartida();
     }//GEN-LAST:event_btnCrearPartidaActionPerformed
 
+    /**
+     * Acción de boton para unirse a partidas
+     *
+     * @param evt Tipo de eventos
+     */
     private void btnUnirsePartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUnirsePartidaActionPerformed
         this.unirsePartida();
     }//GEN-LAST:event_btnUnirsePartidaActionPerformed
 
+    /**
+     * Acción de boton para salir de partida
+     *
+     * @param evt Tipo de eventos
+     */
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
@@ -190,7 +215,8 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     private void btnCreaAvatarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreaAvatarActionPerformed
         this.creaAvatar();
     }//GEN-LAST:event_btnCreaAvatarActionPerformed
-    /**
+
+   /**
      * Este metodo se encarga de crear el avatar.
      *
      */
@@ -206,19 +232,20 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
 
     }
 
-    //Se establece crear partida mediante el uso de un hilo.
+    /**
+     * Método para crear una partida en base a los hilos simulando una conexión
+     * de red
+     */
     private void crearPartida() {
         if (jLabelNombreUsuario.getText().equals("Usuario") || jPanelImagen.getIcon() == null) {
             JOptionPane.showOptionDialog(null, "No ha creado un avatar", "Error", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{}, null);
         } else {
             this.dispose();
+            this.fachada.crearPartida();
             Partida partidaCreada = new Partida();
             partidaCreada.setJugadoresPartida(JugadoresDAO.jugadores);
             FrmPartida frmPartida = new FrmPartida("", partidaCreada);
-
             frmPartida.setVisible(true);
-
-            this.fachada.crearPartida();
 
             new Thread(() -> {
                 try {
@@ -243,8 +270,11 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         }
 
     }
-//Se establece unirse a partida mediante el uso de un hilo.
 
+    /**
+     * Método para unirse a una partida en base a los hilos simulando una
+     * conexión de red
+     */
     private void unirsePartida() {
         if (jLabelNombreUsuario.getText().equals("Usuario") || jPanelImagen.getIcon() == null) {
             JOptionPane.showOptionDialog(null, "No ha creado un avatar", "Error", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{}, null);
@@ -280,7 +310,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelFondoBotones;
     private javax.swing.JPanel jPanelFondoUsuario;
-    public javax.swing.JLabel jPanelImagen;
+    private javax.swing.JLabel jPanelImagen;
     private javax.swing.JPanel panelImagen;
     // End of variables declaration//GEN-END:variables
 

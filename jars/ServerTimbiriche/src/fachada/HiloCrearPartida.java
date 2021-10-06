@@ -5,10 +5,16 @@ package fachada;
 
 /**
  *
- * @author Carlos Antonio Valenzuela Valdez
+ * Clase HiloCrearPartida que extiende de la clase Thread(hilos), que se utiliza
+ * para simular la creación de una partida mediante la unión de diversos
+ * jugadores.
  */
 public class HiloCrearPartida extends Thread {
 
+    /**
+     * Método run() que se ejecuta en segundo plano para la unión de los
+     * diferentes jugadores.
+     */
     @Override
     public void run() {
         try {

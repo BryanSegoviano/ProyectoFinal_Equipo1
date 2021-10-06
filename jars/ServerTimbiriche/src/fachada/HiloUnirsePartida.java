@@ -4,22 +4,18 @@
 package fachada;
 
 //Imports utilizados para la clase HIloUnirsePartida
-import java.awt.AWTException;
-import java.awt.Robot;
-import java.awt.event.KeyEvent;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author Carlos Antonio Valenzuela Valdez
+ * Clase HiloUnirsePartida que extiende de la clase Thread(hilos), que se
+ * utiliza para simular la unión a una partida ya creada.
  */
 public class HiloUnirsePartida extends Thread {
 
+    /**
+     * Método run() que se ejecuta en segundo plano para unirse a una partida.
+     */
     @Override
     public void run() {
         JOptionPane jop = new JOptionPane();

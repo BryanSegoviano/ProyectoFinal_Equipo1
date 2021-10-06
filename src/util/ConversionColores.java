@@ -1,19 +1,24 @@
+/**
+ * Paquete util
+ */
 package util;
 
+/**
+ * Imports utilizados
+ */
 import dominio.ColorJ;
 
 /**
- * Clase que establece la convercion de los colores.
- * 
- * @author Administrador
+ * Clase que establece la converción de los colores.
+ *
  */
 public class ConversionColores {
-    
+
     /**
-     * Metodo estatico que establece la conversion de colores. 
-     * 
-     * @param colorTexto 
-     * @return null.
+     * Metodo estatico que establece la conversion de colores.
+     *
+     * @param colorTexto Color al que se hara referencia en la comparación
+     * @return Formato de los colores HEX
      */
     public static String conversionColorHex(ColorJ colorTexto) {
         if (colorTexto.equals(ColorJ.ROJO)) {
@@ -37,7 +42,7 @@ public class ConversionColores {
         if (colorTexto.equals(ColorJ.INDIGO)) {
             return "#0066cb";
         }
-        
+
         return null;
     }
 

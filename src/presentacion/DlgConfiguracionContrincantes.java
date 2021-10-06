@@ -1,5 +1,11 @@
-package gui;
+/**
+ * Paquete presentacion
+ */
+package presentacion;
 
+/**
+ * Imports utilizados
+ */
 import control.JugadoresDAO;
 import dominio.ColorJ;
 import dominio.ConfiguracionContrincantes;
@@ -11,7 +17,6 @@ import javax.swing.border.Border;
 /**
  * Cuadro de dialogo que registra el color del jugador
  *
- * @author Administrador
  */
 public class DlgConfiguracionContrincantes extends javax.swing.JDialog {
 
@@ -27,11 +32,12 @@ public class DlgConfiguracionContrincantes extends javax.swing.JDialog {
     private ConfiguracionContrincantes configContrincantes;
 
     /**
-     * Se crea DlgColores
+     * DlgConfiguracionContrincantes en la cual se inicializan los atributos al
+     * valor de sus parametros
      *
-     * @param parent
-     * @param modal
-     * @param jugador
+     * @param parent Componente al cual se hara referencia
+     * @param modal Modal del tipo boolean
+     * @param jugador Jugador al cual se modificara
      */
     public DlgConfiguracionContrincantes(java.awt.Frame parent, boolean modal, String jugador) {
         super(parent, modal);
@@ -81,6 +87,7 @@ public class DlgConfiguracionContrincantes extends javax.swing.JDialog {
 
         btnAzul.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/azul.PNG"))); // NOI18N
         btnAzul.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        btnAzul.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAzul.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAzulMouseClicked(evt);
@@ -90,6 +97,7 @@ public class DlgConfiguracionContrincantes extends javax.swing.JDialog {
 
         btnIndigo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/indigo.PNG"))); // NOI18N
         btnIndigo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        btnIndigo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnIndigo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnIndigoMouseClicked(evt);
@@ -99,6 +107,7 @@ public class DlgConfiguracionContrincantes extends javax.swing.JDialog {
 
         btnVerde.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/verde.PNG"))); // NOI18N
         btnVerde.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        btnVerde.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVerde.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnVerdeMouseClicked(evt);
@@ -108,6 +117,7 @@ public class DlgConfiguracionContrincantes extends javax.swing.JDialog {
 
         btnNaranja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/narnaja.png"))); // NOI18N
         btnNaranja.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        btnNaranja.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnNaranja.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnNaranjaMouseClicked(evt);
@@ -117,6 +127,7 @@ public class DlgConfiguracionContrincantes extends javax.swing.JDialog {
 
         btnRojo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/rojo.png"))); // NOI18N
         btnRojo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        btnRojo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRojo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnRojoMouseClicked(evt);
@@ -126,6 +137,7 @@ public class DlgConfiguracionContrincantes extends javax.swing.JDialog {
 
         btnVioleta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/violeta.PNG"))); // NOI18N
         btnVioleta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        btnVioleta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVioleta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnVioletaMouseClicked(evt);
@@ -163,6 +175,7 @@ public class DlgConfiguracionContrincantes extends javax.swing.JDialog {
 
         btnAmarillo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/amarillo.PNG"))); // NOI18N
         btnAmarillo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        btnAmarillo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAmarillo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAmarilloMouseClicked(evt);
@@ -173,7 +186,7 @@ public class DlgConfiguracionContrincantes extends javax.swing.JDialog {
         btnCancelar.setBackground(new java.awt.Color(255, 255, 255));
         btnCancelar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnCancelar.setText("Cancelar");
-        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
@@ -184,7 +197,7 @@ public class DlgConfiguracionContrincantes extends javax.swing.JDialog {
         btnElegir.setBackground(new java.awt.Color(255, 255, 255));
         btnElegir.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnElegir.setText("Elegir");
-        btnElegir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnElegir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnElegir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnElegirActionPerformed(evt);
@@ -212,7 +225,7 @@ public class DlgConfiguracionContrincantes extends javax.swing.JDialog {
     /**
      * ActionEvent de JButton para cancelar el registro.
      *
-     * @param evt
+     * @param evt Tipo de evento
      */
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.dispose();
@@ -220,13 +233,18 @@ public class DlgConfiguracionContrincantes extends javax.swing.JDialog {
     /**
      * ActionEvent de JButton para registrar color seleccionado.
      *
-     * @param evt
+     * @param evt Tipo de evento
      */
     private void btnElegirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElegirActionPerformed
         this.verificarColorRepetido();
         this.dispose();
     }//GEN-LAST:event_btnElegirActionPerformed
 
+    /**
+     * Seleccion boton rojo para eleccion
+     *
+     * @param evt Tipo de evento
+     */
     private void btnRojoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRojoMouseClicked
         //HEX: #f51209
         //RGB: rgba(245,18,9,255)
@@ -235,6 +253,11 @@ public class DlgConfiguracionContrincantes extends javax.swing.JDialog {
         this.btnRojo.setBorder(this.establecerBordeElegido());
     }//GEN-LAST:event_btnRojoMouseClicked
 
+    /**
+     * Seleccion boton violeta para eleccion
+     *
+     * @param evt Tipo de evento
+     */
     private void btnVioletaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVioletaMouseClicked
         //HEX: #973598
         //RGB: rgba(151,53,152,255)
@@ -243,6 +266,11 @@ public class DlgConfiguracionContrincantes extends javax.swing.JDialog {
         this.btnVioleta.setBorder(this.establecerBordeElegido());
     }//GEN-LAST:event_btnVioletaMouseClicked
 
+    /**
+     * Seleccion boton naranja para eleccion
+     *
+     * @param evt Tipo de evento
+     */
     private void btnNaranjaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNaranjaMouseClicked
         //HEX: #f38e34
         //RGB: rgba(243,142,52,255)
@@ -251,6 +279,11 @@ public class DlgConfiguracionContrincantes extends javax.swing.JDialog {
         this.btnNaranja.setBorder(this.establecerBordeElegido());
     }//GEN-LAST:event_btnNaranjaMouseClicked
 
+    /**
+     * Seleccion boton amarillo para eleccion
+     *
+     * @param evt Tipo de evento
+     */
     private void btnAmarilloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAmarilloMouseClicked
         //HEX: #f4f400
         //RGB: rgba(244,244,0,255)
@@ -259,6 +292,11 @@ public class DlgConfiguracionContrincantes extends javax.swing.JDialog {
         this.btnAmarillo.setBorder(this.establecerBordeElegido());
     }//GEN-LAST:event_btnAmarilloMouseClicked
 
+    /**
+     * Seleccion boton verde para eleccion
+     *
+     * @param evt Tipo de evento
+     */
     private void btnVerdeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerdeMouseClicked
         //HEX: #68cb3c
         //RGB: rgba(104,203,60,255)
@@ -267,6 +305,11 @@ public class DlgConfiguracionContrincantes extends javax.swing.JDialog {
         this.btnVerde.setBorder(this.establecerBordeElegido());
     }//GEN-LAST:event_btnVerdeMouseClicked
 
+    /**
+     * Seleccion boton azul para eleccion
+     *
+     * @param evt Tipo de evento
+     */
     private void btnAzulMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAzulMouseClicked
         //HEX: #18d2e9
         //RGB: rgba(24,210,233,255)
@@ -275,6 +318,11 @@ public class DlgConfiguracionContrincantes extends javax.swing.JDialog {
         this.btnAzul.setBorder(this.establecerBordeElegido());
     }//GEN-LAST:event_btnAzulMouseClicked
 
+    /**
+     * Seleccion boton indigo para eleccion
+     *
+     * @param evt Tipo de evento
+     */
     private void btnIndigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIndigoMouseClicked
         //HEX: #0066cb
         //RGB: rgba(0,102,203,255)
@@ -282,8 +330,10 @@ public class DlgConfiguracionContrincantes extends javax.swing.JDialog {
         this.color = ColorJ.INDIGO;
         this.btnIndigo.setBorder(this.establecerBordeElegido());
     }//GEN-LAST:event_btnIndigoMouseClicked
-    //Este metodo se encarga de establecer el color de cada jugador. 
 
+    /**
+     * Método para establecer los colores al jugador
+     */
     private void establecerColorJugador() {
         for (int i = 0; i < JugadoresDAO.jugadores.length; i++) {
             if (JugadoresDAO.jugadores[i].getUsuario().equals(this.nombreUsuario)) {
@@ -296,14 +346,16 @@ public class DlgConfiguracionContrincantes extends javax.swing.JDialog {
     /**
      * Se establece el borde elegido.
      *
-     * @return border
+     * @return Elemento del tipo border
      */
     private Border establecerBordeElegido() {
         Border border = BorderFactory.createLineBorder(Color.YELLOW, 3);
         return border;
     }
-    //Se limpian los bordes. 
 
+    /**
+     * Método para limpiar los bordes de los botones
+     */
     private void limpiarBordes() {
         Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
         this.btnRojo.setBorder(border);
@@ -315,10 +367,12 @@ public class DlgConfiguracionContrincantes extends javax.swing.JDialog {
         this.btnIndigo.setBorder(border);
     }
 
-    //Metodo que se encargara de validar que no se repitan los colores,
-    //esto se hara con la clase control solicitando los jugadores y de estos
-    //sus colores, validando que no se repita con el que se haya seleccionado
-    //al presionar elegir
+    /**
+     * Metodo que se encargara de validar que no se repitan los colores, esto se
+     * hara con la clase control solicitando los jugadores y de estos sus
+     * colores, validando que no se repita con el que se haya seleccionado al
+     * presionar elegir
+     */
     private void verificarColorRepetido() {
         for (int i = 0; i < JugadoresDAO.jugadores.length; i++) {
             ColorJ colorComparar = JugadoresDAO.jugadores[i].getColor();

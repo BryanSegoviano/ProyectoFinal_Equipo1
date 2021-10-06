@@ -1,6 +1,11 @@
-package gui;
+/**
+ * Paquete presentacion
+ */
+package presentacion;
 
-import control.JugadoresDAO;
+/**
+ * Imports utilizados
+ */
 import dominio.ColorJ;
 import dominio.Jugador;
 import dominio.Partida;
@@ -13,14 +18,15 @@ import util.ConversionColores;
 import util.DibujadoTablero;
 
 /**
+ * Clase FrmTablero que extiende de Jframe para hacer uso de interfaaz
  *
- * @author Administrador
  */
 public class FrmTablero extends javax.swing.JFrame {
 
-    //Se crea variable estatica para dibujar en tablero. 
+    /**
+     * Declaración de atributos
+     */
     private final DibujadoTablero dibujar;
-//    private Validaciones valida = new Validaciones();
     private int clicks = 1;
     private int X1, Y1, X2, Y2;
     private Color color;
@@ -28,10 +34,10 @@ public class FrmTablero extends javax.swing.JFrame {
     LinkedList turnos;
 
     /**
-     * Metodo que inicializa el dibujado de tablero.
+     * Constructor que inicializa los atributos, crea panel y añade sus eventos
+     * al JpanelTablero de la misma clase
      *
-     * @param partida
-     * @param tablero
+     * @param partida Partida con la cual se interactua
      */
     public FrmTablero(Partida partida) {
         initComponents();
@@ -166,6 +172,7 @@ public class FrmTablero extends javax.swing.JFrame {
 
         colorJugador1.setBackground(new java.awt.Color(204, 204, 204));
         colorJugador1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        colorJugador1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         colorJugador1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 colorJugador1MouseClicked(evt);
@@ -257,6 +264,7 @@ public class FrmTablero extends javax.swing.JFrame {
 
         colorJugador2.setBackground(new java.awt.Color(204, 204, 204));
         colorJugador2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        colorJugador2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         colorJugador2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 colorJugador2MouseClicked(evt);
@@ -348,6 +356,7 @@ public class FrmTablero extends javax.swing.JFrame {
 
         colorJugador3.setBackground(new java.awt.Color(204, 204, 204));
         colorJugador3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        colorJugador3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         colorJugador3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 colorJugador3MouseClicked(evt);
@@ -440,6 +449,7 @@ public class FrmTablero extends javax.swing.JFrame {
 
         colorJugador4.setBackground(new java.awt.Color(204, 204, 204));
         colorJugador4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        colorJugador4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         colorJugador4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 colorJugador4MouseClicked(evt);
@@ -644,13 +654,18 @@ public class FrmTablero extends javax.swing.JFrame {
     /**
      * Pantalla que muestra el color de cada jugador.
      *
-     * @param jugador
+     * @param jugador Jugador al que se establecera el color
      */
     private void pantallaColores(String jugador) {
         DlgConfiguracionContrincantes dlgColores = new DlgConfiguracionContrincantes(this, true, jugador);
         dlgColores.setVisible(true);
     }
 
+    /**
+     * Método que obtiene las coordenadas
+     *
+     * @param evt Tipo de evento
+     */
     private void coordenadaClick1(java.awt.event.MouseEvent evt) {
         int arreglo[];
         this.X1 = evt.getX();
@@ -658,13 +673,13 @@ public class FrmTablero extends javax.swing.JFrame {
         arreglo = dibujar.validaCoordenadas(X1, Y1);
         X1 = arreglo[0];
         Y1 = arreglo[1];
-        System.out.println("\n" + X1 + "," + Y1);
     }
 
     /**
-     * MouseEvent para validar las cordenadas en tablero.
+     * Método para las coordenadas click2 dentro del tablero, que llama a los
+     * métodos de dibujar en caso de que se requiera
      *
-     * @param evt
+     * @param evt Tipo de evento
      */
     private void coordenadaClick2(java.awt.event.MouseEvent evt) {
         int arreglo[];
@@ -673,11 +688,8 @@ public class FrmTablero extends javax.swing.JFrame {
         arreglo = dibujar.validaCoordenadas(X2, Y2);
         X2 = arreglo[0];
         Y2 = arreglo[1];
-        System.out.println(X2 + "," + Y2);
         int diferenciaX = Math.abs(X1 - X2);
         int diferenciaY = Math.abs(Y1 - Y2);
-        System.out.println(diferenciaX);
-        System.out.println(diferenciaY);
         if (diferenciaX > 20 || diferenciaY > 16 || (diferenciaX == 20 && diferenciaY == 16) || (diferenciaX == 0 && diferenciaY == 0)) {
             clicks = 1;
         } else {
@@ -690,7 +702,7 @@ public class FrmTablero extends javax.swing.JFrame {
     /**
      * Este metodo se encarga de cabiar el color de los jugadores.
      *
-     * @param jugador
+     * @param jugador Jugador al que se le modificara su color
      */
     private void cambiarColor(String jugador) {
         Jugador jugador1 = (Jugador) turnos.get(0);
@@ -717,7 +729,9 @@ public class FrmTablero extends javax.swing.JFrame {
 
     }
 
-    //Se dibuja el tablero.
+    /**
+     * Método para dibujar el tablero dentro del panel
+     */
     private void dibujarTablero() {
         this.dibujar.paint((Graphics2D) this.panelTablero.getGraphics());
     }
@@ -760,7 +774,12 @@ public class FrmTablero extends javax.swing.JFrame {
     private javax.swing.JLabel puntosJ4;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Declaración de un Objeto del tipo MouseListener para hacer uso de sus
+     * eventos abstractos
+     */
     private MouseListener eventos = new MouseListener() {
+
         @Override
         public void mouseClicked(MouseEvent e) {
 

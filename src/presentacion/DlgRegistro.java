@@ -1,34 +1,33 @@
-package gui;
+/**
+ * Paquete presentacion
+ */
+package presentacion;
 
+/**
+ * Imports utilizados
+ */
 import control.JugadoresDAO;
-import dominio.Jugador;
 import java.awt.Image;
-import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import util.TextPrompt;
+
 /**
- * Cuadro de dialogo que registra la informacion de un jugador.
- * 
- * @author Administrador
+ * Clase DlgRegistro que extiende de JDialog para el registro del avatar
+ *
  */
 public class DlgRegistro extends javax.swing.JDialog {
 
-    private TextPrompt texto;
-
     /**
-     * Se crea DlgRegistro.
-     * 
-     * @param parent
-     * @param modal
+     * Constructor de clase
+     *
+     * @param parent Componente al que hara referencia
+     * @param modal Modal del tipo boolean
      */
     public DlgRegistro(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        initComponents();
-        this.texto = new TextPrompt(" Ingrese usuario ", jTextUsuario);
+        initComponents();       
         setLocationRelativeTo(parent);
     }
 
@@ -63,7 +62,7 @@ public class DlgRegistro extends javax.swing.JDialog {
         btnRegistrar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnRegistrar.setText("Registrarse");
         btnRegistrar.setToolTipText("");
-        btnRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarActionPerformed(evt);
@@ -74,7 +73,7 @@ public class DlgRegistro extends javax.swing.JDialog {
         btnElegirAvatar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnElegirAvatar.setText("Elegir");
         btnElegirAvatar.setToolTipText("");
-        btnElegirAvatar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnElegirAvatar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnElegirAvatar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnElegirAvatarActionPerformed(evt);
@@ -93,7 +92,7 @@ public class DlgRegistro extends javax.swing.JDialog {
         btnCancelar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.setToolTipText("");
-        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
@@ -181,32 +180,31 @@ public class DlgRegistro extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
      /**
      * ActionEvent de JButton para comprobar la informacion en el registro.
-     * 
-     * @param evt 
+     *
+     * @param evt Tipo de evento
      */
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         establecerNombre();
     }//GEN-LAST:event_btnRegistrarActionPerformed
     /**
      * ActionEvent de JButton para establecer el avatar de jugadores.
-     * 
-     * @param evt 
+     *
+     * @param evt Tipo de evento
      */
     private void btnElegirAvatarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElegirAvatarActionPerformed
         this.establecerAvatar();
     }//GEN-LAST:event_btnElegirAvatarActionPerformed
     /**
      * ActionEvent de JButton para cancelar registro.
-     * 
-     * @param evt 
+     *
+     * @param evt Tipo de evento
      */
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
     /**
-     * Este metodo se encarga de establecer el avatar del jugador,
-     * mediante el uso de JFileChooser
-     * 
+     * Este metodo se encarga de establecer el avatar del jugador, mediante el
+     * uso de JFileChooser
      */
     private void establecerAvatar() {
         String Ruta = "";
@@ -227,9 +225,10 @@ public class DlgRegistro extends javax.swing.JDialog {
             jPanelImagen.setIcon(mIcono);
         }
     }
+
     /**
      * Este metodo se encarga de comprobar la informacion del jugador.
-     * 
+     *
      */
     private void establecerNombre() {
         String usuario = jTextUsuario.getText();
@@ -244,6 +243,7 @@ public class DlgRegistro extends javax.swing.JDialog {
             this.dispose();
         }
     }
+
     /**
      * Se limpian los espacios.
      */

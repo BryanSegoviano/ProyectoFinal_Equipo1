@@ -1,9 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Paquete presentacion
  */
-package gui;
+package presentacion;
 
 import control.JugadoresDAO;
 import dominio.Jugador;
@@ -15,18 +13,22 @@ import java.util.List;
 import java.util.Random;
 
 /**
+ * Clase FrmPartida que extiende de Jframe para el uso de la interfaz donde se
+ * tendran los jugadores que ingresaron así como el boton de inicio de juego
  *
- * @author Bryan
  */
 public class FrmPartida extends javax.swing.JFrame {
 
+    /**
+     * Atributos de la clase
+     */
     private Partida partida;
 
     /**
-     * Carga jugadores de la partida.
+     * Constructor que iniciaza datos dentro de la partida
      *
-     * @param msj
-     * @param partida
+     * @param msj Mensaje que sirve para saber que tipo de panel se trabajara
+     * @param partida Partida a la cual se hara referencia
      */
     public FrmPartida(String msj, Partida partida) {
         initComponents();
@@ -40,11 +42,6 @@ public class FrmPartida extends javax.swing.JFrame {
 
     }
 
-//   public void SetImage(String Ruta) {
-//       Image mImagen = new ImageIcon(Ruta).getImage();
-//       ImageIcon mIcono = new ImageIcon(mImagen.getScaledInstance(jPanelImagen.getWidth(), jPanelImagen.getHeight(), Image.SCALE_SMOOTH));
-//       jPanelImagen.setIcon(mIcono);
-//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -321,7 +318,7 @@ public class FrmPartida extends javax.swing.JFrame {
     /**
      * ActionEvent de JButton para solicitar inicio de juego.
      *
-     * @param evt
+     * @param evt Tipo de evento
      */
     private void btnSolicitarInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitarInicioActionPerformed
         this.solicitarInicio();
@@ -329,13 +326,15 @@ public class FrmPartida extends javax.swing.JFrame {
     /**
      * ActionEvent de JButton para salir de Frmpartida.
      *
-     * @param evt
+     * @param evt Tipo de evento
      */
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         this.salir();
     }//GEN-LAST:event_btnSalirActionPerformed
-    //Solicita inicio de juego en el tablero. 
 
+    /**
+     * Método para solicitar inico de la partida
+     */
     private void solicitarInicio() {
         this.dispose();
         this.establecerTamañoTablero();
@@ -343,24 +342,36 @@ public class FrmPartida extends javax.swing.JFrame {
         frmTablero.setVisible(true);
     }
 
-    // Solicita salir del panel de juego. 
+    /**
+     * Solicita salir del panel de juego.
+     */
     private void salir() {
         this.dispose();
         FrmMenuPrincipal frmPanelJuego = new FrmMenuPrincipal();
         frmPanelJuego.setVisible(true);
     }
 
-    //Oculta los paneles de los jugadores. 
+    /**
+     * Oculta los paneles de los jugadores.
+     */
     private void ocultarPaneles() {
         jPanelJugador2.setVisible(false);
         jPanelJugador3.setVisible(false);
         jPanelJugador4.setVisible(false);
     }
 
+    /**
+     * Método para crear la partida
+     *
+     * @param partida Partida que se creara
+     */
     private void crearPartida(Partida partida) {
         this.partida = partida;
     }
 
+    /**
+     * Método para cargar los jugadores en la partida
+     */
     private void cargarJugadores() {
         this.nombreJ1.setText(JugadoresDAO.jugadores[0].getUsuario());
         this.nombreJ2.setText(JugadoresDAO.jugadores[1].getUsuario());
@@ -368,6 +379,9 @@ public class FrmPartida extends javax.swing.JFrame {
         this.nombreJ4.setText(JugadoresDAO.jugadores[3].getUsuario());
     }
 
+    /**
+     * Método para establecer el tamaño del tablero
+     */
     private void establecerTamañoTablero() {
         Tablero tablero = new Tablero();
         if (JugadoresDAO.jugadores.length == 4) {
@@ -382,6 +396,9 @@ public class FrmPartida extends javax.swing.JFrame {
         this.partida.setTablero(tablero);
     }
 
+    /**
+     * Método para establecer turnos de los jugadores
+     */
     private void establecerTurnos() {
         Random generadorAzar = new Random();
         LinkedList turnos = new LinkedList();
@@ -395,7 +412,6 @@ public class FrmPartida extends javax.swing.JFrame {
             if (!(numerosRepetidos.contains(numeroAzar))) {
                 turnos.offer(listaJugadores[numeroAzar]);
                 numerosRepetidos.add(numeroAzar);
-                System.out.println(numeroAzar);
             }
             if (turnos.size() == 4) {
                 turnosListos = false;

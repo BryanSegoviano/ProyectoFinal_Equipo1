@@ -1,14 +1,24 @@
+/**
+ * Paquete main
+ */
 package main;
 
+/**
+ * Imports utilizados
+ */
 import control.JugadoresDAO;
-import gui.FrmMenuPrincipal;
+import presentacion.FrmMenuPrincipal;
 
+/**
+ * Clase main en donde se ejecutara el inicio del programa
+ *
+ */
 public class Main {
 
     public static void main(String[] args) {
-        
+
         JugadoresDAO jugadoresDAO = new JugadoresDAO();
-              /* Set the Nimbus look and feel */
+        /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -42,5 +52,5 @@ public class Main {
             }
         });
     }
-    
+
 }

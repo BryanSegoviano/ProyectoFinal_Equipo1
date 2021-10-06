@@ -1,16 +1,29 @@
+/**
+ * Paquete control
+ */
 package control;
 
+/**
+ * Imports utilizados
+ */
 import dominio.ColorJ;
 import dominio.Jugador;
+
 /**
- * Clase dao que establece el arreglo de jugadores 
- * 
- * @author Administrador
+ * Clase JugadoresDAO que se utiliza para hacer uso de un arreglo de los
+ * jugadores
+ *
  */
 public class JugadoresDAO {
-    //Se crean objetos estaticos de jugadores.
+
+    /**
+     * Atributos de clase
+     */
     public static Jugador[] jugadores;
 
+    /**
+     * Constructor que no recibe nada en sus parametros
+     */
     public JugadoresDAO() {
         jugadores = new Jugador[4];
         Jugador jugador1 = new Jugador();
@@ -37,32 +50,50 @@ public class JugadoresDAO {
         jugadores[2] = jugador3;
         jugadores[3] = jugador4;
     }
-    //Se agrega el jugador numero 1
+
+    /**
+     * Método que agrega al jugador número 1
+     *
+     * @param jugador Jugador a agregar
+     */
     public void agregarJugador1(Jugador jugador) {
         this.jugadores[0] = jugador;
     }
-    //Se agrega el jugador numero 2
+
+    /**
+     * Método que agrega al jugador número 2
+     *
+     * @param jugador Jugador a agregar
+     */
     public void agregarJugador2(Jugador jugador) {
         this.jugadores[1] = jugador;
     }
-    //Se agrega el jugador numero 3
+
+    /**
+     * Método que agrega al jugador número 3
+     *
+     * @param jugador Jugador a agregar
+     */
     public void agregarJugador3(Jugador jugador) {
         this.jugadores[2] = jugador;
     }
-    //Se agrega el jugador numero 4
+
+    /**
+     * Método que agrega al jugador número 4
+     *
+     * @param jugador Jugador a agregar
+     */
     public void agregarJugador4(Jugador jugador) {
         this.jugadores[3] = jugador;
     }
+
     /**
      * Se obtienen los datos de los jugadores.
-     * 
-     * @return jugadores.
+     *
+     * @return Arreglo de jugadores
      */
     public Jugador[] obtenerJugadores() {
         return this.jugadores;
     }
 
-//    public boolean eliminarJugador() {
-//
-//    }
 }
