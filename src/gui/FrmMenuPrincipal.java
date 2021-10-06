@@ -50,6 +50,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanelFondoUsuario.setBackground(new java.awt.Color(153, 0, 153));
         jPanelFondoUsuario.setForeground(new java.awt.Color(255, 0, 0));
@@ -95,6 +96,8 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
             }
         });
         jPanelFondoUsuario.add(btnCreaAvatar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 119, -1));
+
+        jPanel1.add(jPanelFondoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 179, 278));
 
         jPanelFondoBotones.setBackground(new java.awt.Color(132, 174, 220));
 
@@ -156,20 +159,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanelFondoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanelFondoBotones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelFondoUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-            .addComponent(jPanelFondoBotones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        jPanel1.add(jPanelFondoBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 0, -1, 278));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -194,7 +184,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUnirsePartidaActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        this.salir();
+        this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnCreaAvatarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreaAvatarActionPerformed
@@ -221,34 +211,63 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         if (jLabelNombreUsuario.getText().equals("Usuario") || jPanelImagen.getIcon() == null) {
             JOptionPane.showOptionDialog(null, "No ha creado un avatar", "Error", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{}, null);
         } else {
-            this.salir();
-//            this.fachada.crearPartida();
+            this.dispose();
             Partida partidaCreada = new Partida();
             partidaCreada.setJugadoresPartida(JugadoresDAO.jugadores);
-            FrmPartida frmPartida = new FrmPartida(".", partidaCreada);
+            FrmPartida frmPartida = new FrmPartida("", partidaCreada);
+
             frmPartida.setVisible(true);
+
+            this.fachada.crearPartida();
+
+            new Thread(() -> {
+                try {
+                    Thread.sleep(2000);
+                    frmPartida.jPanelJugador2.setVisible(true);
+
+                    Thread.sleep(2800);
+                    frmPartida.jPanelJugador3.setVisible(true);
+
+                    Thread.sleep(2800);
+                    frmPartida.jPanelJugador4.setVisible(true);
+
+                    Thread.sleep(2500);
+                    FrmTablero frmTablero = new FrmTablero(partidaCreada);
+                    this.dispose();
+                    frmPartida.dispose();
+                    frmTablero.setVisible(true);
+
+                } catch (InterruptedException e) {
+                }
+            }).start();
         }
 
     }
-    //Se establece unirse a partida mediante el uso de un hilo.
+//Se establece unirse a partida mediante el uso de un hilo.
 
     private void unirsePartida() {
         if (jLabelNombreUsuario.getText().equals("Usuario") || jPanelImagen.getIcon() == null) {
             JOptionPane.showOptionDialog(null, "No ha creado un avatar", "Error", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{}, null);
         } else {
-            this.salir();
-//            this.fachada.unirsePartida();
-
+            this.dispose();
+            this.fachada.unirsePartida();
             Partida partidaCreada = new Partida();
             partidaCreada.setJugadoresPartida(JugadoresDAO.jugadores);
-            FrmPartida frmPartida = new FrmPartida(".", partidaCreada);
-            frmPartida.setVisible(true);
-        }
-    }
+            new Thread(() -> {
+                try {
+                    Thread.sleep(1500);
+                    FrmPartida frmPartida = new FrmPartida(".", partidaCreada);
+                    frmPartida.setVisible(true);
+                    Thread.sleep(3000);
+                    frmPartida.dispose();
 
-    //Salir de partida. 
-    private void salir() {
-        this.dispose();
+                    FrmTablero frmTablero = new FrmTablero(partidaCreada);
+                    frmTablero.setVisible(true);
+
+                } catch (InterruptedException e) {
+                }
+            }).start();
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

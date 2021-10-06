@@ -21,7 +21,7 @@ public class Fachada implements IFachada{
 
     @Override
     public void unirsePartida() {
-        this.hiloUnirsePartida.start();
+        this.hiloUnirsePartida.run();
     }
     
 }

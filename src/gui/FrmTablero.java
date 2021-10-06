@@ -2,20 +2,22 @@ package gui;
 
 import control.JugadoresDAO;
 import dominio.ColorJ;
+import dominio.Jugador;
 import dominio.Partida;
-import dominio.Tablero;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.LinkedList;
 import util.ConversionColores;
 import util.DibujadoTablero;
+
 /**
- * 
+ *
  * @author Administrador
  */
 public class FrmTablero extends javax.swing.JFrame {
-    
+
     //Se crea variable estatica para dibujar en tablero. 
     private final DibujadoTablero dibujar;
 //    private Validaciones valida = new Validaciones();
@@ -23,6 +25,8 @@ public class FrmTablero extends javax.swing.JFrame {
     private int X1, Y1, X2, Y2;
     private Color color;
     private Partida partida;
+    LinkedList turnos;
+
     /**
      * Metodo que inicializa el dibujado de tablero.
      *
@@ -37,41 +41,47 @@ public class FrmTablero extends javax.swing.JFrame {
         dibujar.addMouseListener(eventos);
         this.panelTablero.add(dibujar);
         this.dibujarTablero();
-        this.establecerInfoJugadores();
         this.partida = partida;
+        this.turnos = partida.getTurnos();
+        this.establecerInfoJugadores();
     }
-    /**
-     * Este metodo se encarga de establecer la informacion de cada jugador 
-     * (avatar,nombre,puntos y color) luego muestra los datos en el panel 
-     * de los jugadores.
-     */ 
-    private void establecerInfoJugadores() {
 
-        this.panelAvatarJ1.setIcon(JugadoresDAO.jugadores[0].getAvatar());
-        this.nombreJ1.setText(JugadoresDAO.jugadores[0].getUsuario());
-        this.puntosJ1.setText(JugadoresDAO.jugadores[0].getPuntuacion() + "");
-        ColorJ colorJ1 = JugadoresDAO.jugadores[0].getColor();
+    /**
+     * Este metodo se encarga de establecer la informacion de cada jugador
+     * (avatar,nombre,puntos y color) luego muestra los datos en el panel de los
+     * jugadores.
+     */
+    private void establecerInfoJugadores() {
+        Jugador jugador1 = (Jugador) turnos.get(0);
+        Jugador jugador2 = (Jugador) turnos.get(1);
+        Jugador jugador3 = (Jugador) turnos.get(2);
+        Jugador jugador4 = (Jugador) turnos.get(3);
+
+        this.panelAvatarJ1.setIcon(jugador1.getAvatar());
+        this.nombreJ1.setText(jugador1.getUsuario());
+        this.puntosJ1.setText(jugador1.getPuntuacion() + "");
+        ColorJ colorJ1 = jugador1.getColor();
         String hex1 = ConversionColores.conversionColorHex(colorJ1);
         this.colorJugador1.setBackground(Color.decode(hex1));
 
-        this.panelAvatarJ2.setIcon(JugadoresDAO.jugadores[1].getAvatar());
-        this.nombreJ2.setText(JugadoresDAO.jugadores[1].getUsuario());
-        this.puntosJ2.setText(JugadoresDAO.jugadores[1].getPuntuacion() + "");
-        ColorJ colorJ2 = JugadoresDAO.jugadores[1].getColor();
+        this.panelAvatarJ2.setIcon(jugador2.getAvatar());
+        this.nombreJ2.setText(jugador2.getUsuario());
+        this.puntosJ2.setText(jugador2.getPuntuacion() + "");
+        ColorJ colorJ2 = jugador2.getColor();
         String hex2 = ConversionColores.conversionColorHex(colorJ2);
         this.colorJugador2.setBackground(Color.decode(hex2));
 
-        this.panelAvatarJ3.setIcon(JugadoresDAO.jugadores[2].getAvatar());
-        this.nombreJ3.setText(JugadoresDAO.jugadores[2].getUsuario());
-        this.puntosJ3.setText(JugadoresDAO.jugadores[2].getPuntuacion() + "");
-        ColorJ colorJ3 = JugadoresDAO.jugadores[2].getColor();
+        this.panelAvatarJ3.setIcon(jugador3.getAvatar());
+        this.nombreJ3.setText(jugador3.getUsuario());
+        this.puntosJ3.setText(jugador3.getPuntuacion() + "");
+        ColorJ colorJ3 = jugador3.getColor();
         String hex3 = ConversionColores.conversionColorHex(colorJ3);
         this.colorJugador3.setBackground(Color.decode(hex3));
 
-        this.panelAvatarJ4.setIcon(JugadoresDAO.jugadores[3].getAvatar());
-        this.nombreJ4.setText(JugadoresDAO.jugadores[3].getUsuario());
-        this.puntosJ4.setText(JugadoresDAO.jugadores[3].getPuntuacion() + "");
-        ColorJ colorJ4 = JugadoresDAO.jugadores[3].getColor();
+        this.panelAvatarJ4.setIcon(jugador4.getAvatar());
+        this.nombreJ4.setText(jugador4.getUsuario());
+        this.puntosJ4.setText(jugador4.getPuntuacion() + "");
+        ColorJ colorJ4 = jugador4.getColor();
         String hex4 = ConversionColores.conversionColorHex(colorJ4);
         this.colorJugador4.setBackground(Color.decode(hex4));
     }
@@ -122,9 +132,11 @@ public class FrmTablero extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tablero");
+        setUndecorated(true);
         setResizable(false);
 
         panelFondo.setBackground(new java.awt.Color(255, 255, 255));
+        panelFondo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         panelJugadores.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -566,6 +578,8 @@ public class FrmTablero extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jMenuBar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
         jMenuAbandonar.setText("Opciones");
 
         jMenuItem1.setText("Abandonar partida");
@@ -595,18 +609,21 @@ public class FrmTablero extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void colorJugador2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_colorJugador2MouseClicked
-        this.pantallaColores(JugadoresDAO.jugadores[1].getUsuario());
-        this.cambiarColor("Jugador2");
+        Jugador jugador = (Jugador) turnos.get(1);
+        this.pantallaColores(jugador.getUsuario());
+        this.cambiarColor(jugador.getUsuario());
     }//GEN-LAST:event_colorJugador2MouseClicked
 
     private void colorJugador3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_colorJugador3MouseClicked
-        this.pantallaColores(JugadoresDAO.jugadores[2].getUsuario());
-        this.cambiarColor("Jugador3");
+        Jugador jugador = (Jugador) turnos.get(2);
+        this.pantallaColores(jugador.getUsuario());
+        this.cambiarColor(jugador.getUsuario());
     }//GEN-LAST:event_colorJugador3MouseClicked
 
     private void colorJugador4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_colorJugador4MouseClicked
-        this.pantallaColores(JugadoresDAO.jugadores[3].getUsuario());
-        this.cambiarColor("Jugador4");
+        Jugador jugador = (Jugador) turnos.get(3);
+        this.pantallaColores(jugador.getUsuario());
+        this.cambiarColor(jugador.getUsuario());
     }//GEN-LAST:event_colorJugador4MouseClicked
 
     private void panelTableroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTableroMouseClicked
@@ -614,8 +631,9 @@ public class FrmTablero extends javax.swing.JFrame {
     }//GEN-LAST:event_panelTableroMouseClicked
 
     private void colorJugador1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_colorJugador1MouseClicked
-        this.pantallaColores(JugadoresDAO.jugadores[0].getUsuario());
-        this.cambiarColor("Jugador1");
+        Jugador jugador = (Jugador) turnos.get(0);
+        this.pantallaColores(jugador.getUsuario());
+        this.cambiarColor(jugador.getUsuario());
     }//GEN-LAST:event_colorJugador1MouseClicked
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -625,40 +643,14 @@ public class FrmTablero extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
     /**
      * Pantalla que muestra el color de cada jugador.
-     * 
-     * @param jugador 
+     *
+     * @param jugador
      */
     private void pantallaColores(String jugador) {
         DlgConfiguracionContrincantes dlgColores = new DlgConfiguracionContrincantes(this, true, jugador);
         dlgColores.setVisible(true);
     }
 
-    /**
-     * private void validaCoordenadas1(int x, int y) { //
-     * System.out.println("entra"); int aux; //Coordenadas bien aplastadas if
-     * ((x % 20) - 2 == 0 && (y % 16) - 2 == 0) { System.out.println(" ok"); }
-     * else { //Error en coordenada x if ((x % 20) - 2 != 0) { //Cerca de un
-     * punto a la derecha if (x % 20 > 10) { aux = 20 - (X1 % 20); X1 = X1 + aux
-     * + 2; } else { aux = (x % 20) - 2; X1 = X1 - aux; } } //Error en
-     * coordenada y if ((y % 16) - 2 != 0) { if (y % 16 > 8) { aux = 16 - (Y1 %
-     * 16); Y1 = Y1 + aux + 2; System.out.println(aux); } else { aux = (y % 16)
-     * - 2; Y1 = Y1 - aux; System.out.println(aux); } } }
-     *
-     * }
-     *
-     * private void validaCoordenadas2(int x, int y) { //
-     * System.out.println("entra"); int aux; //Coordenadas bien aplastadas if
-     * ((x % 20) - 2 == 0 && (y % 16) - 2 == 0) { System.out.println(" ok"); }
-     * else { //Error en coordenada x if ((x % 20) - 2 != 0) { //Cerca de un
-     * punto a la derecha if (x % 20 > 10) { aux = 20 - (X2 % 20); X2 = X2 + aux
-     * + 2; } else { aux = (x % 20) - 2; X2 = X2 - aux; } } //Error en
-     * coordenada y if ((y % 16) - 2 != 0) { if (y % 16 > 8) { aux = 16 - (Y2 %
-     * 16); Y2 = Y2 + aux + 2; System.out.println(aux); } else { aux = (y % 16)
-     * - 2; Y2 = Y2 - aux; System.out.println(aux); } } }
-     *
-     * }
-     *
-     */
     private void coordenadaClick1(java.awt.event.MouseEvent evt) {
         int arreglo[];
         this.X1 = evt.getX();
@@ -668,10 +660,11 @@ public class FrmTablero extends javax.swing.JFrame {
         Y1 = arreglo[1];
         System.out.println("\n" + X1 + "," + Y1);
     }
+
     /**
      * MouseEvent para validar las cordenadas en tablero.
-     * 
-     * @param evt 
+     *
+     * @param evt
      */
     private void coordenadaClick2(java.awt.event.MouseEvent evt) {
         int arreglo[];
@@ -693,31 +686,37 @@ public class FrmTablero extends javax.swing.JFrame {
         }
 
     }
+
     /**
-     * Este metodo se encarga de cabiar el color de los jugadores. 
-     * 
-     * @param jugador 
+     * Este metodo se encarga de cabiar el color de los jugadores.
+     *
+     * @param jugador
      */
     private void cambiarColor(String jugador) {
+        Jugador jugador1 = (Jugador) turnos.get(0);
+        Jugador jugador2 = (Jugador) turnos.get(1);
+        Jugador jugador3 = (Jugador) turnos.get(2);
+        Jugador jugador4 = (Jugador) turnos.get(3);
 
-        if (jugador.equals("Jugador1")) {
-            String colorHex = ConversionColores.conversionColorHex(JugadoresDAO.jugadores[0].getColor());
+        if (jugador.equals(jugador1.getUsuario())) {
+            String colorHex = ConversionColores.conversionColorHex(jugador1.getColor());
             this.colorJugador1.setBackground(Color.decode(colorHex));
         }
-        if (jugador.equals("Jugador2")) {
-            String colorHex = ConversionColores.conversionColorHex(JugadoresDAO.jugadores[1].getColor());
+        if (jugador.equals(jugador2.getUsuario())) {
+            String colorHex = ConversionColores.conversionColorHex(jugador2.getColor());
             this.colorJugador2.setBackground(Color.decode(colorHex));
         }
-        if (jugador.equals("Jugador3")) {
-            String colorHex = ConversionColores.conversionColorHex(JugadoresDAO.jugadores[2].getColor());
+        if (jugador.equals(jugador3.getUsuario())) {
+            String colorHex = ConversionColores.conversionColorHex(jugador3.getColor());
             this.colorJugador3.setBackground(Color.decode(colorHex));
         }
-        if (jugador.equals("Jugador4")) {
-            String colorHex = ConversionColores.conversionColorHex(JugadoresDAO.jugadores[3].getColor());
+        if (jugador.equals(jugador4.getUsuario())) {
+            String colorHex = ConversionColores.conversionColorHex(jugador4.getColor());
             this.colorJugador4.setBackground(Color.decode(colorHex));
         }
 
     }
+
     //Se dibuja el tablero.
     private void dibujarTablero() {
         this.dibujar.paint((Graphics2D) this.panelTablero.getGraphics());
@@ -764,7 +763,7 @@ public class FrmTablero extends javax.swing.JFrame {
     private MouseListener eventos = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
-           
+
             if (clicks == 1) {
                 coordenadaClick1(e);
                 clicks++;

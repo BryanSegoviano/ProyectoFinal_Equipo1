@@ -11,6 +11,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,56 +20,23 @@ import javax.swing.JOptionPane;
  */
 public class HiloUnirsePartida extends Thread {
 
-    private Timer tiempo;
-    private TimerTask task;
-    private int duracion = 3;
-    private boolean isRun = false;
-
-    public void mostrarAviso(int duracion) {
-        this.duracion = duracion;
-        JOptionPane.showOptionDialog(null, "Buscando partida", "Unirse a partida", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{}, null);
-        comenzarConteo();
-
-    }
-
-    public void comenzarConteo() {
-        isRun = true;
-        tiempo = new Timer();
-        task = new TimerTask() {
-            int contador = 0;
-
-            @Override
-            public void run() {
-                contador++;
-                if (contador == duracion) {
-                    detener();
-                }
-            }
-        };
-        tiempo.schedule(task, 0, 1000);
-    }
-
-    public void detener() {
-        isRun = false;
-        tiempo.cancel();
-        task.cancel();
-        Robot robot;
-        try {
-            robot = new Robot();
-            robot.keyPress(KeyEvent.VK_ESCAPE);
-
-        } catch (AWTException ex) {
-            Logger.getLogger(HiloUnirsePartida.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
     @Override
     public void run() {
-        System.out.println("Buscando partida");
-//        mostrarAviso(3);
-        JOptionPane.showOptionDialog(null, "Buscando partida", "Unirse a partida", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{}, null);
-        
-    }
+        JOptionPane jop = new JOptionPane();
+        jop.setMessageType(JOptionPane.PLAIN_MESSAGE);
+        jop.setMessage("Cargando partida");
+        jop.setOptions(new Object[]{});
+        JDialog dialog = jop.createDialog(null, "Partida timbiriche");
 
+        // 2 Segundos de tiempo
+        new Thread(() -> {
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+            }
+            dialog.dispose();
+        }).start();
+        dialog.setVisible(true);
+
+    }
 }

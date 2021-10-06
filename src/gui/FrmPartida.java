@@ -106,6 +106,7 @@ public class FrmPartida extends javax.swing.JFrame {
         btnSolicitarInicio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnSolicitarInicio.setText("Solicitar inicio de juego");
         btnSolicitarInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnSolicitarInicio.setEnabled(false);
         btnSolicitarInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSolicitarInicioActionPerformed(evt);

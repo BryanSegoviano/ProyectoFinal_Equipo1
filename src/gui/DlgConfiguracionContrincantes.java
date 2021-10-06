@@ -215,7 +215,6 @@ public class DlgConfiguracionContrincantes extends javax.swing.JDialog {
      * @param evt
      */
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
     /**
@@ -322,11 +321,11 @@ public class DlgConfiguracionContrincantes extends javax.swing.JDialog {
     //al presionar elegir
     private void verificarColorRepetido() {
         for (int i = 0; i < JugadoresDAO.jugadores.length; i++) {
-            if (JugadoresDAO.jugadores[i].getColor().equals(this.color)) {
+            ColorJ colorComparar = JugadoresDAO.jugadores[i].getColor();
+            if (colorComparar.equals(this.color)) {
                 JOptionPane.showMessageDialog(rootPane, "No se pueden repetir los colores!", "Error", 2);
                 return;
             }
-
         }
         establecerColorJugador();
     }

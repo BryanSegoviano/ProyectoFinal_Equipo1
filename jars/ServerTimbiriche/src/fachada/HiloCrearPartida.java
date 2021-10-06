@@ -12,20 +12,16 @@ public class HiloCrearPartida extends Thread {
     @Override
     public void run() {
         try {
-            //Jugador 1 conexión
-            System.out.println("Se conecto el jugador Slizzir");
-            sleep(1700);
-
             //Jugador 2 conexión
-            System.out.println("Se conecto el jugador 2");
+            System.out.println("Se ha conectado el jugador 2");
             sleep(3000);
 
             //Jugador 3 conexión
-            System.out.println("Se conecto el jugador Rictal");
+            System.out.println("Se ha conectado el jugador 3");
             sleep(3000);
 
             //Jugador 4 conexión
-            System.out.println("Se conecto el jugador JuanGod");
+            System.out.println("Se ha conectado el jugador 4");
             sleep(1500);
 
         } catch (InterruptedException ex) {
