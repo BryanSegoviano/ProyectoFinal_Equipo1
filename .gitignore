@@ -1,12 +1,3 @@
-/dist/
-/nbproject/private/
-/build/
-/jars/CapaDatos/build/
-/jars/CapaDatos/dist/
-/jars/CapaDatos/nbproject/private/
-/jars/ServerTimbiriche/build/
-/jars/ServerTimbiriche/dist/
-/jars/ServerTimbiriche/nbproject/private/
-/jars/Dominio/nbproject/private/
-/jars/Dominio/build/
-/jars/Dominio/dist/
+/SistemaConexion/build/
+/Dominio/build/
+/DibujadoTablero/build/
