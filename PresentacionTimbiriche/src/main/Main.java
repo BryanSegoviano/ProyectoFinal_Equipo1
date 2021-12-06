@@ -6,7 +6,7 @@ package main;
 /**
  * Imports utilizados
  */
-import control.JugadoresDAO;
+import conectividad.GestionConexion;
 import presentacion.FrmMenuPrincipal;
 
 /**
@@ -17,7 +17,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-        JugadoresDAO jugadoresDAO = new JugadoresDAO();
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -49,6 +48,8 @@ public class Main {
             @Override
             public void run() {
                 new FrmMenuPrincipal().setVisible(true);
+//                GestionConexion conexion = new GestionConexion();
+//                conexion.inicializarConexion();
             }
         });
     }

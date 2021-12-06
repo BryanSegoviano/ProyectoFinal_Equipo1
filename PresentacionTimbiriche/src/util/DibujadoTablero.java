@@ -1,11 +1,90 @@
-package dibujaFiguras;
+/**
+ * Paquete util
+ */
+package util;
 
-import java.awt.Graphics2D;
+/**
+ * Imports utilizados
+ */
 import java.awt.BasicStroke;
+import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.awt.geom.Ellipse2D;
 
-public class FiguraLinea extends Figura {
+/**
+ * Clase encargada de los metodos de dibujado en tablero con uso de java2d.
+ *
+ * @author Administrador
+ */
+public class DibujadoTablero extends Canvas {
+
+    /**
+     * Metodo que se encarga de hacer el dibujado de cuadrado.
+     *
+     * @param g Grafica que recibe
+     */
+    @Override
+    public void paint(Graphics g) {
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setColor(Color.GRAY);
+        g2d.setStroke(new BasicStroke(2));
+        //Datos de los cuadrados
+        int y = 0;
+
+        //Datos del circulo
+        int x = 0;
+        y = 0;
+        for (int i = 0; i < 41; i++) {
+            for (int j = 0; j < 41; j++) {
+                this.dibujarCirculo(x, y, g2d);
+
+                y += 16;
+            }
+            y = 0;
+
+            x += 20;
+        }
+        this.dibujaCuadrado(x, y, 50, 50, 41, g2d);
+    }
+
+    /**
+     * Método que dibuja el cuadrado en el panel según las coordenadas y el
+     * panel que recibe.
+     *
+     * @param x Coordenada en eje X
+     * @param y Coordenada en eje y
+     * @param ancho Ancho de línea
+     * @param alto Alto de línea
+     * @param cuantos Tamanio
+     * @param g Panel en el que se dibujara
+     */
+    public void dibujaCuadrado(int x, int y, int ancho, int alto, int cuantos, Graphics2D g) {
+        Rectangle rect = new Rectangle();
+        for (int i = 0; i < cuantos; i++) {
+            rect.setBounds(x, y, ancho, alto);
+            g.draw(rect);
+            x += ancho;
+        }
+    }
+
+    /**
+     * Método que dibuja los ciruclos base para el juego del timbiriche en el
+     * panel
+     *
+     * @param x Coordenada en eje X
+     * @param y Coordenada en eje Y
+     * @param g Panel en el que se dibujara
+     */
+    public void dibujarCirculo(int x, int y, Graphics2D g) {
+        g.setStroke(new BasicStroke(1));
+        g.setColor(Color.BLACK);
+        Ellipse2D.Double elipse = new Ellipse2D.Double(x, y, 5, 5);
+        g.fill(elipse);
+        g.draw(elipse);
+    }
 
     /**
      * Método que dibujara las líneas correspondientes según el jugador, esto
@@ -18,7 +97,7 @@ public class FiguraLinea extends Figura {
      * @param g Panel en el que se dibujara
      * @param color Color del cual se pintara la línea
      */
-    public void paint(int x, int y, int x2, int y2, Graphics2D g, Color color) {
+    public void dibujarLinea(int x, int y, int x2, int y2, Graphics2D g, Color color) {
         g.setStroke(new BasicStroke(3));
         g.setColor(color);
         g.drawLine(x, y, x2, y2);
@@ -108,12 +187,5 @@ public class FiguraLinea extends Figura {
         arreglo[1] = y2;
         return arreglo;
     }
-
-    @Override
-    public void dibujar(int dato1, int dato2, Graphics2D g) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-
 
 }

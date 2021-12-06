@@ -6,6 +6,9 @@ package presentacion;
 /**
  * Imports utilizados
  */
+import dibujaFiguras.FiguraLinea;
+import dibujaFiguras.FiguraPuntos;
+import dibujaFiguras.FiguraCuadro;
 import dominio.ColorJ;
 import dominio.Jugador;
 import dominio.Partida;
@@ -25,12 +28,14 @@ public class FrmTablero extends javax.swing.JFrame {
     /**
      * Declaración de atributos
      */
-//    private final DibujaTablero dibujar;
+    private final FiguraPuntos figuraPuntos;
+    private final FiguraLinea figuraLinea;
+    private final FiguraCuadro figuraCuadro;
     private int clicks = 1;
     private int X1, Y1, X2, Y2;
     private Color color;
     private Partida partida;
-    LinkedList turnos;
+    private LinkedList turnos;
 
     /**
      * Constructor que inicializa los atributos, crea panel y añade sus eventos
@@ -41,10 +46,16 @@ public class FrmTablero extends javax.swing.JFrame {
     public FrmTablero(Partida partida) {
         initComponents();
         this.setLocationRelativeTo(null);
-//        dibujar = new DibujaTablero();
+        this.figuraPuntos = new FiguraPuntos();
+        this.figuraLinea = new FiguraLinea();
+        this.figuraCuadro = new FiguraCuadro();
+//        dibujar = new DibujadoTablero();
+        this.figuraPuntos.setBounds(5, 5, 690, 650);
 //        dibujar.setBounds(5, 5, 690, 650);
+        this.figuraPuntos.addMouseListener(eventos);
 //        dibujar.addMouseListener(eventos);
-//        this.panelTablero.add(dibujar);
+//        this.panelTablero.add(this.dibujar);
+        this.panelTablero.add(this.figuraPuntos);
         this.dibujarTablero();
         this.partida = partida;
         this.turnos = partida.getTurnos();
@@ -669,9 +680,9 @@ public class FrmTablero extends javax.swing.JFrame {
         int arreglo[];
         this.X1 = evt.getX();
         this.Y1 = evt.getY();
-//        arreglo = dibujar.validaCoordenadas(X1, Y1);
-//        X1 = arreglo[0];
-//        Y1 = arreglo[1];
+        arreglo = this.figuraLinea.validaCoordenadas(X1, Y1);
+        X1 = arreglo[0];
+        Y1 = arreglo[1];
     }
 
     /**
@@ -684,15 +695,16 @@ public class FrmTablero extends javax.swing.JFrame {
         int arreglo[];
         X2 = evt.getX();
         Y2 = evt.getY();
-//        arreglo = dibujar.validaCoordenadas(X2, Y2);
-//        X2 = arreglo[0];
-//        Y2 = arreglo[1];
+        arreglo = this.figuraLinea.validaCoordenadas(X2, Y2);
+        X2 = arreglo[0];
+        Y2 = arreglo[1];
         int diferenciaX = Math.abs(X1 - X2);
         int diferenciaY = Math.abs(Y1 - Y2);
         if (diferenciaX > 20 || diferenciaY > 16 || (diferenciaX == 20 && diferenciaY == 16) || (diferenciaX == 0 && diferenciaY == 0)) {
             clicks = 1;
         } else {
-//            this.dibujar.dibujarLinea(X2, Y2, X1, Y1, (Graphics2D) dibujar.getGraphics(), color);
+            //CHECAR AQUI
+            this.figuraLinea.paint(X2, Y2, X1, Y1, (Graphics2D) this.figuraPuntos.getGraphics(), color);
             clicks++;
         }
 
@@ -733,6 +745,7 @@ public class FrmTablero extends javax.swing.JFrame {
      */
     private void dibujarTablero() {
 //        this.dibujar.paint((Graphics2D) this.panelTablero.getGraphics());
+        this.figuraPuntos.paint(this.panelTablero.getGraphics());
     }
 
 

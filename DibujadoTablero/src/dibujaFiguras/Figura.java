@@ -1,10 +1,12 @@
 package dibujaFiguras;
 
-import java.awt.Color;
+import java.awt.Canvas;
 import java.awt.Graphics2D;
 
-public interface Figura {
-    public void dibujar(int x1, int y1, int x2, int y2, Graphics2D g2d, Color color);
+public abstract class Figura extends Canvas {
+    
+    public abstract void dibujar(int dato1, int dato2, Graphics2D g);
+    
 }
 
         

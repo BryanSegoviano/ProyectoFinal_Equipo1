@@ -5,12 +5,30 @@
  */
 package conectividad;
 
+import dominio.Cuadro;
+import dominio.Jugador;
+import dominio.Linea;
+
 /**
  *
  * @author l3tal
  */
 public class ProtocoloSocket {
-    public void procesarEntidad(){
-        
+
+    public void procesaLinea(Linea linea){
+    
     }
+    
+    public void procesaCuadro(Cuadro cuadro){
+    
+    }
+    
+    public void procesaJugador(Jugador jugador){
+    
+    }
+
+    public void procesaLineaCuadro(Linea linea, Cuadro cuadro){
+    
+    }
+    
 }

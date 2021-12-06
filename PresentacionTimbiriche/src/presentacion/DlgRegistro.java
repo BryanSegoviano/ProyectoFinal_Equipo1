@@ -29,6 +29,7 @@ public class DlgRegistro extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();       
         setLocationRelativeTo(parent);
+        
     }
 
     /**
@@ -209,7 +210,7 @@ public class DlgRegistro extends javax.swing.JDialog {
     private void establecerAvatar() {
         String Ruta = "";
         JFileChooser jFileChooser = new JFileChooser();
-        FileNameExtensionFilter filtrado = new FileNameExtensionFilter("JGP,PNG & GIF", "jpg", "png", "gif");
+        FileNameExtensionFilter filtrado = new FileNameExtensionFilter("JGP,PNG", "jpg", "png");
         jFileChooser.setFileFilter(filtrado);
 
         int respuesta = jFileChooser.showOpenDialog(this);

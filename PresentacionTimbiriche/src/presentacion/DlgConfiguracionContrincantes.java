@@ -20,12 +20,6 @@ import javax.swing.border.Border;
  */
 public class DlgConfiguracionContrincantes extends javax.swing.JDialog {
 
-    /**
-     * Faltaria la relacion con el enumerador y asignarlo a un jugador, para
-     * luego sacar ese color establecido del jugador en FrmTablero y asignarlo a
-     * su respectivo color del tablero mediante las clases control, solo es para
-     * efectos practicos de la simulacion este atributo estatico.
-     */
     private ColorJ color;
     //Forma para saber a que jugador corresponde el color a cambiar
     private String nombreUsuario;

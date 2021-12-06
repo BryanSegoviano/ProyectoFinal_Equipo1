@@ -23,6 +23,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     public FrmMenuPrincipal() {
         initComponents();
         setLocationRelativeTo(null);
+        JugadoresDAO jugadoresDAO = new JugadoresDAO();
     }
 
     /**
@@ -208,7 +209,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         this.creaAvatar();
     }//GEN-LAST:event_btnCreaAvatarActionPerformed
 
-   /**
+    /**
      * Este metodo se encarga de crear el avatar.
      *
      */
@@ -236,27 +237,14 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
             Partida partidaCreada = new Partida();
             FrmPartida frmPartida = new FrmPartida("", partidaCreada);
             frmPartida.setVisible(true);
+            frmPartida.jPanelJugador2.setVisible(true);
+            frmPartida.jPanelJugador3.setVisible(true);
+            frmPartida.jPanelJugador4.setVisible(true);
+            FrmTablero frmTablero = new FrmTablero(partidaCreada);
+            this.dispose();
+            frmPartida.dispose();
+            frmTablero.setVisible(true);
 
-            new Thread(() -> {
-                try {
-                    Thread.sleep(2000);
-                    frmPartida.jPanelJugador2.setVisible(true);
-
-                    Thread.sleep(2800);
-                    frmPartida.jPanelJugador3.setVisible(true);
-
-                    Thread.sleep(2800);
-                    frmPartida.jPanelJugador4.setVisible(true);
-
-                    Thread.sleep(2500);
-                    FrmTablero frmTablero = new FrmTablero(partidaCreada);
-                    this.dispose();
-                    frmPartida.dispose();
-                    frmTablero.setVisible(true);
-
-                } catch (InterruptedException e) {
-                }
-            }).start();
         }
 
     }
@@ -271,20 +259,12 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         } else {
             this.dispose();
             Partida partidaCreada = new Partida();
-            new Thread(() -> {
-                try {
-                    Thread.sleep(1500);
-                    FrmPartida frmPartida = new FrmPartida(".", partidaCreada);
-                    frmPartida.setVisible(true);
-                    Thread.sleep(3000);
-                    frmPartida.dispose();
+            FrmPartida frmPartida = new FrmPartida(".", partidaCreada);
+            frmPartida.setVisible(true);
+            frmPartida.dispose();
+            FrmTablero frmTablero = new FrmTablero(partidaCreada);
+            frmTablero.setVisible(true);
 
-                    FrmTablero frmTablero = new FrmTablero(partidaCreada);
-                    frmTablero.setVisible(true);
-
-                } catch (InterruptedException e) {
-                }
-            }).start();
         }
     }
 

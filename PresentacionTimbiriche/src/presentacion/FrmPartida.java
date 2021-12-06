@@ -37,7 +37,7 @@ public class FrmPartida extends javax.swing.JFrame {
         this.establecerTurnos();
         this.cargarJugadores();
         if (msj.equals("")) {
-            ocultarPaneles();
+            this.ocultarPaneles();
         }
 
     }

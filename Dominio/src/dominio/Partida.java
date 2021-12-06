@@ -18,7 +18,6 @@ public class Partida {
     /**
      * Constructor que inicializa los atributos de la partida 
      * 
-     * @param jugador
      * @param tablero
      * @param historialCambios
      * @param turnos 

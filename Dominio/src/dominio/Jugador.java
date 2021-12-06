@@ -34,6 +34,7 @@ public class Jugador implements IDatosJugador {
      * 
      * @return usuario
      */
+    @Override
     public String getUsuario() {
         return usuario;
     }

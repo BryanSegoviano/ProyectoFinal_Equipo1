@@ -10,7 +10,7 @@ package conectividad;
  * @author l3tal
  */
 public interface IGestionConexion {
-    public String inicializarConexion();
+    public void inicializarConexion();
     public String gestionInformacion();
     
     
