@@ -1,21 +1,17 @@
 package conectividad;
 
+import dominio.Linea;
 import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Arrays;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class GestionConexion {
 
-//    DataInputStream inServer;
-//    DataOutputStream outServer;
     public void inicializarConexion() {
         Scanner tec;
         ServerSocket serverSocket;
@@ -25,7 +21,7 @@ public class GestionConexion {
         tec = new Scanner(System.in);
         try {
             int puerto;
-            System.out.print("Ponga puerto del su servidor: ");
+            System.out.print("Ponga puerto de su servidor: ");
             puerto = tec.nextInt();
             serverSocket = new ServerSocket(puerto);
             System.out.println("Servidor iniciado con puerto " + puerto);
@@ -38,20 +34,25 @@ public class GestionConexion {
                 //Cliente
                 while (true) {
                     scServer = serverSocket.accept();
-                    outServer = new PrintWriter(scServer.getOutputStream(), true);
-                    inServer = new BufferedReader(new InputStreamReader(scServer.getInputStream()));
+//                    outServer = new PrintWriter(scServer.getOutputStream(), true);
+//                    inServer = new BufferedReader(new InputStreamReader(scServer.getInputStream()));
                     System.out.println("Cliente conectado");
-                    PrintWriter outCliente = new PrintWriter(clientSocket.getOutputStream(), true);
-                    BufferedReader inCliente = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-                    tec = new Scanner(System.in);
-                    String mensaje = tec.nextLine();
-                    outCliente.println(mensaje);
-//                    outServer.println("Mensaje 1");
-                    System.out.println(inServer.readLine());
-                    System.out.println(inCliente.readLine());
+//                    PrintWriter outCliente = new PrintWriter(clientSocket.getOutputStream(), true);
+//                    BufferedReader inCliente = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+//                    tec = new Scanner(System.in);
+//                    String mensaje = tec.nextLine();
+//                    outCliente.println(mensaje);
+//                    System.out.println(inServer.readLine());
+//                    System.out.println(inCliente.readLine());
+                    System.out.println("------");
+                    Linea linea = new Linea(1, 1, 2, 3);
+                    ObjectOutputStream oos = new ObjectOutputStream(scServer.getOutputStream());
+                    oos.writeObject(linea);
+                    ObjectInputStream ois = new ObjectInputStream(clientSocket.getInputStream());
+                    Linea lineaStream = (Linea) ois.readObject();
+                    System.out.println("del stream scserver: " + Arrays.toString(lineaStream.getCoordenadasA()) + " & " + Arrays.toString(lineaStream.getCoordenadasB()));
+                    System.out.println("----");
 
-//                    this.inServer = new DataInputStream(this.scServer.getInputStream());
-//                    this.outServer = new DataOutputStream(this.scServer.getOutputStream());
 //
 //                    String mensaje = this.inServer.readUTF();
 //                    System.outServer.println(mensaje);

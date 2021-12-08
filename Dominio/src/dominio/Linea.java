@@ -1,11 +1,13 @@
 package dominio;
 
+import java.io.Serializable;
+
 /**
  * Clase linea con sus metodos get y set
  *
  * @author Administrador
  */
-public class Linea {
+public class Linea implements Serializable {
 
     private int[] arregloCoordenadasA = new int[2];
     private int[] arregloCoordenadasB = new int[2];
@@ -67,4 +69,9 @@ public class Linea {
         this.arregloCoordenadasB[1] = y2;
     }
 
+    @Override
+    public String toString() {
+        return "Linea{" + "arregloCoordenadasA=" + arregloCoordenadasA + ", arregloCoordenadasB=" + arregloCoordenadasB + '}';
+    }
+    
 }
