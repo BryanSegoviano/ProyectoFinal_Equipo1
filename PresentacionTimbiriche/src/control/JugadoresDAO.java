@@ -29,18 +29,9 @@ public class JugadoresDAO {
         Jugador jugador1 = new Jugador();
         jugador1.setColor(ColorJ.VERDE);
         jugador1.setPuntuacion(0);
-        Jugador jugador2 = new Jugador("Nata Cano",
-                null,
-                ColorJ.ROJO,
-                0);
-        Jugador jugador3 = new Jugador("God Bunny",
-                null,
-                ColorJ.INDIGO,
-                0);
-        Jugador jugador4 = new Jugador("Yoda",
-                null,
-                ColorJ.AZUL,
-                0);
+        Jugador jugador2 = new Jugador("Gusgri", null, ColorJ.ROJO, 0);
+        Jugador jugador3 = new Jugador("Drath", null, ColorJ.INDIGO, 0);
+        Jugador jugador4 = new Jugador("Varoonmorte", null, ColorJ.AZUL, 0);
         jugadores[0] = jugador1;
         jugadores[1] = jugador2;
         jugadores[2] = jugador3;

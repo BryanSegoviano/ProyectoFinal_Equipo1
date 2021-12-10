@@ -11,12 +11,15 @@ import dibujaFiguras.FiguraPuntos;
 import dibujaFiguras.FiguraCuadro;
 import dominio.ColorJ;
 import dominio.Jugador;
+import dominio.Linea;
 import dominio.Partida;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import util.ConversionColores;
 
 /**
@@ -36,6 +39,8 @@ public class FrmTablero extends javax.swing.JFrame {
     private Color color;
     private Partida partida;
     private LinkedList turnos;
+    private List<Linea> listaLineas;
+    private Linea añadirLineas;
 
     /**
      * Constructor que inicializa los atributos, crea panel y añade sus eventos
@@ -46,15 +51,14 @@ public class FrmTablero extends javax.swing.JFrame {
     public FrmTablero(Partida partida) {
         initComponents();
         this.setLocationRelativeTo(null);
+
         this.figuraPuntos = new FiguraPuntos();
         this.figuraLinea = new FiguraLinea();
         this.figuraCuadro = new FiguraCuadro();
-//        dibujar = new DibujadoTablero();
+
+        listaLineas = new ArrayList<>();
         this.figuraPuntos.setBounds(5, 5, 690, 650);
-//        dibujar.setBounds(5, 5, 690, 650);
         this.figuraPuntos.addMouseListener(eventos);
-//        dibujar.addMouseListener(eventos);
-//        this.panelTablero.add(this.dibujar);
         this.panelTablero.add(this.figuraPuntos);
         this.dibujarTablero();
         this.partida = partida;
@@ -182,7 +186,7 @@ public class FrmTablero extends javax.swing.JFrame {
 
         colorJugador1.setBackground(new java.awt.Color(204, 204, 204));
         colorJugador1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        colorJugador1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        colorJugador1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         colorJugador1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 colorJugador1MouseClicked(evt);
@@ -274,7 +278,7 @@ public class FrmTablero extends javax.swing.JFrame {
 
         colorJugador2.setBackground(new java.awt.Color(204, 204, 204));
         colorJugador2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        colorJugador2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        colorJugador2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         colorJugador2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 colorJugador2MouseClicked(evt);
@@ -366,7 +370,7 @@ public class FrmTablero extends javax.swing.JFrame {
 
         colorJugador3.setBackground(new java.awt.Color(204, 204, 204));
         colorJugador3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        colorJugador3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        colorJugador3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         colorJugador3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 colorJugador3MouseClicked(evt);
@@ -459,7 +463,7 @@ public class FrmTablero extends javax.swing.JFrame {
 
         colorJugador4.setBackground(new java.awt.Color(204, 204, 204));
         colorJugador4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        colorJugador4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        colorJugador4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         colorJugador4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 colorJugador4MouseClicked(evt);
@@ -703,9 +707,72 @@ public class FrmTablero extends javax.swing.JFrame {
         if (diferenciaX > 20 || diferenciaY > 16 || (diferenciaX == 20 && diferenciaY == 16) || (diferenciaX == 0 && diferenciaY == 0)) {
             clicks = 1;
         } else {
-            //CHECAR AQUI
+
+            this.añadirLineas = new Linea(X1, Y1, X2, Y2);
+
+            for (int i = 0; i < this.listaLineas.size(); i++) {
+                int[] arregloAuxA = this.listaLineas.get(i).getCoordenadasA();
+                int[] arregloAuxB = this.listaLineas.get(i).getCoordenadasB();
+
+                if ((X1 == arregloAuxA[0] && Y1 == arregloAuxA[1] && X2 == arregloAuxB[0] && Y2 == arregloAuxB[1])
+                        || (X1 == arregloAuxB[0] && Y1 == arregloAuxB[1] && X2 == arregloAuxA[0] && Y2 == arregloAuxA[1])) {
+
+                    clicks = 1;
+                    return;
+                }
+
+            }
+
+            this.listaLineas.add(añadirLineas);
             this.figuraLinea.paint(X2, Y2, X1, Y1, (Graphics2D) this.figuraPuntos.getGraphics(), color);
+
+            //Variable int, checar para poder saber a que lado pintar el cuadro
+            int direccionCuadro = this.figuraCuadro.validaCuadro(listaLineas, X1, Y1, X2, Y2);
+            if (direccionCuadro != -1) {
+                this.asignarPuntuacion(color);
+                if (direccionCuadro == 0) {
+                    if (Y1 < Y2) {
+                        this.figuraCuadro.paint(X1, Y1, X2, Y2, (Graphics2D) this.figuraPuntos.getGraphics(), color);
+
+                    } else {
+                        this.figuraCuadro.paint(X1, Y1 - 16, X2, Y2, (Graphics2D) this.figuraPuntos.getGraphics(), color);
+                    }
+                    clicks = 1;
+                    return;
+                }
+                if (direccionCuadro == 1) {
+                    if (Y1 < Y2) {
+                        this.figuraCuadro.paint(X1 - 20, Y1, X2, Y2, (Graphics2D) this.figuraPuntos.getGraphics(), color);
+
+                    } else {
+                        this.figuraCuadro.paint(X1 - 20, Y1 - 16, X2, Y2, (Graphics2D) this.figuraPuntos.getGraphics(), color);
+                    }
+                    clicks = 1;
+                    return;
+                }
+                if (direccionCuadro == 2) {
+                    if (X1 < X2) {
+                        this.figuraCuadro.paint(X1, Y1, X2, Y2, (Graphics2D) this.figuraPuntos.getGraphics(), color);
+
+                    } else {
+                        this.figuraCuadro.paint(X1 - 20, Y1, X2, Y2, (Graphics2D) this.figuraPuntos.getGraphics(), color);
+                    }
+                    clicks = 1;
+                    return;
+                }
+                if (direccionCuadro == 3) {
+                    if (X1 < X2) {
+                        this.figuraCuadro.paint(X1, Y1 - 16, X2, Y2, (Graphics2D) this.figuraPuntos.getGraphics(), color);
+
+                    } else {
+                        this.figuraCuadro.paint(X1 - 20, Y1 - 16, X2, Y2, (Graphics2D) this.figuraPuntos.getGraphics(), color);
+                    }
+                    clicks = 1;
+                    return;
+                }
+            }
             clicks++;
+
         }
 
     }
@@ -736,6 +803,7 @@ public class FrmTablero extends javax.swing.JFrame {
         if (jugador.equals(jugador4.getUsuario())) {
             String colorHex = ConversionColores.conversionColorHex(jugador4.getColor());
             this.colorJugador4.setBackground(Color.decode(colorHex));
+
         }
 
     }
@@ -744,8 +812,62 @@ public class FrmTablero extends javax.swing.JFrame {
      * Método para dibujar el tablero dentro del panel
      */
     private void dibujarTablero() {
-//        this.dibujar.paint((Graphics2D) this.panelTablero.getGraphics());
         this.figuraPuntos.paint(this.panelTablero.getGraphics());
+    }
+
+    public void asignarPuntuacion(Color colorsito) {
+        String hex = String.format("#%02x%02x%02x", colorsito.getRed(), colorsito.getGreen(), colorsito.getBlue());
+        String comparar = regresarNombreColor(hex);
+        String puntuacion = "";
+        int posicion = -1;
+        for (int i = 0; i < 4; i++) {
+            Jugador jugador = (Jugador) turnos.get(i);
+
+            if (comparar.equalsIgnoreCase(jugador.getColor().toString())) {
+                jugador.setPuntuacion(jugador.getPuntuacion() + 1);
+                puntuacion = String.valueOf(jugador.getPuntuacion());
+                posicion = i;
+                break;
+            }
+        }
+        if (posicion == 0) {
+            puntosJ1.setText(puntuacion);
+        }
+        if (posicion == 1) {
+            puntosJ2.setText(puntuacion);
+        }
+        if (posicion == 2) {
+            puntosJ3.setText(puntuacion);
+        }
+        if (posicion == 3) {
+            puntosJ4.setText(puntuacion);
+
+        }
+    }
+
+    public String regresarNombreColor(String hex) {
+        if (hex.equalsIgnoreCase("#f51209")) {
+            return "ROJO";
+        }
+        if (hex.equalsIgnoreCase("#973598")) {
+            return "VIOLETA";
+        }
+        if (hex.equalsIgnoreCase("#f38e34")) {
+            return "NARANJA";
+        }
+        if (hex.equalsIgnoreCase("#f4f400")) {
+            return "AMARILLO";
+        }
+        if (hex.equalsIgnoreCase("#68cb3c")) {
+            return "VERDE";
+        }
+        if (hex.equalsIgnoreCase("#18d2e9")) {
+            return "AZUL";
+        }
+        if (hex.equalsIgnoreCase("#0066cb")) {
+            return "INDIGO";
+        }
+        return null;
     }
 
 

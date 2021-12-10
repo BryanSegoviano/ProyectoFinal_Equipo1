@@ -21,6 +21,14 @@
                 <id>jar</id>
             </reference>
             <reference>
+                <foreign-project>DibujadoTablero-1</foreign-project>
+                <artifact-type>jar</artifact-type>
+                <script>build.xml</script>
+                <target>jar</target>
+                <clean-target>clean</clean-target>
+                <id>jar</id>
+            </reference>
+            <reference>
                 <foreign-project>Dominio</foreign-project>
                 <artifact-type>jar</artifact-type>
                 <script>build.xml</script>
@@ -29,7 +37,23 @@
                 <id>jar</id>
             </reference>
             <reference>
+                <foreign-project>Dominio-1</foreign-project>
+                <artifact-type>jar</artifact-type>
+                <script>build.xml</script>
+                <target>jar</target>
+                <clean-target>clean</clean-target>
+                <id>jar</id>
+            </reference>
+            <reference>
                 <foreign-project>ServerTimbiriche</foreign-project>
+                <artifact-type>jar</artifact-type>
+                <script>build.xml</script>
+                <target>jar</target>
+                <clean-target>clean</clean-target>
+                <id>jar</id>
+            </reference>
+            <reference>
+                <foreign-project>SistemaConexion</foreign-project>
                 <artifact-type>jar</artifact-type>
                 <script>build.xml</script>
                 <target>jar</target>

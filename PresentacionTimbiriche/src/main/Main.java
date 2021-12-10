@@ -48,8 +48,8 @@ public class Main {
             @Override
             public void run() {
                 new FrmMenuPrincipal().setVisible(true);
-                GestionConexion conexion = new GestionConexion();
-                conexion.inicializarConexion();
+//                GestionConexion conexion = new GestionConexion();
+//                conexion.inicializarConexion();
             }
         });
     }

@@ -51,7 +51,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         setTitle("Menú principal");
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBackground(new java.awt.Color(153, 0, 153));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanelFondoUsuario.setBackground(new java.awt.Color(153, 0, 153));
@@ -61,7 +61,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         jLabelBienvenido.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabelBienvenido.setForeground(new java.awt.Color(255, 255, 255));
         jLabelBienvenido.setText("Bienvenido");
-        jPanelFondoUsuario.add(jLabelBienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 11, -1, -1));
+        jPanelFondoUsuario.add(jLabelBienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
 
         panelImagen.setBackground(new java.awt.Color(255, 255, 255));
         panelImagen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -70,24 +70,20 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         panelImagen.setLayout(panelImagenLayout);
         panelImagenLayout.setHorizontalGroup(
             panelImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelImagenLayout.createSequentialGroup()
-                .addComponent(jPanelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
         );
         panelImagenLayout.setVerticalGroup(
             panelImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImagenLayout.createSequentialGroup()
-                .addComponent(jPanelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanelImagen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
         );
 
-        jPanelFondoUsuario.add(panelImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 111, 110, -1));
+        jPanelFondoUsuario.add(panelImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 120, 100));
 
         jLabelNombreUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabelNombreUsuario.setForeground(new java.awt.Color(255, 255, 153));
         jLabelNombreUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelNombreUsuario.setText("Usuario");
-        jPanelFondoUsuario.add(jLabelNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 92, -1));
+        jPanelFondoUsuario.add(jLabelNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 92, -1));
 
         btnCreaAvatar.setBackground(new java.awt.Color(153, 0, 153));
         btnCreaAvatar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -98,9 +94,9 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
                 btnCreaAvatarActionPerformed(evt);
             }
         });
-        jPanelFondoUsuario.add(btnCreaAvatar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 119, -1));
+        jPanelFondoUsuario.add(btnCreaAvatar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 130, -1));
 
-        jPanel1.add(jPanelFondoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 179, 278));
+        jPanel1.add(jPanelFondoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 278));
 
         jPanelFondoBotones.setBackground(new java.awt.Color(132, 174, 220));
 
@@ -138,31 +134,31 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         jPanelFondoBotones.setLayout(jPanelFondoBotonesLayout);
         jPanelFondoBotonesLayout.setHorizontalGroup(
             jPanelFondoBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFondoBotonesLayout.createSequentialGroup()
-                .addGap(0, 28, Short.MAX_VALUE)
+            .addGroup(jPanelFondoBotonesLayout.createSequentialGroup()
                 .addGroup(jPanelFondoBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCrearPartida, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanelFondoBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFondoBotonesLayout.createSequentialGroup()
+                    .addGroup(jPanelFondoBotonesLayout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(btnSalir))
+                    .addGroup(jPanelFondoBotonesLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addGroup(jPanelFondoBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnUnirsePartida)
-                            .addGap(32, 32, 32))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFondoBotonesLayout.createSequentialGroup()
-                            .addComponent(btnSalir)
-                            .addGap(84, 84, 84)))))
+                            .addComponent(btnCrearPartida, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
         jPanelFondoBotonesLayout.setVerticalGroup(
             jPanelFondoBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelFondoBotonesLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
+                .addGap(52, 52, 52)
                 .addComponent(btnCrearPartida)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addComponent(btnUnirsePartida)
-                .addGap(42, 42, 42)
+                .addGap(27, 27, 27)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        jPanel1.add(jPanelFondoBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 0, -1, 278));
+        jPanel1.add(jPanelFondoBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 0, 190, 278));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -172,7 +168,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -278,7 +274,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelFondoBotones;
     private javax.swing.JPanel jPanelFondoUsuario;
-    private javax.swing.JLabel jPanelImagen;
+    public javax.swing.JLabel jPanelImagen;
     private javax.swing.JPanel panelImagen;
     // End of variables declaration//GEN-END:variables
 

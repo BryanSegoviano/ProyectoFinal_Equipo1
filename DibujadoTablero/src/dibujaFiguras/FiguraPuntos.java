@@ -18,7 +18,6 @@ public class FiguraPuntos extends Figura {
 
         //Datos del circulo
         int coordX = 0;
-        coordY = 0;
         for (int i = 0; i < 41; i++) {
             for (int j = 0; j < 41; j++) {
                 this.dibujarCirculo(coordX, coordY, g2d);

@@ -3,7 +3,6 @@ package dibujaFiguras;
 import java.awt.Graphics2D;
 import java.awt.BasicStroke;
 import java.awt.Color;
-import java.awt.Graphics;
 
 public class FiguraLinea extends Figura {
 
@@ -66,54 +65,51 @@ public class FiguraLinea extends Figura {
         return arreglo;
     }
 
-    /**
-     * Metodo encargado de verificar coordenadas fuera de lugar.
-     *
-     * @param x1 coordenada x1 Primera coordenada en eje X clickeada
-     * @param y1 coordenada y1 Primera coordenada en eje Y clickeada
-     * @param x2 coordenada x2 Segunda coordenada en eje X clickeada
-     * @param y2 coordenada y2 Segunda coordenada en eje Y clickeada
-     * @return arreglo.
-     */
-    public int[] validaSegundoClick(int x1, int y1, int x2, int y2) {
-        int arreglo[];
-        int arreglo2[];
-        arreglo = validaCoordenadas(x1, y1);
-        arreglo2 = validaCoordenadas(x2, y2);
-        x1 = arreglo[0];
-        y1 = arreglo[1];
-        //verifica X
-        //x2 esta fuera de rango
-        if (x2 + 20 != x1 || x2 - 20 != x1) {
-            //x2 muy a la derecha, mover a la izquierda
-            int diferencia = x1 - x2;
-            if (diferencia > 0) {
-                x2 = x1 + 20;
-            } else {
-                x2 = x1 - 20;
-            }
-        }
-        //verifica Y
-        if (y2 + 16 != y1 || y2 - 16 != y1) {
-            //y2 muy a la derecha, mover a la izquierda
-            int diferencia = y1 - y2;
-            if (diferencia > 0) {
-                y2 = y1 + 16;
-            } else {
-                y2 = y1 - 16;
-            }
-        }
-
-        arreglo[0] = x2;
-        arreglo[1] = y2;
-        return arreglo;
-    }
-
+//    /**
+//     * Metodo encargado de verificar coordenadas fuera de lugar.
+//     *
+//     * @param x1 coordenada x1 Primera coordenada en eje X clickeada
+//     * @param y1 coordenada y1 Primera coordenada en eje Y clickeada
+//     * @param x2 coordenada x2 Segunda coordenada en eje X clickeada
+//     * @param y2 coordenada y2 Segunda coordenada en eje Y clickeada
+//     * @return arreglo.
+//     */
+//    public int[] validaSegundoClick(int x1, int y1, int x2, int y2) {
+//        int arreglo[];
+//        int arreglo2[];
+//        arreglo = validaCoordenadas(x1, y1);
+//        arreglo2 = validaCoordenadas(x2, y2);
+//        x1 = arreglo[0];
+//        y1 = arreglo[1];
+//        //verifica X
+//        //x2 esta fuera de rango
+//        if (x2 + 20 != x1 || x2 - 20 != x1) {
+//            //x2 muy a la derecha, mover a la izquierda
+//            int diferencia = x1 - x2;
+//            if (diferencia > 0) {
+//                x2 = x1 + 20;
+//            } else {
+//                x2 = x1 - 20;
+//            }
+//        }
+//        //verifica Y
+//        if (y2 + 16 != y1 || y2 - 16 != y1) {
+//            //y2 muy a la derecha, mover a la izquierda
+//            int diferencia = y1 - y2;
+//            if (diferencia > 0) {
+//                y2 = y1 + 16;
+//            } else {
+//                y2 = y1 - 16;
+//            }
+//        }
+//
+//        arreglo[0] = x2;
+//        arreglo[1] = y2;
+//        return arreglo;
+//    }
     @Override
     public void dibujar(int dato1, int dato2, Graphics2D g) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-
 
 }

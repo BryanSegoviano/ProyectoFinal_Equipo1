@@ -62,7 +62,8 @@ public class Linea implements Serializable {
     /**
      * Se establecen las coordenadas verticales
      *
-     * @param coordenadasVerticales
+     * @param x2
+     * @param y2
      */
     public void setCoordenadasB(int x2, int y2) {
         this.arregloCoordenadasB[0] = x2;
