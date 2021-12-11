@@ -1,8 +1,10 @@
+/**
+ * Paquete dominio
+ */
 package dominio;
 /**
  * Clase enum.
  * 
- * @author Administrador
  */
 public enum ColorJ {
     

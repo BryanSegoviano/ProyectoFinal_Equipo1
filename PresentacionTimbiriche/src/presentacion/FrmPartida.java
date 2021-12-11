@@ -430,6 +430,11 @@ public class FrmPartida extends javax.swing.JFrame {
         this.partida.setTurnos(turnos);
     }
 
+    /**
+     * Método donde se creara una conexion
+     *
+     * @param conexion conexión a establecer
+     */
     private void crearConexion(IGestionConexion conexion) {
         conexion.inicializarConexion();
         this.oos = conexion.getEnviador();

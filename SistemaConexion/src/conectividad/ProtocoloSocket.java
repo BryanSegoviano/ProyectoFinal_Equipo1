@@ -1,34 +1,56 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Paquete conectividad
  */
 package conectividad;
 
+/**
+ * Imports utilizados
+ */
 import dominio.Cuadro;
 import dominio.Jugador;
 import dominio.Linea;
 
 /**
+ * Clase que se usara como filtro de las entidades correspondientes
  *
- * @author l3tal
  */
 public class ProtocoloSocket {
 
-    public void procesaLinea(Linea linea){
-    
-    }
-    
-    public void procesaCuadro(Cuadro cuadro){
-    
-    }
-    
-    public void procesaJugador(Jugador jugador){
-    
+    /**
+     * Método para procesar las entidades de una linea
+     *
+     * @param linea Linea que se procesara
+     */
+    public void procesaLinea(Linea linea) {
+
     }
 
-    public void procesaLineaCuadro(Linea linea, Cuadro cuadro){
-    
+    /**
+     * Método para procesar las entidades de un Cuadro
+     *
+     * @param cuadro Cuadro que se procesara
+     */
+    public void procesaCuadro(Cuadro cuadro) {
+
     }
-    
+
+    /**
+     * Método para procesar las entidades de un jugador
+     *
+     * @param jugador Jugador que se procesara
+     */
+    public void procesaJugador(Jugador jugador) {
+
+    }
+
+    /**
+     * Método para procesar las entidades de una linea y de un cuadro
+     *
+     * @param linea Linea que se procesara
+     * @param cuadro Cuadro que se procesara
+     */
+    public void procesaLineaCuadro(Linea linea, Cuadro cuadro) {
+
+    }
+
 }

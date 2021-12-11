@@ -1,3 +1,6 @@
+/**
+ * Paquete dominio
+ */
 package dominio;
 
 import java.io.Serializable;
@@ -5,7 +8,6 @@ import java.io.Serializable;
 /**
  * Clase encargada de establecer los parametros a los cuadros.
  * 
- * @author Administrador
  */
 public class Cuadro implements Serializable {
 

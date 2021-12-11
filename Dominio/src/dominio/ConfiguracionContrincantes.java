@@ -1,8 +1,10 @@
+/**
+ * Paquete dominio
+ */
 package dominio;
 /**
  * Clase encargada de configurar a los contrincantes.
  * 
- * @author Administrador
  */
 public class ConfiguracionContrincantes {
     

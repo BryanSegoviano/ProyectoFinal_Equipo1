@@ -1,13 +1,29 @@
+/**
+ * Paquete dibujaFiguras
+ */
 package dibujaFiguras;
 
+/**
+ * Imports utilizados
+ */
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
 
+/**
+ * Clase FiguraPuntos que extiende de la clase abstracta Figura para hacer uso
+ * de sus métodos
+ *
+ */
 public class FiguraPuntos extends Figura {
 
+    /**
+     * Método paint para pintar sobre un panel
+     *
+     * @param g panel a pintar
+     */
     @Override
     public void paint(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
@@ -31,6 +47,13 @@ public class FiguraPuntos extends Figura {
 
     }
 
+    /**
+     * Método para dibujar en el tablero circulos/puntos
+     *
+     * @param x coordenada inicial eje x
+     * @param y coordenada inicial eje y
+     * @param g panel donde se dibujara
+     */
     public void dibujarCirculo(int x, int y, Graphics2D g) {
         g.setStroke(new BasicStroke(1));
         g.setColor(Color.BLACK);
@@ -39,6 +62,13 @@ public class FiguraPuntos extends Figura {
         g.draw(elipse);
     }
 
+    /**
+     * Método para dibujar
+     *
+     * @param dato1 dato 1
+     * @param dato2 dato 2
+     * @param g panel donde se dibujara
+     */
     @Override
     public void dibujar(int dato1, int dato2, Graphics2D g) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

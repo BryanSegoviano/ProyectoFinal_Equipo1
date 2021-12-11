@@ -739,14 +739,14 @@ public class FrmTablero extends javax.swing.JFrame {
                 try {
                     while (true) {
 //                        if (lineaDos != lineaAnterior) {
-                            Thread.sleep(1000);
-                            this.figuraLinea.paint(lineaDos.getCoordenadasA()[0],
-                                    lineaDos.getCoordenadasA()[1],
-                                    lineaDos.getCoordenadasB()[0],
-                                    lineaDos.getCoordenadasB()[1],
-                                    (Graphics2D) this.figuraPuntos.getGraphics(),
-                                    color);
-                            System.out.println("hola");
+                        Thread.sleep(1000);
+                        this.figuraLinea.paint(lineaDos.getCoordenadasA()[0],
+                                lineaDos.getCoordenadasA()[1],
+                                lineaDos.getCoordenadasB()[0],
+                                lineaDos.getCoordenadasB()[1],
+                                (Graphics2D) this.figuraPuntos.getGraphics(),
+                                color);
+                        System.out.println("hola");
 //                        }
                     }
                 } catch (InterruptedException e) {
@@ -843,6 +843,11 @@ public class FrmTablero extends javax.swing.JFrame {
         this.figuraPuntos.paint(this.panelTablero.getGraphics());
     }
 
+    /**
+     * Método para asignar la puntuación a los jugadores
+     *
+     * @param colorsito color del jugador para identificar
+     */
     public void asignarPuntuacion(Color colorsito) {
         String hex = String.format("#%02x%02x%02x", colorsito.getRed(), colorsito.getGreen(), colorsito.getBlue());
         String comparar = regresarNombreColor(hex);
@@ -873,6 +878,12 @@ public class FrmTablero extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Método que se usara para obtener el codigo hex de los colores
+     *
+     * @param hex cadena a comparar
+     * @return nombre del color
+     */
     public String regresarNombreColor(String hex) {
         if (hex.equalsIgnoreCase("#f51209")) {
             return "ROJO";

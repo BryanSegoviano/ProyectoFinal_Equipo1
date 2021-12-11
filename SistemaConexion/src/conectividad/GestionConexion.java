@@ -1,19 +1,31 @@
+/**
+ * Paquete conectividad
+ */
 package conectividad;
 
-import dominio.Linea;
+/**
+ * Imports utilizados
+ */
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Arrays;
 import java.util.Scanner;
 
+/**
+ * Clase GestionConexion que implementa la clase IGestionConexion para hacer uso
+ * de sus métodos
+ *
+ */
 public class GestionConexion implements IGestionConexion {
 
     private EnviadorInformacion enviador;
     private JugadorHandler recibidor;
 
+    /**
+     * Método que se usara para iniciar una conexion
+     */
     @Override
     public void inicializarConexion() {
         Scanner tec;
@@ -40,27 +52,40 @@ public class GestionConexion implements IGestionConexion {
 
             ObjectInputStream ois = new ObjectInputStream(clientSocket.getInputStream());
             this.recibidor = new JugadorHandler(ois);
-            
+
         } catch (IOException e) {
             System.out.println(e);
         }
     }
 
+    /**
+     * Método que regresa una cadena de información
+     *
+     * @return Cadena de información
+     */
     @Override
     public String gestionInformacion() {
         return null;
     }
 
+    /**
+     * Método para regresar información del enviador
+     *
+     * @return enviador a enviar
+     */
     @Override
     public EnviadorInformacion getEnviador() {
         return this.enviador;
     }
 
+    /**
+     * Método para enviar información de la clase JugadorHandler
+     *
+     * @return información obtenida
+     */
     @Override
     public JugadorHandler getRecibidor() {
         return this.recibidor;
     }
 
-    
-    
 }
