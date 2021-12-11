@@ -22,13 +22,14 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import observer.Observer;
 import util.ConversionColores;
 
 /**
  * Clase FrmTablero que extiende de Jframe para hacer uso de interfaaz
  *
  */
-public class FrmTablero extends javax.swing.JFrame {
+public class FrmTablero extends javax.swing.JFrame implements Observer {
 
     /**
      * Declaración de atributos
@@ -38,6 +39,7 @@ public class FrmTablero extends javax.swing.JFrame {
     private final FiguraCuadro figuraCuadro;
     private final EnviadorInformacion oos;
     private final JugadorHandler ois;
+    private Linea lineaDos;
     private int clicks = 1;
     private int X1, Y1, X2, Y2;
     private Color color;
@@ -51,6 +53,8 @@ public class FrmTablero extends javax.swing.JFrame {
      * al JpanelTablero de la misma clase
      *
      * @param partida Partida con la cual se interactua
+     * @param oos Enviador de informacion a los diferentes sockets
+     * @param ois Recibidor de informacion de los diferentes sockets
      */
     public FrmTablero(Partida partida, EnviadorInformacion oos, JugadorHandler ois) {
         initComponents();
@@ -61,7 +65,6 @@ public class FrmTablero extends javax.swing.JFrame {
         this.figuraCuadro = new FiguraCuadro();
         this.oos = oos;
         this.ois = ois;
-
         listaLineas = new ArrayList<>();
         this.figuraPuntos.setBounds(5, 5, 690, 650);
         this.figuraPuntos.addMouseListener(eventos);
@@ -727,32 +730,18 @@ public class FrmTablero extends javax.swing.JFrame {
 
             }
 
-//            this.figuraLinea.paint(X2, Y2, X1, Y1, (Graphics2D) this.figuraPuntos.getGraphics(), color);
-//            this.listaLineas.add(añadirLineas);
+            this.figuraLinea.paint(X2, Y2, X1, Y1, (Graphics2D) this.figuraPuntos.getGraphics(), color);
+            this.listaLineas.add(añadirLineas);
 //            Linea linea = new Linea(X2, Y2, X1, Y1);
-            Linea lineaAnterior = this.añadirLineas;
-            this.oos.enviaLinea(this.añadirLineas);
-            Linea lineaDos = this.ois.recibirLinea();
-            this.listaLineas.add(lineaDos);
-            System.out.println(lineaDos);
-            new Thread(() -> {
-                try {
-                    while (true) {
-//                        if (lineaDos != lineaAnterior) {
-                        Thread.sleep(1000);
-                        this.figuraLinea.paint(lineaDos.getCoordenadasA()[0],
-                                lineaDos.getCoordenadasA()[1],
-                                lineaDos.getCoordenadasB()[0],
-                                lineaDos.getCoordenadasB()[1],
-                                (Graphics2D) this.figuraPuntos.getGraphics(),
-                                color);
-                        System.out.println("hola");
-//                        }
-                    }
-                } catch (InterruptedException e) {
-                    System.out.println(e);
-                }
-            }).start();
+//            this.oos.enviaLinea(this.añadirLineas);
+//            this.lineaDos = this.ois.recibirLinea();
+//            this.listaLineas.add(lineaDos);
+//            this.figuraLinea.paint(lineaDos.getCoordenadasA()[0],
+//                    lineaDos.getCoordenadasA()[1],
+//                    lineaDos.getCoordenadasB()[0],
+//                    lineaDos.getCoordenadasB()[1],
+//                    (Graphics2D) this.figuraPuntos.getGraphics(),
+//                    color);
 
             //Variable int, checar para poder saber a que lado pintar el cuadro
             int direccionCuadro = this.figuraCuadro.validaCuadro(listaLineas, X1, Y1, X2, Y2);
@@ -803,6 +792,15 @@ public class FrmTablero extends javax.swing.JFrame {
 
         }
 
+    }
+
+    /**
+     *
+     * Método para realizar los cambios obtenidos
+     */
+    @Override
+    public void update() {
+        this.ois.recibirLinea();
     }
 
     /**

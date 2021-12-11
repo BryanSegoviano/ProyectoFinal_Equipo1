@@ -46,6 +46,8 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         btnCrearPartida = new javax.swing.JButton();
         btnUnirsePartida = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menú principal");
@@ -130,6 +132,13 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 102));
+        jLabel1.setText("Al presionar un botón se solicitará ");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 102));
+        jLabel2.setText("en la consola los puertos");
+
         javax.swing.GroupLayout jPanelFondoBotonesLayout = new javax.swing.GroupLayout(jPanelFondoBotones);
         jPanelFondoBotones.setLayout(jPanelFondoBotonesLayout);
         jPanelFondoBotonesLayout.setHorizontalGroup(
@@ -137,25 +146,39 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
             .addGroup(jPanelFondoBotonesLayout.createSequentialGroup()
                 .addGroup(jPanelFondoBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelFondoBotonesLayout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(btnSalir))
-                    .addGroup(jPanelFondoBotonesLayout.createSequentialGroup()
-                        .addGap(14, 14, 14)
                         .addGroup(jPanelFondoBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnUnirsePartida)
-                            .addComponent(btnCrearPartida, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(11, Short.MAX_VALUE))
+                            .addGroup(jPanelFondoBotonesLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(btnUnirsePartida))
+                            .addGroup(jPanelFondoBotonesLayout.createSequentialGroup()
+                                .addGap(55, 55, 55)
+                                .addComponent(btnSalir))
+                            .addGroup(jPanelFondoBotonesLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanelFondoBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnCrearPartida, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanelFondoBotonesLayout.createSequentialGroup()
+                                        .addGap(15, 15, 15)
+                                        .addComponent(jLabel2)))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanelFondoBotonesLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanelFondoBotonesLayout.setVerticalGroup(
             jPanelFondoBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelFondoBotonesLayout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addGap(40, 40, 40)
                 .addComponent(btnCrearPartida)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(btnUnirsePartida)
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(22, 22, 22))
         );
 
         jPanel1.add(jPanelFondoBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 0, 190, 278));
@@ -258,6 +281,8 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnCrearPartida;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnUnirsePartida;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelBienvenido;
     private javax.swing.JLabel jLabelNombreUsuario;
     private javax.swing.JPanel jPanel1;

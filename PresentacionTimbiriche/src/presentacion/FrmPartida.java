@@ -15,13 +15,14 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
+import observer.Observer;
 
 /**
  * Clase FrmPartida que extiende de Jframe para el uso de la interfaz donde se
  * tendran los jugadores que ingresaron así como el boton de inicio de juego
  *
  */
-public class FrmPartida extends javax.swing.JFrame {
+public class FrmPartida extends javax.swing.JFrame implements Observer {
 
     /**
      * Atributos de la clase
@@ -387,6 +388,14 @@ public class FrmPartida extends javax.swing.JFrame {
         JugadoresDAO.jugadores[1].setUsuario(jugadorDos.getUsuario());
         this.nombreJ3.setText(JugadoresDAO.jugadores[2].getUsuario());
         this.nombreJ4.setText(JugadoresDAO.jugadores[3].getUsuario());
+    }
+
+    /**
+     * Método para realizar los cambios obtenidos
+     */
+    @Override
+    public void update() {
+        this.ois.recibirLinea();
     }
 
     /**

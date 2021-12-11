@@ -77,4 +77,16 @@ public class JugadorHandler {
         return null;
     }
 
+    public Object[] recibirLineaCuadro() {
+        try {
+            Object[] arreglo = (Object[]) this.ois.readObject();
+            Cuadro cuadro =  (Cuadro) arreglo[0];
+            Linea linea = (Linea) arreglo[1];
+            return arreglo;
+        } catch (IOException | ClassNotFoundException ex) {
+            System.out.println(ex);
+        }
+        return null;
+    }
+
 }
