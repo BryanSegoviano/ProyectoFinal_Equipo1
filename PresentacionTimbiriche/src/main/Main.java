@@ -6,7 +6,6 @@ package main;
 /**
  * Imports utilizados
  */
-import conectividad.GestionConexion;
 import presentacion.FrmMenuPrincipal;
 
 /**

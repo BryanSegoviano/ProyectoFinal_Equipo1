@@ -1,12 +1,13 @@
 package dominio;
 
+import java.io.Serializable;
 import javax.swing.ImageIcon;
 /**
  * Clase jugador que implementa a IReceptor 
  * 
  * @author Administrador
  */
-public class Jugador implements IDatosJugador {
+public class Jugador implements IDatosJugador, Serializable  {
     
     private String usuario;
     private ImageIcon avatar;

@@ -5,7 +5,7 @@ import conectividad.IGestionConexion;
 
 public class FabricaGestionConexion {
     
-//    public static IGestionConexion crearInstancia(){
-//        return new GestionConexion();
-//    }
+    public static IGestionConexion crearInstancia(){
+        return new GestionConexion();
+    }
 }

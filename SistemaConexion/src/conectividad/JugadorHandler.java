@@ -1,69 +1,47 @@
 package conectividad;
 
-import java.net.Socket;
 import dominio.Linea;
 import dominio.Jugador;
 import dominio.Cuadro;
-import java.io.InputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
-import java.io.Serializable;
-import java.util.List;
 
-public class JugadorHandler extends Thread {
+public class JugadorHandler {
 
-    private OutputStream outputStream;
-    private InputStream inputStream;
-    private ObjectOutputStream objectoutputStream;
-    private ObjectInputStream objectInputStream;
-    private Socket socket;
+    private ObjectInputStream ois;
 
-    public JugadorHandler(Serializable objeto) {
-        try {
-            this.inputStream = socket.getInputStream();
-            this.objectInputStream = new ObjectInputStream(inputStream);
-            String message;
-            List<Message> listOfMessages = (List<Message>) objectInputStream.readObject();
-            System.out.println("Received [" + listOfMessages.size() + "] messages from: " + socket);
-            System.out.println("All messages:");
-            listOfMessages.forEach((msg) -> System.out.println(msg.getText()));
-        } catch (Exception e) {
-        }
-
-    }
-
-    @Override
-    public void run() {
-
+    public JugadorHandler(ObjectInputStream input) {
+        this.ois = input;
     }
 
     public Linea recibirLinea() {
-        Linea linea = new Linea();
-        return linea;
+        try {
+            Linea linea = (Linea) ois.readObject();
+            return linea;
+        } catch (IOException | ClassNotFoundException ex) {
+            System.out.println(ex);
+        }
+        return null;
     }
 
     public Jugador recibirJugador() {
-        Jugador jugador = new Jugador();
-        return jugador;
+        try {
+            Jugador jugador = (Jugador) this.ois.readObject();
+            return jugador;
+        } catch (IOException | ClassNotFoundException ex) {
+            System.out.println(ex);
+        }
+        return null;
     }
 
     public Cuadro recibirCuadro() {
-        Cuadro cuadrado = new Cuadro();
-        return cuadrado;
+        try {
+            Cuadro cuadro = (Cuadro) this.ois.readObject();
+            return cuadro;
+        } catch (IOException | ClassNotFoundException ex) {
+            System.out.println(ex);
+        }
+        return null;
     }
 
-    public class Message implements Serializable {
-
-        private final String text;
-
-        public Message(String text) {
-            this.text = text;
-        }
-
-        public String getText() {
-            return text;
-        }
-    }
-    
 }

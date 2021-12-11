@@ -1,10 +1,13 @@
 package dominio;
+
+import java.io.Serializable;
+
 /**
  * Clase encargada de establecer los parametros a los cuadros.
  * 
  * @author Administrador
  */
-public class Cuadro {
+public class Cuadro implements Serializable {
 
     private Jugador jugador;
     private Linea[] listaLineas;

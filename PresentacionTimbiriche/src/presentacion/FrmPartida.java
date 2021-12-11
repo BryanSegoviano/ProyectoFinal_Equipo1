@@ -3,10 +3,14 @@
  */
 package presentacion;
 
+import conectividad.EnviadorInformacion;
+import conectividad.IGestionConexion;
+import conectividad.JugadorHandler;
 import control.JugadoresDAO;
 import dominio.Jugador;
 import dominio.Partida;
 import dominio.Tablero;
+import fabrica.FabricaGestionConexion;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -23,6 +27,8 @@ public class FrmPartida extends javax.swing.JFrame {
      * Atributos de la clase
      */
     private Partida partida;
+    private EnviadorInformacion oos;
+    private JugadorHandler ois;
 
     /**
      * Constructor que iniciaza datos dentro de la partida
@@ -31,11 +37,13 @@ public class FrmPartida extends javax.swing.JFrame {
      * @param partida Partida a la cual se hara referencia
      */
     public FrmPartida(String msj, Partida partida) {
+        IGestionConexion conexion = FabricaGestionConexion.crearInstancia();
         initComponents();
         setLocationRelativeTo(null);
+        this.crearConexion(conexion);
         this.crearPartida(partida);
-        this.establecerTurnos();
         this.cargarJugadores();
+        this.establecerTurnos();
         if (msj.equals("")) {
             this.ocultarPaneles();
         }
@@ -103,7 +111,6 @@ public class FrmPartida extends javax.swing.JFrame {
         btnSolicitarInicio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnSolicitarInicio.setText("Solicitar inicio de juego");
         btnSolicitarInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnSolicitarInicio.setEnabled(false);
         btnSolicitarInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSolicitarInicioActionPerformed(evt);
@@ -115,7 +122,6 @@ public class FrmPartida extends javax.swing.JFrame {
         btnSalir.setForeground(new java.awt.Color(153, 0, 153));
         btnSalir.setText("Salir");
         btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnSalir.setEnabled(false);
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
@@ -138,7 +144,7 @@ public class FrmPartida extends javax.swing.JFrame {
         jPanelJugador1.setBackground(new java.awt.Color(132, 174, 220));
 
         jLabelJugador4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabelJugador4.setText("Jugador 1");
+        jLabelJugador4.setText("Jugador");
 
         nombreJ1.setEditable(false);
         nombreJ1.setBackground(new java.awt.Color(255, 255, 255));
@@ -169,7 +175,7 @@ public class FrmPartida extends javax.swing.JFrame {
         jPanelJugador2.setBackground(new java.awt.Color(132, 174, 220));
 
         jLabelJugador.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabelJugador.setText("Jugador 2");
+        jLabelJugador.setText("Jugador ");
 
         nombreJ2.setEditable(false);
         nombreJ2.setBackground(new java.awt.Color(255, 255, 255));
@@ -200,7 +206,7 @@ public class FrmPartida extends javax.swing.JFrame {
         jPanelJugador3.setBackground(new java.awt.Color(132, 174, 220));
 
         jLabelJugador11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabelJugador11.setText("Jugador 3");
+        jLabelJugador11.setText("Jugador ");
 
         nombreJ3.setEditable(false);
         nombreJ3.setBackground(new java.awt.Color(255, 255, 255));
@@ -231,7 +237,7 @@ public class FrmPartida extends javax.swing.JFrame {
         jPanelJugador4.setBackground(new java.awt.Color(132, 174, 220));
 
         jLabelJugador10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabelJugador10.setText("Jugador 4");
+        jLabelJugador10.setText("Jugador");
 
         nombreJ4.setEditable(false);
         nombreJ4.setBackground(new java.awt.Color(255, 255, 255));
@@ -338,7 +344,7 @@ public class FrmPartida extends javax.swing.JFrame {
     private void solicitarInicio() {
         this.dispose();
         this.establecerTamañoTablero();
-        FrmTablero frmTablero = new FrmTablero(this.partida);
+        FrmTablero frmTablero = new FrmTablero(this.partida, this.oos, this.ois);
         frmTablero.setVisible(true);
     }
 
@@ -355,9 +361,9 @@ public class FrmPartida extends javax.swing.JFrame {
      * Oculta los paneles de los jugadores.
      */
     private void ocultarPaneles() {
-        jPanelJugador2.setVisible(false);
-        jPanelJugador3.setVisible(false);
-        jPanelJugador4.setVisible(false);
+//        jPanelJugador2.setVisible(false);
+//        jPanelJugador3.setVisible(false);
+//        jPanelJugador4.setVisible(false);
     }
 
     /**
@@ -374,7 +380,11 @@ public class FrmPartida extends javax.swing.JFrame {
      */
     private void cargarJugadores() {
         this.nombreJ1.setText(JugadoresDAO.jugadores[0].getUsuario());
-        this.nombreJ2.setText(JugadoresDAO.jugadores[1].getUsuario());
+        this.oos.enviaJugador(JugadoresDAO.jugadores[0]);
+        Jugador jugadorDos = (Jugador) this.ois.recibirJugador();
+        this.nombreJ2.setText(jugadorDos.getUsuario());
+        JugadoresDAO.jugadores[1].setAvatar(jugadorDos.getAvatar());
+        JugadoresDAO.jugadores[1].setUsuario(jugadorDos.getUsuario());
         this.nombreJ3.setText(JugadoresDAO.jugadores[2].getUsuario());
         this.nombreJ4.setText(JugadoresDAO.jugadores[3].getUsuario());
     }
@@ -418,6 +428,12 @@ public class FrmPartida extends javax.swing.JFrame {
             }
         }
         this.partida.setTurnos(turnos);
+    }
+
+    private void crearConexion(IGestionConexion conexion) {
+        conexion.inicializarConexion();
+        this.oos = conexion.getEnviador();
+        this.ois = conexion.getRecibidor();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -6,6 +6,8 @@ package presentacion;
 /**
  * Imports utilizados
  */
+import conectividad.EnviadorInformacion;
+import conectividad.JugadorHandler;
 import dibujaFiguras.FiguraLinea;
 import dibujaFiguras.FiguraPuntos;
 import dibujaFiguras.FiguraCuadro;
@@ -34,6 +36,8 @@ public class FrmTablero extends javax.swing.JFrame {
     private final FiguraPuntos figuraPuntos;
     private final FiguraLinea figuraLinea;
     private final FiguraCuadro figuraCuadro;
+    private final EnviadorInformacion oos;
+    private final JugadorHandler ois;
     private int clicks = 1;
     private int X1, Y1, X2, Y2;
     private Color color;
@@ -48,13 +52,15 @@ public class FrmTablero extends javax.swing.JFrame {
      *
      * @param partida Partida con la cual se interactua
      */
-    public FrmTablero(Partida partida) {
+    public FrmTablero(Partida partida, EnviadorInformacion oos, JugadorHandler ois) {
         initComponents();
         this.setLocationRelativeTo(null);
 
         this.figuraPuntos = new FiguraPuntos();
         this.figuraLinea = new FiguraLinea();
         this.figuraCuadro = new FiguraCuadro();
+        this.oos = oos;
+        this.ois = ois;
 
         listaLineas = new ArrayList<>();
         this.figuraPuntos.setBounds(5, 5, 690, 650);
@@ -91,14 +97,12 @@ public class FrmTablero extends javax.swing.JFrame {
         String hex2 = ConversionColores.conversionColorHex(colorJ2);
         this.colorJugador2.setBackground(Color.decode(hex2));
 
-        this.panelAvatarJ3.setIcon(jugador3.getAvatar());
         this.nombreJ3.setText(jugador3.getUsuario());
         this.puntosJ3.setText(jugador3.getPuntuacion() + "");
         ColorJ colorJ3 = jugador3.getColor();
         String hex3 = ConversionColores.conversionColorHex(colorJ3);
         this.colorJugador3.setBackground(Color.decode(hex3));
 
-        this.panelAvatarJ4.setIcon(jugador4.getAvatar());
         this.nombreJ4.setText(jugador4.getUsuario());
         this.puntosJ4.setText(jugador4.getPuntuacion() + "");
         ColorJ colorJ4 = jugador4.getColor();
@@ -723,8 +727,32 @@ public class FrmTablero extends javax.swing.JFrame {
 
             }
 
-            this.listaLineas.add(añadirLineas);
-            this.figuraLinea.paint(X2, Y2, X1, Y1, (Graphics2D) this.figuraPuntos.getGraphics(), color);
+//            this.figuraLinea.paint(X2, Y2, X1, Y1, (Graphics2D) this.figuraPuntos.getGraphics(), color);
+//            this.listaLineas.add(añadirLineas);
+//            Linea linea = new Linea(X2, Y2, X1, Y1);
+            Linea lineaAnterior = this.añadirLineas;
+            this.oos.enviaLinea(this.añadirLineas);
+            Linea lineaDos = this.ois.recibirLinea();
+            this.listaLineas.add(lineaDos);
+            System.out.println(lineaDos);
+            new Thread(() -> {
+                try {
+                    while (true) {
+//                        if (lineaDos != lineaAnterior) {
+                            Thread.sleep(1000);
+                            this.figuraLinea.paint(lineaDos.getCoordenadasA()[0],
+                                    lineaDos.getCoordenadasA()[1],
+                                    lineaDos.getCoordenadasB()[0],
+                                    lineaDos.getCoordenadasB()[1],
+                                    (Graphics2D) this.figuraPuntos.getGraphics(),
+                                    color);
+                            System.out.println("hola");
+//                        }
+                    }
+                } catch (InterruptedException e) {
+                    System.out.println(e);
+                }
+            }).start();
 
             //Variable int, checar para poder saber a que lado pintar el cuadro
             int direccionCuadro = this.figuraCuadro.validaCuadro(listaLineas, X1, Y1, X2, Y2);

@@ -233,14 +233,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
             Partida partidaCreada = new Partida();
             FrmPartida frmPartida = new FrmPartida("", partidaCreada);
             frmPartida.setVisible(true);
-            frmPartida.jPanelJugador2.setVisible(true);
-            frmPartida.jPanelJugador3.setVisible(true);
-            frmPartida.jPanelJugador4.setVisible(true);
-            FrmTablero frmTablero = new FrmTablero(partidaCreada);
             this.dispose();
-            frmPartida.dispose();
-            frmTablero.setVisible(true);
-
         }
 
     }
@@ -257,10 +250,6 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
             Partida partidaCreada = new Partida();
             FrmPartida frmPartida = new FrmPartida(".", partidaCreada);
             frmPartida.setVisible(true);
-            frmPartida.dispose();
-            FrmTablero frmTablero = new FrmTablero(partidaCreada);
-            frmTablero.setVisible(true);
-
         }
     }
 
